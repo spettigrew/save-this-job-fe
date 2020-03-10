@@ -1,10 +1,18 @@
 import React, { useState } from "react";
-import { Form, Checkbox, Button } from "semantic-ui-react";
+import { Form, Checkbox, Button, Grid, Header } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import Styled from "styled-components";
+import Register from "./register";
 
 const Container = Styled.div`
-    margin: 50px auto;
-    width: 400px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width: 100%;
+    height:calc(100vh - 40px);
+
+
 `;
 
 interface MyUser {
@@ -32,9 +40,19 @@ function Login() {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        style={{
+          width: "300px",
+          padding: "60px",
+          boxShadow: "4px 4px 10px #333333",
+          borderRadius: "5px"
+        }}
+      >
+        <Header as="h1" content="JoBook" />
+
         <Form.Field>
-          <label>First Name</label>
+          <label>Username</label>
           <input
             type="text"
             placeholder="Username"
@@ -43,7 +61,7 @@ function Login() {
           />
         </Form.Field>
         <Form.Field>
-          <label>Last Name</label>
+          <label>Password</label>
           <input
             type="password"
             placeholder="Password"
@@ -52,9 +70,13 @@ function Login() {
           />
         </Form.Field>
         <Form.Field>
-          <Checkbox label="I agree to the Terms and Conditions" />
+          <Button as={Link} to="/register" size="tiny">
+            Register
+          </Button>
+          <Button size="tiny" onClick={() => {}}>
+            Login
+          </Button>
         </Form.Field>
-        <Button type="submit">Submit</Button>
       </Form>
     </Container>
   );
