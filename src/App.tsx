@@ -8,6 +8,7 @@ import Navigation from "./routes/navigation";
 import Register from "./routes/Signup/register";
 import Login from "./routes/Signup/login";
 import Dashboard from "./routes/Protected/dashboard";
+import "semantic-ui-less/semantic.less";
 
 function App() {
   return (
