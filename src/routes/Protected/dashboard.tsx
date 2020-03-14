@@ -21,10 +21,11 @@ function Dashboard() {
     <div
       style={{
         width: "94%",
-        margin: "30px auto",
+        margin: "0 auto",
         display: "flex",
         justifyContent: "space-between",
-        flexWrap: "wrap"
+        flexWrap: "wrap",
+        paddingTop: "50px"
       }}
     >
       {users.map(user => (

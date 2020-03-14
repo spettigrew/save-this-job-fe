@@ -15,7 +15,7 @@ export default function DashCard(props) {
         </Card.Content>
         <Card.Content extra>
           <a>
-            <Icon name="user" />0 Friends
+            <Icon name="user" />1 Friends
           </a>
         </Card.Content>
       </Card>
