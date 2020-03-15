@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DashCard from "./card";
+import { DashCard } from "./card";
 
-function Dashboard() {
-  const [users, setUsers] = useState([]);
+interface Starwars {
+  name: string;
+  birth_year: string;
+}
+interface StarwarsArr extends Array<Starwars> {}
+export const Dashboard = () => {
+  const [users, setUsers] = useState<StarwarsArr>();
 
   useEffect(() => {
     axios
@@ -28,11 +33,12 @@ function Dashboard() {
         paddingTop: "50px"
       }}
     >
-      {users.map(user => (
-        <DashCard key={user.name} name={user.name} year={user.birth_year} />
-      ))}
+      {users &&
+        users.map(user => (
+          <DashCard key={user.name} Name={user.name} Year={user.birth_year} />
+        ))}
     </div>
   );
-}
+};
 
 export default Dashboard;

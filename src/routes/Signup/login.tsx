@@ -23,8 +23,8 @@ const Container = Styled.div`
 `;
 
 interface MyUser {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 }
 
 function Login() {
@@ -83,18 +83,18 @@ function Login() {
             justifyContent: "space-between"
           }}
         >
-          <Button size="tiny" type="submit" primary>
+          <Button size="tiny" type="submit" primary={true}>
             Login
           </Button>
 
-          <Divider horizontal>OR</Divider>
+          <Divider horizontal={true}>OR</Divider>
 
           <Button
             style={{ background: "transparent", color: "teal" }}
             as={Link}
             to="/register"
             size="tiny"
-            secondary
+            secondary={true}
           >
             Register
           </Button>
