@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { DashCard } from "./card";
+import { Starwars } from "../../../index";
 
-interface Starwars {
-  name: string;
-  birth_year: string;
-}
 interface StarwarsArr extends Array<Starwars> {}
-export const Dashboard = () => {
+
+const Dashboard = () => {
   const [users, setUsers] = useState<StarwarsArr>();
 
   useEffect(() => {

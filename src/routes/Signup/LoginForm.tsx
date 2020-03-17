@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import OktaAuth from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 import {
   Form,
   Checkbox,
@@ -27,11 +29,14 @@ interface MyUser {
   password: string;
 }
 
-function Login() {
+function LoginForm({ baseUrl }) {
   const [user, setUser] = useState<MyUser>({
     username: "",
     password: ""
   });
+
+  const { authService } = useOktaAuth();
+  const [sessionToken, setSessionToken] = useState();
 
   const handleChanges = (e: any): void => {
     setUser({
@@ -42,8 +47,18 @@ function Login() {
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
-    console.log(user);
+    const { username, password } = user;
+    const oktaAuth = new OktaAuth({ issuer: baseUrl });
+    oktaAuth
+      .signIn({ username, password })
+      .then(res => setSessionToken(res.sessionToken))
+      .catch(err => console.log("Found an error", err));
   };
+
+  if (sessionToken) {
+    authService.redirect({ sessionToken });
+    return null;
+  }
 
   return (
     <Container>
@@ -104,4 +119,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginForm;
