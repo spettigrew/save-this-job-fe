@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import { Menu, MenuItem, MenuItemProps } from "semantic-ui-react";
 import Styled from "styled-components";
 
 function Navigation() {
-  const [activeItem, setActiveItem] = useState();
+  const [activeItem, setActiveItem] = useState<string>();
 
-  const handleItemClick = (e, { name }) => {
+  const handleItemClick = (name: string) => {
     setActiveItem(name);
   };
 
@@ -17,7 +17,9 @@ function Navigation() {
         to="/"
         name="jobook"
         active={activeItem === "JoBook"}
-        onClick={handleItemClick}
+        onClick={() => {
+          handleItemClick("jobook");
+        }}
       >
         JoBook
       </Menu.Item>
@@ -26,7 +28,9 @@ function Navigation() {
         to="/dashboard"
         name="dashboard"
         active={activeItem === "dashboard"}
-        onClick={handleItemClick}
+        onClick={() => {
+          handleItemClick("dashboard");
+        }}
         position="right"
       >
         Dashboard
@@ -36,7 +40,9 @@ function Navigation() {
         to="/login"
         name="sign-in"
         active={activeItem === "sign-in"}
-        onClick={handleItemClick}
+        onClick={() => {
+          handleItemClick("sign-in");
+        }}
       >
         Sign-in
       </Menu.Item>
