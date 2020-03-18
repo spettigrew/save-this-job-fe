@@ -28,7 +28,7 @@ function Navigation() {
   }
 
   return (
-    <Menu style={{ position: "fixed", zIndex: "3", width: "100%" }}>
+    <Menu style={{ top: "0", position: "fixed", zIndex: "3", width: "100%" }}>
       <Menu.Item
         as={Link}
         to="/"
@@ -55,7 +55,7 @@ function Navigation() {
       {authState.isAuthenticated ? (
         <Menu.Item
           as={Link}
-          to="/login"
+          to="/"
           name="sign-out"
           active={activeItem === "sign-out"}
           onClick={() => {

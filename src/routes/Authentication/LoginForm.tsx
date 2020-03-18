@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import OktaAuth from "@okta/okta-auth-js";
+import { Redirect } from "react-router-dom";
 import { useOktaAuth } from "okta-react-bug-fix";
 import {
   Form,
@@ -11,7 +12,6 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Styled from "styled-components";
-import Register from "./register";
 
 const Container = Styled.div`
     display:flex;
@@ -20,8 +20,6 @@ const Container = Styled.div`
     align-items:center;
     width: 100%;
     height:calc(100vh - 40px);
-
-
 `;
 
 interface MyUser {
@@ -29,13 +27,14 @@ interface MyUser {
   password: string;
 }
 
-function LoginForm({ baseUrl }) {
+function LoginForm() {
   const [user, setUser] = useState<MyUser>({
     username: "",
     password: ""
   });
 
   const { authService } = useOktaAuth();
+  const baseUrl = "https://dev-505664.okta.com";
   const [sessionToken, setSessionToken] = useState();
 
   const handleChanges = (e: any): void => {
@@ -57,7 +56,7 @@ function LoginForm({ baseUrl }) {
 
   if (sessionToken) {
     authService.redirect({ sessionToken });
-    return null;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
