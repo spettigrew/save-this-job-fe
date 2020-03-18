@@ -1,8 +1,11 @@
 import React from "react";
 import { Route, useHistory } from "react-router-dom";
 import { Security, SecureRoute, LoginCallback } from "okta-react-bug-fix";
+import { Container } from 'semantic-ui-react';
+import config from '../../utils/config';
+import Home from '../Home';
 import RegisterForm from "../Authentication/register";
-import Login from "../Authentication/Login";
+import LoginForm from "../Authentication/LoginForm";
 import Dashboard from "./dashboard";
 import Navigation from "../navigation";
 
@@ -14,20 +17,17 @@ const AppWithRouterAccess = () => {
 
   return (
     <Security
-      issuer="https://dev-505664.okta.com/oauth2/default"
-      clientId="0oa4246ntis4ZkuTd4x6"
-      redirectUri={window.location.origin + "/implicit/callback"}
+      {...config.oidc}
       onAuthRequired={onAuthRequired}
-      pkce={true}
     >
-      <Route path='/' component={Navigation} />
-      <SecureRoute path="/dashboard" component={Dashboard} />
-      <Route path="/implicit/callback" component={LoginCallback} />
-      <Route exact path="/register" component={RegisterForm} />
-      <Route
-        path="/login"
-        render={() => <Login baseUrl="https://dev-505664.okta.com" />}
-      />
+      <Navigation />
+      <Container text style={{marginTop: '50px'}}>
+      <Route exact path='/' component={Home} />
+        <Route path="/implicit/callback" component={LoginCallback} />
+        <Route exact path="/register" component={RegisterForm} />
+        <Route exact path="/login" component={LoginForm} />
+        <SecureRoute path="/dashboard" component={Dashboard} />
+      </Container>
     </Security>
   );
 };
