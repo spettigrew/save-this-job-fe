@@ -23,7 +23,6 @@ const Container = Styled.div`
 `;
 
 interface MyUser {
-  username: string;
   password: string;
   firstName: string;
   lastName: string;
@@ -32,7 +31,6 @@ interface MyUser {
 
 function Register(props) {
   const [user, setUser] = useState<MyUser>({
-    username: "",
     firstName: "",
     lastName: "",
     password: "",
@@ -49,14 +47,13 @@ function Register(props) {
   const handleSubmit = (e: any): void => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/users/register", user)
+      .post("http://localhost:8080/register", user)
       .then(res => {
         setUser({
           email: "",
           password: "",
           firstName: "",
-          lastName: "",
-          username: ""
+          lastName: ""
         });
         props.history.push("/login");
       })
@@ -79,11 +76,11 @@ function Register(props) {
       >
         <Header as="h1" content="JoBook" />
         <Form.Field required>
-          <label>Username</label>
+          <label>Email</label>
           <input
-            type="text"
-            placeholder="Username"
-            name="username"
+            type="email"
+            placeholder="Email"
+            name="email"
             onChange={handleChanges}
           />
         </Form.Field>
@@ -111,15 +108,6 @@ function Register(props) {
             type="text"
             placeholder="lastname"
             name="lastName"
-            onChange={handleChanges}
-          />
-        </Form.Field>
-        <Form.Field required>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
             onChange={handleChanges}
           />
         </Form.Field>
