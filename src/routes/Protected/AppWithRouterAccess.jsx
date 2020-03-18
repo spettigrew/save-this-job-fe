@@ -20,8 +20,8 @@ const AppWithRouterAccess = () => {
       onAuthRequired={onAuthRequired}
       pkce={true}
     >
+      <Route path='/' component={Navigation} />
       <SecureRoute path="/dashboard" component={Dashboard} />
-      <Navigation baseUrl="https://dev-505664.okta.com" />
       <Route path="/implicit/callback" component={LoginCallback} />
       <Route exact path="/register" component={RegisterForm} />
       <Route

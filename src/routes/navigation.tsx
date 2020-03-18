@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, MenuItem, MenuItemProps } from "semantic-ui-react";
+import { Menu, MenuItemProps } from "semantic-ui-react";
 import Styled from "styled-components";
 import { useOktaAuth } from "okta-react-bug-fix";
 
-function Navigation({ baseUrl }) {
+function Navigation() {
   const [activeItem, setActiveItem] = useState<string>();
-  const issuer = "https://dev-505664.okta.com/oauth2/default";
-  const redirectUri = `${window.location.origin}/logged_out`;
-  console.log(useOktaAuth, "OSDIGOSDG");
   const { authState, authService } = useOktaAuth();
+  const issuer = "https://dev-505664.okta.com/oauth2/default";
+  const redirectUri = window.location.origin;
 
   const handleItemClick = (name: string) => {
     setActiveItem(name);
@@ -57,9 +56,10 @@ function Navigation({ baseUrl }) {
         <Menu.Item
           as={Link}
           to="/login"
-          name="sign-in"
-          active={activeItem === "sign-in"}
+          name="sign-out"
+          active={activeItem === "sign-out"}
           onClick={() => {
+            handleItemClick("sign-out");
             logout();
           }}
         >
