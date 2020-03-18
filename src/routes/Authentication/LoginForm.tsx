@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import OktaAuth from "@okta/okta-auth-js";
+import { Redirect } from "react-router-dom";
+import { useOktaAuth } from "okta-react-bug-fix";
 import {
   Form,
   Checkbox,
@@ -17,20 +20,22 @@ const Container = Styled.div`
     align-items:center;
     width: 100%;
     height:calc(100vh - 40px);
-
-
 `;
 
 interface MyUser {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
 }
 
-function Register() {
+function LoginForm() {
   const [user, setUser] = useState<MyUser>({
     username: "",
     password: ""
   });
+
+  const { authService } = useOktaAuth();
+  const baseUrl = "https://dev-505664.okta.com";
+  const [sessionToken, setSessionToken] = useState();
 
   const handleChanges = (e: any): void => {
     setUser({
@@ -41,8 +46,18 @@ function Register() {
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
-    console.log(user);
+    const { username, password } = user;
+    const oktaAuth = new OktaAuth({ issuer: baseUrl });
+    oktaAuth
+      .signIn({ username, password })
+      .then(res => setSessionToken(res.sessionToken))
+      .catch(err => console.log("Found an error", err));
   };
+
+  if (sessionToken) {
+    authService.redirect({ sessionToken });
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Container>
@@ -52,12 +67,12 @@ function Register() {
           width: "300px",
           padding: "60px",
           boxShadow: "4px 4px 10px #333333",
-          borderRadius: "5px",
-          textAlign: "left"
+          borderRadius: "5px"
         }}
       >
         <Header as="h1" content="JoBook" />
-        <Form.Field required>
+
+        <Form.Field>
           <label>Username</label>
           <input
             type="text"
@@ -66,30 +81,12 @@ function Register() {
             onChange={handleChanges}
           />
         </Form.Field>
-        <Form.Field required>
+        <Form.Field>
           <label>Password</label>
           <input
             type="password"
             placeholder="Password"
             name="password"
-            onChange={handleChanges}
-          />
-        </Form.Field>
-        <Form.Field required>
-          <label>Confirm Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChanges}
-          />
-        </Form.Field>
-        <Form.Field required>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
             onChange={handleChanges}
           />
         </Form.Field>
@@ -100,20 +97,20 @@ function Register() {
             justifyContent: "space-between"
           }}
         >
-          <Button size="tiny" type="submit" primary>
-            Register
+          <Button size="tiny" type="submit" primary={true}>
+            Login
           </Button>
 
-          <Divider horizontal>OR</Divider>
+          <Divider horizontal={true}>OR</Divider>
 
           <Button
             style={{ background: "transparent", color: "teal" }}
             as={Link}
-            to="/login"
+            to="/register"
             size="tiny"
-            secondary
+            secondary={true}
           >
-            Login
+            Register
           </Button>
         </Form.Field>
       </Form>
@@ -121,4 +118,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default LoginForm;

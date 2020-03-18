@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import {
   Form,
   Checkbox,
@@ -9,7 +10,6 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Styled from "styled-components";
-import Register from "./register";
 
 const Container = Styled.div`
     display:flex;
@@ -23,14 +23,20 @@ const Container = Styled.div`
 `;
 
 interface MyUser {
-  username: String;
-  password: String;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
-function Login() {
+function Register(props) {
   const [user, setUser] = useState<MyUser>({
     username: "",
-    password: ""
+    firstName: "",
+    lastName: "",
+    password: "",
+    email: ""
   });
 
   const handleChanges = (e: any): void => {
@@ -42,7 +48,21 @@ function Login() {
 
   const handleSubmit = (e: any): void => {
     e.preventDefault();
-    console.log(user);
+    axios
+      .post("http://localhost:8080/users/register", user)
+      .then(res => {
+        setUser({
+          email: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          username: ""
+        });
+        props.history.push("/login");
+      })
+      .catch(err => {
+        console.log("Error", err);
+      });
   };
 
   return (
@@ -53,12 +73,12 @@ function Login() {
           width: "300px",
           padding: "60px",
           boxShadow: "4px 4px 10px #333333",
-          borderRadius: "5px"
+          borderRadius: "5px",
+          textAlign: "left"
         }}
       >
         <Header as="h1" content="JoBook" />
-
-        <Form.Field>
+        <Form.Field required>
           <label>Username</label>
           <input
             type="text"
@@ -67,12 +87,39 @@ function Login() {
             onChange={handleChanges}
           />
         </Form.Field>
-        <Form.Field>
+        <Form.Field required>
           <label>Password</label>
           <input
             type="password"
             placeholder="Password"
             name="password"
+            onChange={handleChanges}
+          />
+        </Form.Field>
+        <Form.Field required>
+          <label>First Name</label>
+          <input
+            type="text"
+            placeholder="firstname"
+            name="firstName"
+            onChange={handleChanges}
+          />
+        </Form.Field>
+        <Form.Field required>
+          <label>Last Name</label>
+          <input
+            type="text"
+            placeholder="lastname"
+            name="lastName"
+            onChange={handleChanges}
+          />
+        </Form.Field>
+        <Form.Field required>
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            name="email"
             onChange={handleChanges}
           />
         </Form.Field>
@@ -84,7 +131,7 @@ function Login() {
           }}
         >
           <Button size="tiny" type="submit" primary>
-            Login
+            Register
           </Button>
 
           <Divider horizontal>OR</Divider>
@@ -92,11 +139,11 @@ function Login() {
           <Button
             style={{ background: "transparent", color: "teal" }}
             as={Link}
-            to="/register"
+            to="/login"
             size="tiny"
             secondary
           >
-            Register
+            Login
           </Button>
         </Form.Field>
       </Form>
@@ -104,4 +151,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
