@@ -18,8 +18,11 @@ const Container = Styled.div`
     align-items:center;
     width: 100%;
     height:calc(100vh - 40px);
+`;
 
-
+const ErrorStyles = Styled.div`
+  color: red;
+  margin-bottom: 10px;
 `;
 
 interface MyUser {
@@ -36,6 +39,7 @@ function Register(props) {
     password: "",
     email: ""
   });
+  const [error, setError] = useState();
 
   const handleChanges = (e: any): void => {
     setUser({
@@ -49,13 +53,23 @@ function Register(props) {
     axios
       .post("http://localhost:8080/register", user)
       .then(res => {
-        setUser({
-          email: "",
-          password: "",
-          firstName: "",
-          lastName: ""
-        });
-        props.history.push("/login");
+        console.log(res.data);
+
+        if (res.data.status === 400) {
+          return setError(res.data.message);
+        }
+
+        if (res.data.status === "ACTIVE") {
+          setUser({
+            email: "",
+            password: "",
+            firstName: "",
+            lastName: ""
+          });
+          props.history.push("/login");
+        } else {
+          return null;
+        }
       })
       .catch(err => {
         console.log("Error", err);
@@ -64,6 +78,7 @@ function Register(props) {
 
   return (
     <Container>
+      {error && <ErrorStyles>{error}</ErrorStyles>}
       <Form
         onSubmit={handleSubmit}
         style={{
