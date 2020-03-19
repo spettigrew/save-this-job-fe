@@ -73,10 +73,10 @@ function LoginForm() {
         <Header as="h1" content="JoBook" />
 
         <Form.Field>
-          <label>Username</label>
+          <label>Email</label>
           <input
-            type="text"
-            placeholder="Username"
+            type="email"
+            placeholder="Email"
             name="username"
             onChange={handleChanges}
           />
