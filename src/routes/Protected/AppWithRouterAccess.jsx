@@ -21,8 +21,8 @@ const AppWithRouterAccess = () => {
       onAuthRequired={onAuthRequired}
     >
       <Navigation />
-      <Container text style={{marginTop: '50px'}}>
-      <Route exact path='/' component={Home} />
+      <Container text style={{ marginTop: '50px' }}>
+        <Route exact path='/' component={Home} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/login" component={LoginForm} />

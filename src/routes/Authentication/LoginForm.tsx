@@ -26,7 +26,10 @@ const LoginForm = () => {
         display: "page",
         scopes
       },
-      idps: [{ type: "google", id: process.env.REACT_APP_GOOGLE_IPD_ID }],
+      idps: [
+        { type: "google", id: process.env.REACT_APP_GOOGLE_IPD_ID },
+        { type: "linkedin", id: process.env.REACT_APP_LINKEDIN_IPD_ID }
+      ],
 
       customButtons: [
         {
@@ -42,16 +45,14 @@ const LoginForm = () => {
 
     widget.renderEl(
       { el: "#sign-in-widget" },
-      res => {
-        if (res.status === "SUCCESS") {
-          // Hide element
-          return $("#sign-in-widget").hide();
-        }
-      },
+      () => {},
       err => {
         throw err;
       }
     );
+    return () => {
+      widget.remove();
+    };
   }, []);
 
   return (
