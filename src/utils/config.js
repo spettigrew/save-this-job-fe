@@ -10,6 +10,6 @@ export default {
     pkce: true,
     type: "Google",
     id: process.env.REACT_APP_IPD_ID,
-    idpDisplay: "SECONDARY"
+    scopes: ["openid", "profile", "email"]
   }
 };
