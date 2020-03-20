@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import OktaAuth from "@okta/okta-auth-js";
 import { Redirect } from "react-router-dom";
 import { useOktaAuth } from "okta-react-bug-fix";
+import GoogleLogin from "react-google-login";
 import {
   Form,
   Checkbox,
@@ -32,9 +33,8 @@ function LoginForm() {
     username: "",
     password: ""
   });
-
   const { authService } = useOktaAuth();
-  const baseUrl = "https://dev-505664.okta.com";
+  const baseUrl = process.env.REACT_APP_BASEURL;
   const [sessionToken, setSessionToken] = useState();
 
   const handleChanges = (e: any): void => {
@@ -58,6 +58,16 @@ function LoginForm() {
     authService.redirect({ sessionToken });
     return <Redirect to="/dashboard" />;
   }
+  const grabToken = () => {
+    console.log("IM HIT");
+  };
+  const responseGoogleSuccess = response => {
+    console.log(response);
+    localStorage.setItem("profileObj", response.profileObj.toString());
+  };
+  const responseGoogleFailure = response => {
+    console.log(response);
+  };
 
   return (
     <Container>
@@ -102,6 +112,15 @@ function LoginForm() {
           </Button>
 
           <Divider horizontal={true}>OR</Divider>
+
+          <GoogleLogin
+            clientId="106999113670-ojltpk2fpn1gnsegcl840hnk3g34h4qq.apps.googleusercontent.com"
+            buttonText="Login with Google"
+            onSuccess={responseGoogleSuccess}
+            onFailure={responseGoogleFailure}
+            cookiePolicy={"single_host_origin"}
+          />
+          {/* <Button><a href='https://dev-505664.okta.com/oauth2/v1/authorize?idp=0oa4cinpegREwYWrd4x6&client_id=0oa4246ntis4ZkuTd4x6&response_type=id_token&response_mode=fragment&scope=openid%20email%20profile&redirect_uri=http://localhost:3000/implicit/callback&state=WM6D2&nonce=YsG76joKF'>Login with Google</a></Button> */}
 
           <Button
             style={{ background: "transparent", color: "teal" }}
