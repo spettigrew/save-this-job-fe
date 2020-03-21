@@ -17,7 +17,6 @@ function Navigation() {
   const logout = async () => {
     // Read idToken before local session is cleared
     const idToken = authState.idToken;
-
     await authService.logout("/");
     // Clear remote session
     window.location.href = `${issuer}/v1/logout?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
@@ -40,31 +39,34 @@ function Navigation() {
       >
         JoBook
       </Menu.Item>
-      <Menu.Item
-        as={Link}
-        to="/dashboard"
-        name="dashboard"
-        active={activeItem === "dashboard"}
-        onClick={() => {
-          handleItemClick("dashboard");
-        }}
-        position="right"
-      >
-        Dashboard
-      </Menu.Item>
       {authState.isAuthenticated ? (
-        <Menu.Item
-          as={Link}
-          to="/"
-          name="sign-out"
-          active={activeItem === "sign-out"}
-          onClick={() => {
-            handleItemClick("sign-out");
-            logout();
-          }}
-        >
-          Sign-Out
-        </Menu.Item>
+        <>
+          <Menu.Item
+            as={Link}
+            to="/dashboard"
+            name="dashboard"
+            active={activeItem === "dashboard"}
+            onClick={() => {
+              handleItemClick("dashboard");
+            }}
+            position="right"
+          >
+            Dashboard
+          </Menu.Item>
+
+          <Menu.Item
+            as={Link}
+            to="/"
+            name="sign-out"
+            active={activeItem === "sign-out"}
+            onClick={() => {
+              handleItemClick("sign-out");
+              logout();
+            }}
+          >
+            Sign-Out
+          </Menu.Item>
+        </>
       ) : (
         <Menu.Item
           as={Link}
@@ -74,6 +76,7 @@ function Navigation() {
           onClick={() => {
             handleItemClick("sign-in");
           }}
+          position="right"
         >
           Sign-In
         </Menu.Item>

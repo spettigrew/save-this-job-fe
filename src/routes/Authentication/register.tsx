@@ -55,10 +55,6 @@ function Register(props) {
       .then(res => {
         console.log(res.data);
 
-        if (res.data.status === 400) {
-          return setError(res.data.message);
-        }
-
         if (res.data.status === "ACTIVE") {
           setUser({
             email: "",
@@ -68,11 +64,12 @@ function Register(props) {
           });
           props.history.push("/login");
         } else {
-          return null;
+          setError(res.data.message);
         }
       })
       .catch(err => {
         console.log("Error", err);
+        return setError(err.message);
       });
   };
 
