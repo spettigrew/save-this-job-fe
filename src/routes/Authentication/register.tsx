@@ -1,3 +1,4 @@
+// This component is no longer needed if we use the okta signin widget for registering new users
 import React, { useState } from "react";
 import axios from "axios";
 import {
