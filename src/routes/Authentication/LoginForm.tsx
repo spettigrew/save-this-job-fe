@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import * as OktaSignIn from "@okta/okta-signin-widget";
 import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
+import logo from "../../images/Group 1.png";
 
 import config from "../../utils/config";
 
 const LoginForm = () => {
-  const history = useHistory();
   useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
@@ -14,44 +13,54 @@ const LoginForm = () => {
       baseUrl: process.env.REACT_APP_BASEURL,
       clientId,
       redirectUri,
-      logo: "",
+      logo: logo,
+      language: "en",
+      brandName: "Save this Job",
+      // Overrides default text when using English.
       i18n: {
         en: {
-          "primaryauth.title": "Sign in to Save this Job"
+          "primaryauth.title": "Please Sign in to your Save this Job Account"
         }
       },
+      // Changes to widget functionality
       authParams: {
         pkce,
         issuer,
         display: "page",
         scopes
       },
-      idps: [{ type: "google", id: process.env.REACT_APP_GOOGLE_IPD_ID }],
-
-      customButtons: [
-        {
-          title: "Create a new Account",
-          className: "btn-customAuth",
-          click: function() {
-            widget.remove();
-            history.push("/register");
-          }
-        }
-      ]
+      features: {
+        registration: true, // Enable self-service registration flow
+        selfServiceUnlock: true, // Will enable unlock in addition to forgotten password
+        smsRecovery: true, // Enable SMS-based account recovery
+        callRecovery: true, // Enable voice call-based account recovery
+        showPasswordToggleOnSignInPage: true
+      },
+      idps: [
+        { type: "google", id: process.env.REACT_APP_GOOGLE_IPD_ID },
+        { type: "linkedin", id: process.env.REACT_APP_LINKEDIN_IPD_ID },
+        { type: "facebook", id: process.env.REACT_APP_FACEBOOK_IPD_ID }
+      ],
+      colors: {
+        brand: "#08A6C9"
+      }
     });
 
     widget.renderEl(
       { el: "#sign-in-widget" },
-      res => {
-        if (res.status === "SUCCESS") {
-          // Hide element
-          return $("#sign-in-widget").hide();
-        }
+      () => {
+        /**
+         * In this flow, the success handler will not be called beacuse we redirect
+         * to the Okta org for the authentication workflow.
+         */
       },
       err => {
         throw err;
       }
     );
+    return () => {
+      widget.remove();
+    };
   }, []);
 
   return (

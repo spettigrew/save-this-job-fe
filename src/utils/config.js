@@ -8,8 +8,6 @@ export default {
     clientId: CLIENT_ID,
     redirectUri: window.location.origin + "/implicit/callback",
     pkce: true,
-    type: "Google",
-    id: process.env.REACT_APP_IPD_ID,
     scopes: ["openid", "profile", "email"]
   }
 };

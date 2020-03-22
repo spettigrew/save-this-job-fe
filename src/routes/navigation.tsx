@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, MenuItemProps } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 import Styled from "styled-components";
 import { useOktaAuth } from "okta-react-bug-fix";
+import logo from "../images/Group 1.png";
+
+import config from "../utils/config";
+
+const LogoImg = Styled.img`
+width: 80px !important;
+`;
 
 function Navigation() {
   const [activeItem, setActiveItem] = useState<string>();
   const { authState, authService } = useOktaAuth();
-  const issuer = "https://dev-505664.okta.com/oauth2/default";
+  const { issuer } = config.oidc;
   const redirectUri = window.location.origin;
 
   const handleItemClick = (name: string) => {
@@ -18,6 +25,9 @@ function Navigation() {
     // Read idToken before local session is cleared
     const idToken = authState.idToken;
     await authService.logout("/");
+    // clear user email and token that was set for the extension
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
     // Clear remote session
     window.location.href = `${issuer}/v1/logout?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
   };
@@ -27,7 +37,9 @@ function Navigation() {
   }
 
   return (
-    <Menu style={{ top: "0", position: "fixed", zIndex: "3", width: "100%" }}>
+    <Menu
+      style={{ top: "0", position: "fixed", zIndex: "99999", width: "100%" }}
+    >
       <Menu.Item
         as={Link}
         to="/"
@@ -37,7 +49,7 @@ function Navigation() {
           handleItemClick("jobook");
         }}
       >
-        JoBook
+        {<LogoImg src={logo} alt="save this job" />}
       </Menu.Item>
       {authState.isAuthenticated ? (
         <>
