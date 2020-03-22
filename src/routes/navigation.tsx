@@ -25,6 +25,9 @@ function Navigation() {
     // Read idToken before local session is cleared
     const idToken = authState.idToken;
     await authService.logout("/");
+    // clear user email and token that was set for the extension
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
     // Clear remote session
     window.location.href = `${issuer}/v1/logout?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
   };

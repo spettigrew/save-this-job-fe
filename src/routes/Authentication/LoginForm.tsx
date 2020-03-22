@@ -16,7 +16,7 @@ const LoginForm = () => {
       logo: logo,
       language: "en",
       brandName: "Save this Job",
-      //Overrides default text when using English.
+      // Overrides default text when using English.
       i18n: {
         en: {
           "primaryauth.title": "Please Sign in to your Save this Job Account"
@@ -48,7 +48,12 @@ const LoginForm = () => {
 
     widget.renderEl(
       { el: "#sign-in-widget" },
-      () => {},
+      () => {
+        /**
+         * In this flow, the success handler will not be called beacuse we redirect
+         * to the Okta org for the authentication workflow.
+         */
+      },
       err => {
         throw err;
       }
