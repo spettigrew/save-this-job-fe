@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as OktaSignIn from "@okta/okta-signin-widget";
 import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
-import logo from "../../images/Group 1.png";
+import logo from "../../images/Component 2.png";
 
 import config from "../../utils/config";
 
@@ -10,7 +10,7 @@ const LoginForm = () => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
     const widget = new OktaSignIn({
-      baseUrl: process.env.REACT_APP_BASEURL,
+      baseUrl: process.env.REACT_APP_BASE_URL,
       clientId,
       redirectUri,
       logo: logo,
@@ -42,7 +42,7 @@ const LoginForm = () => {
         { type: "facebook", id: process.env.REACT_APP_FACEBOOK_IPD_ID }
       ],
       colors: {
-        brand: "#08A6C9"
+        brand: "#FC4A1A"
       }
     });
 
@@ -50,7 +50,7 @@ const LoginForm = () => {
       { el: "#sign-in-widget" },
       () => {
         /**
-         * In this flow, the success handler will not be called beacuse we redirect
+         * In this flow, the success handler will not be called because we redirect
          * to the Okta org for the authentication workflow.
          */
       },
@@ -70,5 +70,3 @@ const LoginForm = () => {
   );
 };
 export default LoginForm;
-
-//FC4A1A
