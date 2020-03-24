@@ -10,7 +10,7 @@ const LoginForm = () => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
     const widget = new OktaSignIn({
-      baseUrl: process.env.REACT_APP_BASE_URL,
+      baseUrl: process.env.REACT_APP_BASEURL,
       clientId,
       redirectUri,
       logo: logo,
