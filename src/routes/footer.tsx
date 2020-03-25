@@ -8,7 +8,7 @@ color:white;
 height:40px;
 z-index:2;
 bottom:0 !important;
-position: fixed;
+margin-top: 100px;
 text-align: center;
 
 `;
