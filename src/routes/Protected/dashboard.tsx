@@ -18,7 +18,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     setCredForExtension();
-    // https://cors-anywhere.herokuapp.com/
     authWithAxios()
       .get("/users/jobs")
       .then(res => {
@@ -42,10 +41,11 @@ const Dashboard = () => {
           display: "flex",
           justifyContent: "space-between",
           flexWrap: "wrap",
-          paddingTop: "50px"
+          paddingTop: "50px",
+          paddingBottom: "100px"
         }}
       >
-        {jobs ? (
+        {jobs.length > 0 ? (
           jobs.map((job, index) => (
             <DashCard key={index} name={job.jobTitle} url={job.url} />
           ))
