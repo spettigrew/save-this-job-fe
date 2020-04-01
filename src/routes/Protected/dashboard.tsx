@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>{`Welcome ${
+      <h1>{`Welcome back, ${
         store.get("okta-token-storage").idToken.claims.name
       }`}</h1>
       <div
@@ -53,7 +53,7 @@ const Dashboard = () => {
           display: "flex",
           flexWrap: "wrap",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "space-evenly",
           paddingTop: "50px",
           paddingBottom: "100px"
         }}
