@@ -16,6 +16,18 @@ const Dashboard = () => {
     localStorage.setItem("token", token);
   };
 
+  const removeJob = async jobId => {
+    const response = await authWithAxios().delete(
+      `http://localhost:8080/users/removeJob/${jobId}`
+    );
+    if (response.status === 200) {
+      const filter = jobs.filter(job => job.id !== jobId);
+      setJobs(filter);
+    } else {
+      console.log(response);
+    }
+  };
+
   useEffect(() => {
     setCredForExtension();
     authWithAxios()
@@ -36,18 +48,26 @@ const Dashboard = () => {
       }`}</h1>
       <div
         style={{
-          width: "94%",
+          width: "auto",
           margin: "0 auto",
           display: "flex",
-          justifyContent: "space-between",
           flexWrap: "wrap",
+          flexDirection: "row",
+          justifyContent: "space-between",
           paddingTop: "50px",
           paddingBottom: "100px"
         }}
       >
         {jobs.length > 0 ? (
           jobs.map((job, index) => (
-            <DashCard key={index} name={job.jobTitle} url={job.url} />
+            <DashCard
+              key={index}
+              name={job.jobTitle}
+              url={job.url}
+              id={job.id}
+              logo={job.logo}
+              removeJob={removeJob}
+            />
           ))
         ) : (
           <div>You currently have no jobs saved to your account.</div>
