@@ -7,7 +7,7 @@ import {
   FeedLabel,
   Button
 } from "semantic-ui-react";
-import authWithAxios from "../../utils/authWithAxios";
+import Remove from "./Remove";
 
 // interface Props {
 //   Name: string;
@@ -62,10 +62,7 @@ export const DashCard = ({ name, url, id, removeJob, logo }) => {
             <Icon name="thumbtack" />
             Go to Job Post
           </a>
-          <a onClick={() => removeJob(id)}>
-            <Icon name="trash" />
-            Delete
-          </a>
+          <Remove removeJob={removeJob} id={id} />
         </Card.Content>
       </Card>
     </>
