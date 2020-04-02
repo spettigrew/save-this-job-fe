@@ -62,10 +62,6 @@ export const DashCard = ({ name, url, id, removeJob, logo }) => {
             <Icon name="thumbtack" />
             Go to Job Post
           </a>
-          {/* <a onClick={() => removeJob(id)}>
-            <Icon name="trash" />
-            Delete
-          </a> */}
           <Remove removeJob={removeJob} id={id} />
         </Card.Content>
       </Card>
