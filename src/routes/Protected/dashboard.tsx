@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [jobs, setJobs] = useState([]);
 
   // This is used for the purpose of the chrome extension to authenticate users once they login
-  const setCredForExtension = () => {
+  const setTokenForExtension = () => {
     const token = store.get("okta-token-storage").accessToken.accessToken;
     localStorage.setItem("token", token);
   };
@@ -29,7 +29,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    setCredForExtension();
+    setTokenForExtension();
     authWithAxios()
       .get("/users/jobs")
       .then(res => {
@@ -60,14 +60,7 @@ const Dashboard = () => {
       >
         {jobs.length > 0 ? (
           jobs.map((job, index) => (
-            <DashCard
-              key={index}
-              name={job.jobTitle}
-              url={job.url}
-              id={job.id}
-              logo={job.logo}
-              removeJob={removeJob}
-            />
+            <DashCard key={index} job={job} removeJob={removeJob} />
           ))
         ) : (
           <div>You currently have no jobs saved to your account.</div>

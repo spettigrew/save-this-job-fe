@@ -21,14 +21,14 @@ const AppWithRouterAccess = () => {
       onAuthRequired={onAuthRequired}
     >
       <Navigation />
-      <Container style={{ marginTop: '50px' }}>
+      <div>
         <Route exact path='/' component={Home} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route exact path="/login" component={LoginForm} />
         <SecureRoute path="/dashboard" component={Dashboard} />
-      </Container>
-      <Route exact path="/" component={Footer} />
-      <Route path="/dashboard" component={Footer} />
+      </div>
+      {/* <Route exact path="/" component={Footer} />
+      <Route path="/dashboard" component={Footer} /> */}
     </Security>
   );
 };

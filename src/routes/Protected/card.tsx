@@ -36,12 +36,12 @@ import Remove from "./Remove";
 //   );
 // };
 
-export const DashCard = ({ name, url, id, removeJob, logo }) => {
-  const imageSrc = logo || "https://picsum.photos/200";
+export const DashCard = ({ job, removeJob }) => {
+  const imageSrc = job.logo || "https://picsum.photos/200";
 
   return (
     <>
-      <Card style={{ width: "25%", height: "auto", margin: "1%" }}>
+      <Card style={{ width: "16%", height: "auto", margin: "1%" }}>
         <Image
           src={imageSrc}
           wrapped={true}
@@ -49,7 +49,7 @@ export const DashCard = ({ name, url, id, removeJob, logo }) => {
           style={{ width: "auto", height: "auto" }}
         />
         <Card.Content>
-          <Card.Header>{name}</Card.Header>
+          <Card.Header>{job.jobTitle}</Card.Header>
         </Card.Content>
         <Card.Content
           extra={true}
@@ -58,11 +58,11 @@ export const DashCard = ({ name, url, id, removeJob, logo }) => {
             justifyContent: "space-between"
           }}
         >
-          <a href={url}>
+          <a href={job.url}>
             <Icon name="thumbtack" />
             Go to Job Post
           </a>
-          <Remove removeJob={removeJob} id={id} />
+          <Remove removeJob={removeJob} id={job.id} />
         </Card.Content>
       </Card>
     </>
