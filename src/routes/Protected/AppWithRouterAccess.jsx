@@ -1,13 +1,11 @@
 import React from "react";
 import { Route, useHistory } from "react-router-dom";
 import { Security, SecureRoute, LoginCallback } from "okta-react-bug-fix";
-import { Container } from 'semantic-ui-react';
 import config from '../../utils/config';
 import Home from '../Home';
 import LoginForm from "../Authentication/LoginForm";
 import Dashboard from "./dashboard";
 import Navigation from "../navigation";
-import Footer from "../footer"
 
 const AppWithRouterAccess = () => {
   const history = useHistory();
@@ -27,8 +25,6 @@ const AppWithRouterAccess = () => {
         <Route exact path="/login" component={LoginForm} />
         <SecureRoute path="/dashboard" component={Dashboard} />
       </div>
-      {/* <Route exact path="/" component={Footer} />
-      <Route path="/dashboard" component={Footer} /> */}
     </Security>
   );
 };

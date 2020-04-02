@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Image,
-  Header,
-  Icon,
-  FeedLabel,
-  Button
-} from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 import Remove from "./Remove";
 
 // interface Props {

@@ -10,13 +10,9 @@ import {
   Divider,
   Grid,
   Header,
-  Icon,
   Image,
   List,
-  Menu,
-  Responsive,
   Segment,
-  Sidebar,
   Visibility
 } from "semantic-ui-react";
 
@@ -35,6 +31,7 @@ function Home() {
         >
           <img
             src={cta}
+            alt="logo"
             style={{
               fontSize: "4em",
               marginBottom: 0,
@@ -53,7 +50,7 @@ function Home() {
               color: "black"
             }}
           />
-          <img style={{ marginBottom: "4em" }} src={line} />
+          <img alt="icon" style={{ marginBottom: "4em" }} src={line} />
           <Button style={{ background: "#08A6C9" }} primary size="huge">
             <a style={{ color: "#ffff" }} href="http://localhost:3000/login">
               Get Started
@@ -67,7 +64,13 @@ function Home() {
           <Grid.Row>
             <Grid.Column width={8}>
               <Header as="h3" style={{ fontSize: "2em" }}>
-                {<img style={{ width: "25px", height: "25px" }} src={icon} />}{" "}
+                {
+                  <img
+                    alt="icon"
+                    style={{ width: "25px", height: "25px" }}
+                    src={icon}
+                  />
+                }{" "}
                 Problem
               </Header>
               <p style={{ fontSize: "1.33em" }}>
@@ -76,7 +79,13 @@ function Home() {
                 situation feel overwhelming.
               </p>
               <Header as="h3" style={{ fontSize: "2em" }}>
-                {<img style={{ width: "25px", height: "25px" }} src={icon} />}{" "}
+                {
+                  <img
+                    alt="icon"
+                    style={{ width: "25px", height: "25px" }}
+                    src={icon}
+                  />
+                }{" "}
                 Solution
               </Header>
               <p style={{ fontSize: "1.33em" }}>
@@ -93,7 +102,7 @@ function Home() {
                 style={{ marginBottom: "1.5em" }}
                 src={time}
               />
-              <img src={line} />
+              <img alt="icon" src={line} />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -107,7 +116,11 @@ function Home() {
           <Grid.Row textAlign="center">
             <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
               <Header as="h3" style={{ fontSize: "2em" }}>
-                <img style={{ width: "25px", height: "25px" }} src={icon} />{" "}
+                <img
+                  alt="icon"
+                  style={{ width: "25px", height: "25px" }}
+                  src={icon}
+                />{" "}
                 "What is Save This Job?"
               </Header>
               <p style={{ fontSize: "1.33em" }}>
@@ -118,7 +131,11 @@ function Home() {
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: "5em", paddingTop: "5em" }}>
               <Header as="h3" style={{ fontSize: "2em" }}>
-                <img style={{ width: "25px", height: "25px" }} src={icon} />{" "}
+                <img
+                  alt="icon"
+                  style={{ width: "25px", height: "25px" }}
+                  src={icon}
+                />{" "}
                 "How do I get the extension?"
               </Header>
               <p style={{ fontSize: "1.33em" }}>
@@ -134,8 +151,12 @@ function Home() {
       <Segment style={{ padding: "8em 0em" }} vertical>
         <Container text>
           <Header as="h3" style={{ fontSize: "2em" }}>
-            <img style={{ width: "25px", height: "25px" }} src={icon} /> Save
-            and Rate Job Listings
+            <img
+              alt="icon"
+              style={{ width: "25px", height: "25px" }}
+              src={icon}
+            />{" "}
+            Save and Rate Job Listings
           </Header>
           <p style={{ fontSize: "1.33em" }}>
             Lack of central organization for job postings causes it to be
@@ -159,11 +180,20 @@ function Home() {
             horizontal
             style={{ margin: "3em 0em", textTransform: "uppercase" }}
           >
-            <img style={{ width: "25px", height: "25px" }} src={icon} />
+            <img
+              alt="icon"
+              style={{ width: "25px", height: "25px" }}
+              src={icon}
+            />
           </Divider>
 
           <Header as="h3" style={{ fontSize: "2em" }}>
-            <img style={{ width: "25px", height: "25px" }} src={icon} /> Kanban
+            <img
+              alt="icon"
+              style={{ width: "25px", height: "25px" }}
+              src={icon}
+            />{" "}
+            Kanban
           </Header>
           <p style={{ fontSize: "1.33em" }}>
             Visualize the state of your job search in a kanban board. See how
