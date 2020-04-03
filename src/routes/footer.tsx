@@ -8,7 +8,7 @@ color:white;
 height:40px;
 z-index:2;
 bottom:0 !important;
-position: fixed;
+position: relative;
 text-align: center;
 margin-top: 500px;
 

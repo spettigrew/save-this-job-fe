@@ -88,6 +88,7 @@ function Navigation() {
             handleItemClick("sign-in");
           }}
           position="right"
+          style={{ background: "#08A6C9", color: "#ffff", fontWeight: "1.2em" }}
         >
           Sign-In
         </Menu.Item>

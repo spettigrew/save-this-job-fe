@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as OktaSignIn from "@okta/okta-signin-widget";
 import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
-import logo from "../../images/Component 2.png";
+import logo from "../../images/Group 1.png";
 
 import config from "../../utils/config";
 
@@ -42,7 +42,7 @@ const LoginForm = () => {
         { type: "facebook", id: process.env.REACT_APP_FACEBOOK_IPD_ID }
       ],
       colors: {
-        brand: "#FC4A1A"
+        brand: "#08A6C9"
       }
     });
 
@@ -65,7 +65,15 @@ const LoginForm = () => {
 
   return (
     <div>
-      <div id="sign-in-widget" />
+      <div
+        style={{
+          background: "#F3F8F9",
+          height: "100%",
+          paddingTop: "20px",
+          paddingBottom: "20px"
+        }}
+        id="sign-in-widget"
+      />
     </div>
   );
 };
