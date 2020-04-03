@@ -3,12 +3,8 @@ import store from "store";
 import authWithAxios from "../../utils/authWithAxios";
 import { DashCard } from "./card";
 import { Container, Grid, Header, List, Segment } from "semantic-ui-react";
-// import { Starwars } from "../../../index";
-
-// interface StarwarsArr extends Array<Starwars> {}
 
 const Dashboard = () => {
-  // const [users, setUsers] = useState<StarwarsArr>();
   const [jobs, setJobs] = useState([]);
 
   // This is used for the purpose of the chrome extension to authenticate users once they login
@@ -44,33 +40,37 @@ const Dashboard = () => {
 
   return (
     <div style={{ background: "#F3F8F9" }}>
-      <h1 style={{ paddingTop: "100px" }}>{`Welcome back, ${
+      <h1 style={{ paddingTop: "100px", marginLeft: "5%" }}>{`Welcome back, ${
         store.get("okta-token-storage").idToken.claims.name
       }`}</h1>
       <div
-        style={{
-          width: "auto",
-          margin: "15px auto",
-          display: "flex",
-          flexWrap: "wrap",
-          flexDirection: "row",
-          justifyContent: "start",
-          paddingTop: "50px",
-          paddingBottom: "100px"
-        }}
+      // style={{
+      //   maxWidth: "1350px",
+      //   margin: "15px auto",
+      //   display: "flex",
+      //   flexWrap: "wrap",
+      //   flexDirection: "row",
+      //   justifyContent: "start",
+      //   paddingTop: "50px",
+      //   paddingBottom: "100px"
+      // }}
       >
-        {jobs.length > 0 ? (
-          jobs.map((job, index) => (
-            <DashCard key={index} job={job} removeJob={removeJob} />
-          ))
-        ) : (
-          <div>You currently have no jobs saved to your account.</div>
-        )}
+        <Grid stackable container columns="equal">
+          <Grid.Row stretched>
+            {jobs.length > 0 ? (
+              jobs.map((job, index) => (
+                <DashCard key={index} job={job} removeJob={removeJob} />
+              ))
+            ) : (
+              <div>You currently have no jobs saved to your account.</div>
+            )}
+          </Grid.Row>
+        </Grid>
       </div>
       <Segment
         inverted
         vertical
-        style={{ padding: "5em 0em", background: "#08A6C9" }}
+        style={{ padding: "5em 0em", background: "#08A6C9", marginTop: "5em" }}
       >
         <Container>
           <Grid divided inverted stackable>
