@@ -1,63 +1,52 @@
 import React from "react";
-import { Card, Image, Icon } from "semantic-ui-react";
+import { Card, Image, Icon, Grid } from "semantic-ui-react";
 import Remove from "./Remove";
-
-// interface Props {
-//   Name: string;
-//   Year: string;
-// }
-
-// export const DashCard: React.FC<Props> = ({ Name, Year }) => {
-//   return (
-//     <>
-//       <Card>
-//         <Image src="https://picsum.photos/200" wrapped={true} ui={false} />
-//         <Card.Content>
-//           <Card.Header>{Name}</Card.Header>
-//           <Card.Meta>
-//             <span className="date">Born: {Year}</span>
-//           </Card.Meta>
-//           <Card.Description>{Name} is a fool...</Card.Description>
-//         </Card.Content>
-//         <Card.Content extra={true}>
-//           <a>
-//             <Icon name="user" />1 Friends
-//           </a>
-//         </Card.Content>
-//       </Card>
-//     </>
-//   );
-// };
+import blue from "../../images/icon.blue.png";
+import yellow from "../../images/icon-yellow.png";
+import pink from "../../images/icon-pink.png";
+import orange from "../../images/icon-orange.png";
+import green from "../../images/icon-green.png";
+import drkBlue from "../../images/icon-drkBlue.png";
 
 export const DashCard = ({ job, removeJob }) => {
-  const imageSrc = job.logo || "https://picsum.photos/200";
+  const randomIcon = () => {
+    const iconArray = [blue, yellow, pink, orange, green, drkBlue];
 
+    let randomNumber = Math.floor(Math.random() * iconArray.length);
+    return iconArray[randomNumber];
+  };
+
+  const imgSrc = job.logo || randomIcon();
   return (
     <>
-      <Card style={{ width: "16%", height: "auto", margin: "1%" }}>
-        <Image
-          src={imageSrc}
-          wrapped={true}
-          ui={false}
-          style={{ width: "auto", height: "auto" }}
-        />
-        <Card.Content>
-          <Card.Header>{job.jobTitle}</Card.Header>
-        </Card.Content>
-        <Card.Content
-          extra={true}
-          style={{
-            display: "flex",
-            justifyContent: "space-between"
-          }}
-        >
-          <a href={job.url}>
-            <Icon name="thumbtack" />
-            Go to Job Post
-          </a>
-          <Remove removeJob={removeJob} id={job.id} />
-        </Card.Content>
-      </Card>
+      <Grid.Column width={5}>
+        <Card raised style={{ marginTop: "50px" }}>
+          <Image src={imgSrc} wrapped={true} ui={false} />
+          <Card.Content>
+            <Card.Header>
+              {job.companyUrl ? (
+                <a href={job.companyUrl}>{job.companyTitle}</a>
+              ) : (
+                job.companyTitle
+              )}
+            </Card.Header>
+            <Card.Description>{job.jobTitle}</Card.Description>
+          </Card.Content>
+          <Card.Content
+            extra={true}
+            style={{
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            <a href={job.url}>
+              <Icon name="thumbtack" />
+              Go to Job Post
+            </a>
+            <Remove removeJob={removeJob} id={job.id} />
+          </Card.Content>
+        </Card>
+      </Grid.Column>
     </>
   );
 };
