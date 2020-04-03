@@ -1,13 +1,27 @@
 import React from "react";
 import { Card, Image, Icon, Grid } from "semantic-ui-react";
 import Remove from "./Remove";
+import blue from "../../images/icon.blue.png";
+import yellow from "../../images/icon-yellow.png";
+import pink from "../../images/icon-pink.png";
+import orange from "../../images/icon-orange.png";
+import green from "../../images/icon-green.png";
+import drkBlue from "../../images/icon-drkBlue.png";
 
 export const DashCard = ({ job, removeJob }) => {
+  const randomIcon = () => {
+    const iconArray = [blue, yellow, pink, orange, green, drkBlue];
+
+    let randomNumber = Math.floor(Math.random() * iconArray.length);
+    return iconArray[randomNumber];
+  };
+
+  const imgSrc = job.logo || randomIcon();
   return (
     <>
       <Grid.Column width={5}>
         <Card raised style={{ marginTop: "50px" }}>
-          <Image src={job.logo} wrapped={true} ui={false} />
+          <Image src={imgSrc} wrapped={true} ui={false} />
           <Card.Content>
             <Card.Header>
               {job.companyUrl ? (
