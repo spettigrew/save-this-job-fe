@@ -19,9 +19,14 @@ export const DashCard = ({ job, removeJob }) => {
   const imgSrc = job.logo || randomIcon();
   return (
     <>
-      <Grid.Column width={5}>
+      <Grid.Column width={4}>
         <Card raised style={{ marginTop: "50px" }}>
-          <Image src={imgSrc} wrapped={true} ui={false} />
+          <Image
+            src={imgSrc}
+            wrapped={true}
+            ui={false}
+            style={{ width: "50%" }}
+          />
           <Card.Content>
             <Card.Header>
               {job.companyUrl ? (
@@ -41,7 +46,7 @@ export const DashCard = ({ job, removeJob }) => {
           >
             <a href={job.url}>
               <Icon name="thumbtack" />
-              Go to Job Post
+              View Post
             </a>
             <Remove removeJob={removeJob} id={job.id} />
           </Card.Content>
