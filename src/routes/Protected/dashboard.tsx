@@ -1,11 +1,39 @@
 import React, { useState, useEffect } from "react";
 import store from "store";
-import authWithAxios from "../../utils/authWithAxios";
+import { useOktaAuth } from "okta-react-bug-fix";
+import { Redirect } from "react-router-dom";
+import api from "../../utils/api";
 import { DashCard } from "./card";
-import { Container, Grid, Header, List, Segment } from "semantic-ui-react";
+import Styled from "styled-components";
+import {
+  Container,
+  Grid,
+  Header,
+  List,
+  Segment,
+  Loader,
+  Dimmer,
+  Image
+} from "semantic-ui-react";
+
+const StyledHeader = Styled(Header)({
+  paddingTop: "100px",
+  marginLeft: "5%"
+});
+
+const StyledBackGround = Styled.div`
+  background: #F3F8F9;
+`;
+
+const StyledSegment = Styled(Segment)({
+  padding: "5em 0em !important",
+  background: "#08A6C9 !important",
+  marginTop: "10em !important"
+});
 
 const Dashboard = () => {
   const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // This is used for the purpose of the chrome extension to authenticate users once they login
   const setTokenForExtension = () => {
@@ -14,64 +42,70 @@ const Dashboard = () => {
   };
 
   const removeJob = async jobId => {
-    const response = await authWithAxios().delete(
-      `http://localhost:8080/users/removeJob/${jobId}`
-    );
+    const response = await api().delete(`/users/removeJob/${jobId}`);
+    console.log("Response", response);
     if (response.status === 200) {
       const filter = jobs.filter(job => job.id !== jobId);
-      setJobs(filter);
-    } else {
-      console.log(response);
+      return setJobs(filter);
+    }
+
+    if (response.toString() === "Jwt is expired") {
+      return <Redirect to="/login" />;
     }
   };
 
   useEffect(() => {
     setTokenForExtension();
-    authWithAxios()
+    api()
       .get("/users/jobs")
       .then(res => {
         setJobs(res.data);
+        setLoading(false);
         console.log(res.data);
       })
       .catch(error => {
         console.log(error);
+        setLoading(false);
       });
   }, []);
 
+  const Loading = () => {
+    if (loading) {
+      return (
+        <Loader active inline="centered" size="large">
+          Loading
+        </Loader>
+      );
+    } else {
+      return (
+        <div>
+          <Grid stackable container columns="equal">
+            <Grid.Row stretched>
+              {jobs.length > 0 ? (
+                jobs.map((job, index) => (
+                  <DashCard key={index} job={job} removeJob={removeJob} />
+                ))
+              ) : (
+                <Header as="h2">
+                  You currently have no jobs saved to your account.
+                </Header>
+              )}
+            </Grid.Row>
+          </Grid>
+        </div>
+      );
+    }
+  };
+
   return (
-    <div style={{ background: "#F3F8F9" }}>
-      <h1 style={{ paddingTop: "100px", marginLeft: "5%" }}>{`Welcome back, ${
+    <StyledBackGround>
+      <StyledHeader as="h3">{`Welcome back, ${
         store.get("okta-token-storage").idToken.claims.name
-      }`}</h1>
-      <div
-      // style={{
-      //   maxWidth: "1350px",
-      //   margin: "15px auto",
-      //   display: "flex",
-      //   flexWrap: "wrap",
-      //   flexDirection: "row",
-      //   justifyContent: "start",
-      //   paddingTop: "50px",
-      //   paddingBottom: "100px"
-      // }}
-      >
-        <Grid stackable container columns="equal">
-          <Grid.Row stretched>
-            {jobs.length > 0 ? (
-              jobs.map((job, index) => (
-                <DashCard key={index} job={job} removeJob={removeJob} />
-              ))
-            ) : (
-              <div>You currently have no jobs saved to your account.</div>
-            )}
-          </Grid.Row>
-        </Grid>
-      </div>
-      <Segment
-        inverted
-        vertical
-        style={{ padding: "5em 0em", background: "#08A6C9", marginTop: "5em" }}
-      >
+      }`}</StyledHeader>
+
+      <Loading />
+
+      <StyledSegment inverted vertical>
         <Container>
           <Grid divided inverted stackable>
             <Grid.Row>
@@ -105,8 +139,8 @@ const Dashboard = () => {
             </Grid.Row>
           </Grid>
         </Container>
-      </Segment>
-    </div>
+      </StyledSegment>
+    </StyledBackGround>
   );
 };
 

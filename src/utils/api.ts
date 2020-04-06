@@ -1,14 +1,17 @@
 import axios from "axios";
+import { BASE_API_URL } from "./constants";
 
-export const getToken = () => {
+function getToken() {
   return localStorage.getItem("token");
-};
+}
 
-export const api = () => {
-  axios.create({
-    baseURL: "",
+function api() {
+  return axios.create({
+    baseURL: "https://staging-save-this-job.herokuapp.com",
     headers: {
-      Authorization: getToken()
+      Authorization: `Bearer ${getToken()}`
     }
   });
-};
+}
+
+export default api;
