@@ -7,6 +7,7 @@ export default {
     issuer: ISSUER,
     clientId: CLIENT_ID,
     redirectUri: window.location.origin + "/implicit/callback",
-    pkce: true
+    pkce: true,
+    scopes: ["openid", "profile", "email"]
   }
 };

@@ -1,5 +1,12 @@
 /*******************************
          Site Overrides
 *******************************/
-.ui.menu{background: #333333;
+.ui[class*="vertically divided"].grid > .row:before {
+    position: absolute;
+    content: "";
+    top: 0em;
+    left: 0px;
+    width: calc(100% - 2rem);
+    height: 1px;
+    margin: 0% 1rem;
 }

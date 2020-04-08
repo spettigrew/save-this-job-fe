@@ -1,3 +1,4 @@
+// This component is no longer needed if we use the okta signin widget for registering new users
 import React, { useState } from "react";
 import axios from "axios";
 import {
@@ -18,8 +19,11 @@ const Container = Styled.div`
     align-items:center;
     width: 100%;
     height:calc(100vh - 40px);
+`;
 
-
+const ErrorStyles = Styled.div`
+  color: red;
+  margin-bottom: 10px;
 `;
 
 interface MyUser {
@@ -36,6 +40,7 @@ function Register(props) {
     password: "",
     email: ""
   });
+  const [error, setError] = useState();
 
   const handleChanges = (e: any): void => {
     setUser({
@@ -49,21 +54,29 @@ function Register(props) {
     axios
       .post("http://localhost:8080/register", user)
       .then(res => {
-        setUser({
-          email: "",
-          password: "",
-          firstName: "",
-          lastName: ""
-        });
-        props.history.push("/login");
+        console.log(res.data);
+
+        if (res.data.status === "ACTIVE") {
+          setUser({
+            email: "",
+            password: "",
+            firstName: "",
+            lastName: ""
+          });
+          props.history.push("/login");
+        } else {
+          setError(res.data.message);
+        }
       })
       .catch(err => {
         console.log("Error", err);
+        return setError(err.message);
       });
   };
 
   return (
     <Container>
+      {error && <ErrorStyles>{error}</ErrorStyles>}
       <Form
         onSubmit={handleSubmit}
         style={{

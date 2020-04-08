@@ -1,121 +1,80 @@
-import React, { useState } from "react";
-import OktaAuth from "@okta/okta-auth-js";
-import { Redirect } from "react-router-dom";
-import { useOktaAuth } from "okta-react-bug-fix";
-import {
-  Form,
-  Checkbox,
-  Button,
-  Grid,
-  Header,
-  Divider
-} from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import Styled from "styled-components";
+import React, { useEffect } from "react";
+import * as OktaSignIn from "@okta/okta-signin-widget";
+import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
+import logo from "../../images/Group 1.png";
 
-const Container = Styled.div`
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    width: 100%;
-    height:calc(100vh - 40px);
-`;
+import config from "../../utils/config";
 
-interface MyUser {
-  username: string;
-  password: string;
-}
+const LoginForm = () => {
+  useEffect(() => {
+    const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
 
-function LoginForm() {
-  const [user, setUser] = useState<MyUser>({
-    username: "",
-    password: ""
-  });
-
-  const { authService } = useOktaAuth();
-  const baseUrl = "https://dev-505664.okta.com";
-  const [sessionToken, setSessionToken] = useState();
-
-  const handleChanges = (e: any): void => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value
+    const widget = new OktaSignIn({
+      baseUrl: process.env.REACT_APP_BASEURL,
+      clientId,
+      redirectUri,
+      logo: logo,
+      language: "en",
+      brandName: "Save this Job",
+      // Overrides default text when using English.
+      i18n: {
+        en: {
+          "primaryauth.title": "Please Sign in to your Save this Job Account"
+        }
+      },
+      // Changes to widget functionality
+      authParams: {
+        pkce,
+        issuer,
+        display: "page",
+        scopes
+      },
+      features: {
+        registration: true, // Enable self-service registration flow
+        selfServiceUnlock: true, // Will enable unlock in addition to forgotten password
+        smsRecovery: true, // Enable SMS-based account recovery
+        callRecovery: true, // Enable voice call-based account recovery
+        showPasswordToggleOnSignInPage: true
+      },
+      idps: [
+        { type: "google", id: process.env.REACT_APP_GOOGLE_IPD_ID },
+        { type: "linkedin", id: process.env.REACT_APP_LINKEDIN_IPD_ID },
+        { type: "facebook", id: process.env.REACT_APP_FACEBOOK_IPD_ID }
+      ],
+      colors: {
+        brand: "#08A6C9"
+      }
     });
-  };
 
-  const handleSubmit = (e: any): void => {
-    e.preventDefault();
-    const { username, password } = user;
-    const oktaAuth = new OktaAuth({ issuer: baseUrl });
-    oktaAuth
-      .signIn({ username, password })
-      .then(res => setSessionToken(res.sessionToken))
-      .catch(err => console.log("Found an error", err));
-  };
-
-  if (sessionToken) {
-    authService.redirect({ sessionToken });
-    return <Redirect to="/dashboard" />;
-  }
+    widget.renderEl(
+      { el: "#sign-in-widget" },
+      () => {
+        /**
+         * In this flow, the success handler will not be called because we redirect
+         * to the Okta org for the authentication workflow.
+         */
+      },
+      err => {
+        throw err;
+      }
+    );
+    return () => {
+      widget.remove();
+    };
+  }, []);
 
   return (
-    <Container>
-      <Form
-        onSubmit={handleSubmit}
+    <div>
+      <div
         style={{
-          width: "300px",
-          padding: "60px",
-          boxShadow: "4px 4px 10px #333333",
-          borderRadius: "5px"
+          background: "#F3F8F9",
+          height: "100%",
+          paddingTop: "20px",
+          paddingBottom: "20px"
         }}
-      >
-        <Header as="h1" content="JoBook" />
-
-        <Form.Field>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            name="username"
-            onChange={handleChanges}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={handleChanges}
-          />
-        </Form.Field>
-        <Form.Field
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between"
-          }}
-        >
-          <Button size="tiny" type="submit" primary={true}>
-            Login
-          </Button>
-
-          <Divider horizontal={true}>OR</Divider>
-
-          <Button
-            style={{ background: "transparent", color: "teal" }}
-            as={Link}
-            to="/register"
-            size="tiny"
-            secondary={true}
-          >
-            Register
-          </Button>
-        </Form.Field>
-      </Form>
-    </Container>
+        id="sign-in-widget"
+      />
+    </div>
   );
-}
-
+};
 export default LoginForm;
