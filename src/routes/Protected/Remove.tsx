@@ -15,8 +15,12 @@ function Remove({ removeJob, id }) {
       <Modal
         trigger={
           <a onClick={handleOpen}>
-            <Icon name="trash" />
-            Delete
+            <Icon
+              name="delete"
+              color="red"
+              size="big"
+              style={{ paddingTop: "5px" }}
+            />
           </a>
         }
         open={modalOpen}
