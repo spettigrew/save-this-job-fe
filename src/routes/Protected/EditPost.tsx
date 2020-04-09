@@ -1,17 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Image, Header, Icon, Form } from "semantic-ui-react";
-
+import api from "../../utils/api";
 export default function EditPost(props) {
-  const [job, setJob] = useState();
+  const [job, setJob] = useState({
+    jobTitle: "",
+    url: "",
+    companyTitle: "",
+    companyUrl: ""
+  });
 
-  const handleChanges = () => {};
+  const handleChanges = e => {
+    const value = e.target.value;
+    setJob({
+      ...job,
+      [e.target.name]: value
+    });
+  };
 
   const handleSubmit = () => {};
 
   console.log(props.job);
 
   return (
-    <Modal trigger={<Icon name="setting" size="large" />}>
+    <Modal
+      style={{ height: "75vh" }}
+      trigger={<Icon name="setting" size="large" />}
+    >
       <Modal.Header>{props.job.companyTitle}</Modal.Header>
       <Modal.Content image>
         <div>

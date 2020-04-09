@@ -1,3 +1,7 @@
 /*******************************
          Site Overrides
 *******************************/
+
+form.ui.form > div.field > input{
+    border-bottom:1px solid #ccc;
+}
