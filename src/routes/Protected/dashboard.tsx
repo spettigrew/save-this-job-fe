@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { getUser } from "../../redux/actions/index";
 import store from "store";
 import { useOktaAuth } from "okta-react-bug-fix";
 import { Redirect } from "react-router-dom";
@@ -25,7 +27,7 @@ const StyledBackGround = Styled.div`
   background: #F3F8F9;
 `;
 
-const Dashboard = () => {
+const Dashboard = props => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,6 +51,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
+    props.getUser();
     setTokenForExtension();
     api()
       .get("/users/jobs")
@@ -93,13 +96,21 @@ const Dashboard = () => {
 
   return (
     <StyledBackGround>
-      <StyledHeader as="h3">{`Welcome back, ${
-        store.get("okta-token-storage").idToken.claims.name
-      }`}</StyledHeader>
+      <StyledHeader as="h3">{`Welcome back, ${props.user?.firstName}`}</StyledHeader>
 
       <Loading />
     </StyledBackGround>
   );
 };
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+const mapDispatchToProps = {
+  getUser
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
