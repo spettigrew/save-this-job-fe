@@ -35,15 +35,13 @@ export function reducer(state = initialState, action: any): Object {
       return {
         ...state,
         user: {
-          firstName,
-          lastName
+          firstName: firstName,
+          lastName: lastName
         },
         loading: false
       };
     case GET_JOBS_LOADING:
-      return {
-        loading: true
-      };
+      return { ...state, loading: true };
     case GET_JOBS_SUCCESS:
       return {
         ...state,

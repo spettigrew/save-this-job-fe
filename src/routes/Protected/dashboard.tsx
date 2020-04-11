@@ -47,7 +47,9 @@ const Dashboard = props => {
   }, [props]);
   return (
     <StyledBackGround>
-      <StyledHeader as="h3">{`Welcome back, ${props.user?.firstName}`}</StyledHeader>
+      <StyledHeader as="h3">
+        {`Welcome back, ${props.user?.firstName}`}{" "}
+      </StyledHeader>
 
       {props.loading ? (
         <Loading />
