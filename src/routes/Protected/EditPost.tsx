@@ -19,8 +19,6 @@ export default function EditPost(props) {
 
   const handleSubmit = () => {};
 
-  console.log(props.job);
-
   return (
     <Modal
       style={{ height: "75vh" }}

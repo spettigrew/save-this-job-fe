@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getUser } from "../../redux/actions/index";
+import { getUser, getJobs, deleteJob } from "../../redux/actions/index";
 import store from "store";
 import { useOktaAuth } from "okta-react-bug-fix";
 import { Redirect } from "react-router-dom";
 import api from "../../utils/api";
 import { DashCard } from "./card";
+import Loading from "./Loading";
 import Styled from "styled-components";
 import {
   Container,
@@ -13,7 +14,6 @@ import {
   Header,
   List,
   Segment,
-  Loader,
   Dimmer,
   Image
 } from "semantic-ui-react";
@@ -28,59 +28,37 @@ const StyledBackGround = Styled.div`
 `;
 
 const Dashboard = props => {
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
-
   // This is used for the purpose of the chrome extension to authenticate users once they login
   const setTokenForExtension = () => {
     const token = store.get("okta-token-storage").accessToken.accessToken;
     localStorage.setItem("token", token);
   };
 
-  const removeJob = async jobId => {
-    const response = await api().delete(`/users/removeJob/${jobId}`);
-    console.log("Response", response);
-    if (response.status === 200) {
-      const filter = jobs.filter(job => job.id !== jobId);
-      return setJobs(filter);
-    }
-
-    if (response.toString() === "Jwt is expired") {
-      return <Redirect to="/login" />;
-    }
-  };
-
   useEffect(() => {
     props.getUser();
+    props.getJobs();
     setTokenForExtension();
-    api()
-      .get("/users/jobs")
-      .then(res => {
-        setJobs(res.data);
-        setLoading(false);
-        console.log(res.data);
-      })
-      .catch(error => {
-        console.log(error);
-        setLoading(false);
-      });
   }, []);
 
-  const Loading = () => {
-    if (loading) {
-      return (
-        <Loader active inline="centered" size="large">
-          Loading
-        </Loader>
-      );
-    } else {
-      return (
+  useEffect(() => {
+    if (props) {
+      console.log(props.user);
+    }
+  }, [props]);
+  return (
+    <StyledBackGround>
+      <StyledHeader as="h3">{`Welcome back, ${props.user?.firstName}`}</StyledHeader>
+
+      {props.loading ? (
+        <Loading />
+      ) : (
         <div style={{ minHeight: "50vh" }}>
           <Grid stackable container columns="equal">
             <Grid.Row stretched>
-              {jobs.length > 0 ? (
-                jobs.map((job, index) => (
-                  <DashCard key={index} job={job} removeJob={removeJob} />
+              <Header as="h3">{props.error}</Header>
+              {props.jobs ? (
+                props.jobs.map((job, index) => (
+                  <DashCard key={index} job={job} removeJob={props.deleteJob} />
                 ))
               ) : (
                 <Header as="h2">
@@ -90,27 +68,24 @@ const Dashboard = props => {
             </Grid.Row>
           </Grid>
         </div>
-      );
-    }
-  };
-
-  return (
-    <StyledBackGround>
-      <StyledHeader as="h3">{`Welcome back, ${props.user?.firstName}`}</StyledHeader>
-
-      <Loading />
+      )}
     </StyledBackGround>
   );
 };
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    jobs: state.jobs,
+    loading: state.loading,
+    error: state.error
   };
 }
 
 const mapDispatchToProps = {
-  getUser
+  getUser,
+  getJobs,
+  deleteJob
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
