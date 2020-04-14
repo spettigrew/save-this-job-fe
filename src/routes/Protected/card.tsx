@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Image, Icon, Grid } from "semantic-ui-react";
 import Remove from "./Remove";
-import EditPost from "./EditPost";
+import PostDetails from "./PostDetails";
 import blue from "../../images/icon.blue.png";
 import yellow from "../../images/icon-yellow.png";
 import pink from "../../images/icon-pink.png";
@@ -62,7 +62,7 @@ export const DashCard = ({ job, removeJob }) => {
                 <Icon name="thumbtack" />
                 View Post
               </a>
-              <EditPost job={job} imgSrc={imgSrc} />
+              <PostDetails job={job} imgSrc={imgSrc} />
             </div>
           </Card.Content>
         </Card>
