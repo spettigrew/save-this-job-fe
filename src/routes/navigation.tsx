@@ -1,21 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import { Menu, Image } from "semantic-ui-react";
 import Styled from "styled-components";
 import { useOktaAuth } from "okta-react-bug-fix";
 import logo from "../images/Group 1.png";
 
 import config from "../utils/config";
-
-const LogoImg = Styled.img`
-width: 80px !important;
-`;
-
-const StyledNav = Styled(Menu)({
-  position: "fixed",
-  width: "100%",
-  zIndex: 99999999
-});
 
 function Navigation() {
   const [activeItem, setActiveItem] = useState<string>();
@@ -43,7 +33,7 @@ function Navigation() {
   }
 
   return (
-    <StyledNav>
+    <Menu className="nav">
       <Menu.Item
         as={Link}
         to="/"
@@ -53,7 +43,7 @@ function Navigation() {
           handleItemClick("save_this_job");
         }}
       >
-        {<LogoImg src={logo} alt="save this job" />}
+        {<Image src={logo} size="tiny" spaced alt="save this job" />}
       </Menu.Item>
       {authState.isAuthenticated ? (
         <>
@@ -93,12 +83,11 @@ function Navigation() {
             handleItemClick("sign-in");
           }}
           position="right"
-          style={{ background: "#08A6C9", color: "#ffff " }}
         >
           Sign-In
         </Menu.Item>
       )}
-    </StyledNav>
+    </Menu>
   );
 }
 export default Navigation;

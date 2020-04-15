@@ -11,13 +11,21 @@ function Remove({ removeJob, id }) {
     return handleClose();
   };
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <Modal
         trigger={
-          <a onClick={handleOpen}>
-            <Icon name="trash" />
-            Delete
-          </a>
+          <Button
+            color="red"
+            onClick={handleOpen}
+            style={{
+              margin: "1em",
+              position: "absolute",
+              bottom: "0",
+              right: "0"
+            }}
+          >
+            Remove Job
+          </Button>
         }
         open={modalOpen}
         onClose={handleClose}

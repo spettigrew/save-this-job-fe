@@ -1,3 +1,12 @@
 /*******************************
          Site Overrides
 *******************************/
+div.ui.nav.menu{
+    position: fixed;
+    width: 100%;
+    zIndex: 3;
+}
+
+div.ui.detailsNav.menu > .item{
+    width: 33%;
+}

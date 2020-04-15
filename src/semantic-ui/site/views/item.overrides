@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+div.ui.nav.menu > a.item.right{
+    background:@primaryColor;
+    color:white;
+}

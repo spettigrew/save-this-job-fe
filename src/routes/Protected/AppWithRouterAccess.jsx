@@ -6,6 +6,7 @@ import Home from '../Home';
 import LoginForm from "../Authentication/LoginForm";
 import Dashboard from "./dashboard";
 import Navigation from "../navigation";
+import Footer from '../footer'
 
 const AppWithRouterAccess = () => {
   const history = useHistory();
@@ -25,6 +26,7 @@ const AppWithRouterAccess = () => {
         <Route exact path="/login" component={LoginForm} />
         <SecureRoute path="/dashboard" component={Dashboard} />
       </div>
+      <Footer />
     </Security>
   );
 };
