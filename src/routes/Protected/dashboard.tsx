@@ -60,7 +60,7 @@ const Dashboard = props => {
               <Header as="h3">{props.error}</Header>
               {props.jobs ? (
                 props.jobs.map((job, index) => (
-                  <DashCard key={index} job={job} removeJob={props.deleteJob} />
+                  <DashCard key={index} job={job} />
                 ))
               ) : (
                 <Header as="h2">
@@ -86,8 +86,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   getUser,
-  getJobs,
-  deleteJob
+  getJobs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

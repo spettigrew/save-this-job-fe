@@ -9,7 +9,7 @@ import orange from "../../images/icon-orange.png";
 import green from "../../images/icon-green.png";
 import drkBlue from "../../images/icon-drkBlue.png";
 
-export const DashCard = ({ job, removeJob }) => {
+export const DashCard = ({ job }) => {
   const randomIcon = () => {
     const iconArray = [blue, yellow, pink, orange, green, drkBlue];
 
@@ -31,7 +31,6 @@ export const DashCard = ({ job, removeJob }) => {
             }}
           >
             <Image src={imgSrc} ui={false} style={{ width: "50%" }} />
-            <Remove removeJob={removeJob} id={job.id} />
           </div>
           <Card.Content>
             <Card.Header>
@@ -62,7 +61,7 @@ export const DashCard = ({ job, removeJob }) => {
                 <Icon name="thumbtack" />
                 View Post
               </a>
-              <PostDetails job={job} imgSrc={imgSrc} />
+              <PostDetails jobId={job.id} imgSrc={imgSrc} />
             </div>
           </Card.Content>
         </Card>

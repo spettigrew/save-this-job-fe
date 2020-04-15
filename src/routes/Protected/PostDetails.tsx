@@ -12,16 +12,27 @@ import {
   Label
 } from "semantic-ui-react";
 import api from "../../utils/api";
+import { connect } from "react-redux";
+import { deleteJob } from "../../redux/actions/index";
+import Remove from "./Remove";
 import DetailsNav from "../Modal/DetailsNav";
+import Cal from "../../utils/Cal";
 
-export default function PostDetails(props) {
+function PostDetails(props) {
+  console.log(props);
+  const [thisJob, setThisJob] = useState(
+    props.jobs.find(obj => obj.id == props.jobId)
+  );
   const [job, setJob] = useState({
-    jobTitle: props.job.jobTitle,
-    url: props.job.urlText,
-    companyTitle: props.job.companyTitle,
-    companyUrl: !props.job.companyUrl ? "ACME" : props.job.companyUrl,
+    jobTitle: thisJob.jobTitle,
+    url: thisJob.urlText,
+    companyTitle: thisJob.companyTitle,
+    companyUrl: !thisJob.companyUrl ? "ACME" : thisJob.companyUrl,
     details: "I'm a detail",
-    rating: !props.job.rating && 3
+    rating: !thisJob.rating && 3,
+    applicationDeadline: !thisJob.applicationDeadline
+      ? Date.now()
+      : thisJob.applicationDeadline
   });
 
   const handleChanges = e => {
@@ -47,10 +58,10 @@ export default function PostDetails(props) {
 
   return (
     <Modal
-      style={{ height: "75vh" }}
-      trigger={<Icon name="setting" size="large" />}
+      style={{ height: "85vh" }}
+      trigger={<Icon name="edit" size="large" />}
     >
-      <Modal.Header>{props.job.companyTitle}</Modal.Header>
+      <Modal.Header>{job.companyTitle}</Modal.Header>
       <DetailsNav />
       <Modal.Content>
         <Modal.Description>
@@ -130,18 +141,31 @@ export default function PostDetails(props) {
             <Grid.Column floated="right" width={5}>
               <div>
                 <Image size="small" src={props.imgSrc} />
-                <Header as="h3" content={props.job.jobTitle} />
+                <Header as="h3" content={job.jobTitle} />
               </div>
               <Rating
+                style={{ margin: ".5em 0 2em" }}
                 onRate={handleRating}
                 rating={job.rating}
                 maxRating={5}
                 clearable
               />
+              <Cal dueDate={job.applicationDeadline} />
             </Grid.Column>
           </Grid>
         </Modal.Description>
       </Modal.Content>
+      <Remove removeJob={props.deleteJob} id={props.jobId} />
     </Modal>
   );
 }
+function mapStateToProps(state) {
+  return {
+    jobs: state.jobs
+  };
+}
+
+const mapDispatchToProps = {
+  deleteJob
+};
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);

@@ -13,7 +13,7 @@ function Navigation() {
     <Menu className="detailsNav">
       <Menu.Item
         as={Link}
-        to="/"
+        to="#"
         name="save_this_job"
         active={activeItem === "Save this Job"}
         onClick={() => {
@@ -24,7 +24,7 @@ function Navigation() {
       </Menu.Item>
       <Menu.Item
         as={Link}
-        to="/"
+        to="#"
         name="save_this_job"
         active={activeItem === "Save this Job"}
         onClick={() => {
@@ -35,7 +35,7 @@ function Navigation() {
       </Menu.Item>
       <Menu.Item
         as={Link}
-        to="/"
+        to="#"
         name="save_this_job"
         active={activeItem === "Save this Job"}
         onClick={() => {
