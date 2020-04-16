@@ -8,6 +8,8 @@ export const GET_USER_ERROR = "GET_USER_ERROR";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_LOADING = "GET_USER_LOADING";
 
+export const GET_JOB_ID = "GET_JOB_ID";
+
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
@@ -55,5 +57,11 @@ export function deleteJob(jobId) {
     // if (response.toString() === "Jwt is expired") {
     //  dispatch({type:JWT_EXPIRED,payload:true})
     // }//<Redirect to="/login" />;
+  };
+}
+
+export function getJobId(jobId) {
+  return dispatch => {
+    dispatch({ type: GET_JOB_ID, payload: jobId });
   };
 }

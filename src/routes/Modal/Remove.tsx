@@ -10,6 +10,8 @@ function Remove({ removeJob, id }) {
     removeJob(id);
     return handleClose();
   };
+
+  console.log(id, "ID FROM REMOVE");
   return (
     <div style={{ textAlign: "center" }}>
       <Modal

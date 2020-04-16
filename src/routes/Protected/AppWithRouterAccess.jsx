@@ -5,6 +5,7 @@ import config from '../../utils/config';
 import Home from '../Home';
 import LoginForm from "../Authentication/LoginForm";
 import Dashboard from "./dashboard";
+import PostDetails from "./PostDetails";
 import Navigation from "../navigation";
 import Footer from '../footer'
 
@@ -25,10 +26,10 @@ const AppWithRouterAccess = () => {
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route exact path="/login" component={LoginForm} />
         <SecureRoute path="/dashboard" component={Dashboard} />
+        <SecureRoute path="/details" component={PostDetails} />
       </div>
       <Footer />
     </Security>
   );
 };
 export default AppWithRouterAccess;
-

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Image, Icon, Grid } from "semantic-ui-react";
-import Remove from "./Remove";
+import { connect } from "react-redux";
+import { getJobId } from "../../redux/actions/index";
 import PostDetails from "./PostDetails";
 import blue from "../../images/icon.blue.png";
 import yellow from "../../images/icon-yellow.png";
@@ -9,13 +10,20 @@ import orange from "../../images/icon-orange.png";
 import green from "../../images/icon-green.png";
 import drkBlue from "../../images/icon-drkBlue.png";
 
-export const DashCard = ({ job }) => {
+export default function DashCard(props) {
   const randomIcon = () => {
     const iconArray = [blue, yellow, pink, orange, green, drkBlue];
 
-    let randomNumber = Math.floor(Math.random() * iconArray.length);
+    const randomNumber = Math.floor(Math.random() * iconArray.length);
     return iconArray[randomNumber];
   };
+
+  const job = props.job;
+  console.log(job);
+
+  useEffect(() => {
+    props.getJobId(job.id);
+  }, []);
 
   const imgSrc = job.logo || randomIcon();
   return (
@@ -57,15 +65,15 @@ export const DashCard = ({ job }) => {
                 width: "100%"
               }}
             >
-              <a href={job.url}>
+              <a href={job.urlText} target="_blank">
                 <Icon name="thumbtack" />
                 View Post
               </a>
-              <PostDetails jobId={job.id} imgSrc={imgSrc} />
+              <PostDetails imgSrc={imgSrc} />
             </div>
           </Card.Content>
         </Card>
       </Grid.Column>
     </>
   );
-};
+}

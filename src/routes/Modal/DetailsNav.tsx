@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 
 function Navigation() {
-  const [activeItem, setActiveItem] = useState<string>();
+  const [activeItem, setActiveItem] = useState<string>("job_details");
 
   const handleItemClick = (name: string) => {
     setActiveItem(name);
@@ -13,22 +13,22 @@ function Navigation() {
     <Menu className="detailsNav">
       <Menu.Item
         as={Link}
-        to="#"
-        name="save_this_job"
-        active={activeItem === "Save this Job"}
+        to="/details"
+        name="job_details"
+        active={activeItem === "job_details"}
         onClick={() => {
-          handleItemClick("save_this_job");
+          handleItemClick("job_details");
         }}
       >
         Job Details
       </Menu.Item>
       <Menu.Item
         as={Link}
-        to="#"
-        name="save_this_job"
-        active={activeItem === "Save this Job"}
+        to="/details"
+        name="notes"
+        active={activeItem === "notes"}
         onClick={() => {
-          handleItemClick("save_this_job");
+          handleItemClick("notes");
         }}
       >
         Notes
@@ -36,10 +36,10 @@ function Navigation() {
       <Menu.Item
         as={Link}
         to="#"
-        name="save_this_job"
-        active={activeItem === "Save this Job"}
+        name="lorum"
+        active={activeItem === "lorum"}
         onClick={() => {
-          handleItemClick("save_this_job");
+          handleItemClick("lorum");
         }}
       >
         Lorum

@@ -11,26 +11,33 @@ import {
   Rating,
   Label
 } from "semantic-ui-react";
-import api from "../../utils/api";
 import { connect } from "react-redux";
 import { deleteJob } from "../../redux/actions/index";
-import Remove from "./Remove";
+import Remove from "../Modal/Remove";
 import DetailsNav from "../Modal/DetailsNav";
-import Cal from "../../utils/Cal";
+import Cal from "../Modal/Cal";
 
 function PostDetails(props) {
-  console.log(props);
-  const [thisJob, setThisJob] = useState(
-    props.jobs.find(obj => obj.id == props.jobId)
-  );
+  const [thisJob, setThisJob] = useState({
+    jobTitle: "",
+    urlText: "",
+    companyTitle: "",
+    companyUrl: "",
+    details: "",
+    rating: 0,
+    applicationDeadline: ""
+  });
+  useEffect(() => {
+    setThisJob(props.jobs.find(obj => obj.id === props.jobId));
+  }, [props]);
   const [job, setJob] = useState({
-    jobTitle: thisJob.jobTitle,
-    url: thisJob.urlText,
-    companyTitle: thisJob.companyTitle,
-    companyUrl: !thisJob.companyUrl ? "ACME" : thisJob.companyUrl,
+    jobTitle: thisJob?.jobTitle,
+    urlText: thisJob?.urlText,
+    companyTitle: thisJob?.companyTitle,
+    companyUrl: !thisJob?.companyUrl ? "ACME" : thisJob.companyUrl,
     details: "I'm a detail",
-    rating: !thisJob.rating && 3,
-    applicationDeadline: !thisJob.applicationDeadline
+    rating: !thisJob?.rating && 3,
+    applicationDeadline: !thisJob?.applicationDeadline
       ? Date.now()
       : thisJob.applicationDeadline
   });
@@ -55,6 +62,8 @@ function PostDetails(props) {
       rating: data.rating
     });
   };
+
+  console.log(props, "THIS JOB");
 
   return (
     <Modal
@@ -115,8 +124,8 @@ function PostDetails(props) {
                         <label>Job Post URL:</label>
                         <input
                           placeholder="Job Post URL"
-                          name="url"
-                          value={job.url}
+                          name="urlText"
+                          value={job.urlText}
                           onChange={handleChanges}
                         />
                       </Form.Field>
@@ -161,7 +170,8 @@ function PostDetails(props) {
 }
 function mapStateToProps(state) {
   return {
-    jobs: state.jobs
+    jobs: state.jobs,
+    jobId: state.jobId
   };
 }
 

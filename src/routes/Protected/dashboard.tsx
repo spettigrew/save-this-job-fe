@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getUser, getJobs, deleteJob } from "../../redux/actions/index";
+import {
+  getUser,
+  getJobs,
+  deleteJob,
+  getJobId
+} from "../../redux/actions/index";
 import store from "store";
-import { useOktaAuth } from "okta-react-bug-fix";
-import { Redirect } from "react-router-dom";
-import api from "../../utils/api";
-import { DashCard } from "./card";
+import DashCard from "./card";
 import Loading from "./Loading";
 import Styled from "styled-components";
 import {
@@ -60,7 +62,7 @@ const Dashboard = props => {
               <Header as="h3">{props.error}</Header>
               {props.jobs ? (
                 props.jobs.map((job, index) => (
-                  <DashCard key={index} job={job} />
+                  <DashCard key={index} job={job} getJobId={props.getJobId} />
                 ))
               ) : (
                 <Header as="h2">
@@ -86,7 +88,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   getUser,
-  getJobs
+  getJobs,
+  getJobId
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -4,7 +4,8 @@ import {
   GET_USER_SUCCESS,
   GET_JOBS_ERROR,
   GET_JOBS_LOADING,
-  GET_JOBS_SUCCESS
+  GET_JOBS_SUCCESS,
+  GET_JOB_ID
 } from "../actions/index";
 
 const initialState = {
@@ -14,7 +15,8 @@ const initialState = {
     firstName: "",
     lastName: ""
   },
-  jobs: []
+  jobs: [],
+  jobId: 0
 };
 
 export function reducer(state = initialState, action: any): Object {
@@ -35,8 +37,8 @@ export function reducer(state = initialState, action: any): Object {
       return {
         ...state,
         user: {
-          firstName: firstName,
-          lastName: lastName
+          firstName,
+          lastName
         },
         loading: false
       };
@@ -52,6 +54,11 @@ export function reducer(state = initialState, action: any): Object {
       return {
         ...state,
         error: action.payload
+      };
+    case GET_JOB_ID:
+      return {
+        ...state,
+        jobId: action.payload
       };
   }
 }
