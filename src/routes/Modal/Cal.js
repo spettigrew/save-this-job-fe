@@ -8,6 +8,5 @@ export default function Cal(props) {
   //new Date("Wed Apr 08 2020")
   const [date, setDate] = useState(new Date(props.dueDate));
   const onChange = date => setDate(date);
-  console.log(date);
   return <Calendar onChange={onChange} value={date} />;
 }

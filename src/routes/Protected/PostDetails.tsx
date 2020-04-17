@@ -18,18 +18,8 @@ import DetailsNav from "../Modal/DetailsNav";
 import Cal from "../Modal/Cal";
 
 function PostDetails(props) {
-  const [thisJob, setThisJob] = useState({
-    jobTitle: "",
-    urlText: "",
-    companyTitle: "",
-    companyUrl: "",
-    details: "",
-    rating: 0,
-    applicationDeadline: ""
-  });
-  useEffect(() => {
-    setThisJob(props.jobs.find(obj => obj.id === props.jobId));
-  }, [props]);
+  const thisJob = props.jobs.find(obj => obj.id === props.jobId);
+
   const [job, setJob] = useState({
     jobTitle: thisJob?.jobTitle,
     urlText: thisJob?.urlText,
@@ -52,8 +42,6 @@ function PostDetails(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    console.log(job);
   };
 
   const handleRating = (e, data) => {
@@ -62,8 +50,6 @@ function PostDetails(props) {
       rating: data.rating
     });
   };
-
-  console.log(props, "THIS JOB");
 
   return (
     <Modal
@@ -170,8 +156,7 @@ function PostDetails(props) {
 }
 function mapStateToProps(state) {
   return {
-    jobs: state.jobs,
-    jobId: state.jobId
+    jobs: state.jobs
   };
 }
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { Redirect } from "react-router-dom";
 import {
   getUser,
   getJobs,
@@ -42,11 +44,8 @@ const Dashboard = props => {
     setTokenForExtension();
   }, []);
 
-  useEffect(() => {
-    if (props) {
-      console.log(props.user);
-    }
-  }, [props]);
+  console.log(props);
+
   return (
     <StyledBackGround>
       <StyledHeader as="h3">
@@ -92,4 +91,6 @@ const mapDispatchToProps = {
   getJobId
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+);

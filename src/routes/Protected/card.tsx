@@ -19,7 +19,6 @@ export default function DashCard(props) {
   };
 
   const job = props.job;
-  console.log(job);
 
   useEffect(() => {
     props.getJobId(job.id);
@@ -69,7 +68,7 @@ export default function DashCard(props) {
                 <Icon name="thumbtack" />
                 View Post
               </a>
-              <PostDetails imgSrc={imgSrc} />
+              <PostDetails imgSrc={imgSrc} jobId={job.id} />
             </div>
           </Card.Content>
         </Card>

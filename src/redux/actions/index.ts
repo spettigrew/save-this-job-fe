@@ -24,7 +24,6 @@ export function getJobs() {
     api()
       .get("/users/jobs")
       .then(res => {
-        console.log("fired getjobs");
         dispatch({ type: GET_JOBS_SUCCESS, payload: res.data });
       })
 
