@@ -33,17 +33,6 @@ function Navigation() {
       >
         Notes
       </Menu.Item>
-      <Menu.Item
-        as={Link}
-        to="#"
-        name="lorum"
-        active={activeItem === "lorum"}
-        onClick={() => {
-          handleItemClick("lorum");
-        }}
-      >
-        Lorum
-      </Menu.Item>
     </Menu>
   );
 }

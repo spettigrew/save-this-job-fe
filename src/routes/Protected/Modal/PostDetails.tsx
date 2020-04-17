@@ -12,13 +12,16 @@ import {
   Label
 } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { deleteJob } from "../../redux/actions/index";
-import Remove from "../Modal/Remove";
-import DetailsNav from "../Modal/DetailsNav";
-import Cal from "../Modal/Cal";
+import { useHistory } from "react-router-dom";
+import { deleteJob } from "../../../redux/actions/index";
+import Remove from "./Remove";
+import DetailsNav from "./DetailsNav";
+import Messages from "../../../UIElements/Messages";
+import Cal from "./Cal";
 
 function PostDetails(props) {
   const thisJob = props.jobs.find(obj => obj.id === props.jobId);
+  const history = useHistory();
 
   const [job, setJob] = useState({
     jobTitle: thisJob?.jobTitle,
@@ -57,6 +60,7 @@ function PostDetails(props) {
       trigger={<Icon name="edit" size="large" />}
     >
       <Modal.Header>{job.companyTitle}</Modal.Header>
+
       <DetailsNav />
       <Modal.Content>
         <Modal.Description>

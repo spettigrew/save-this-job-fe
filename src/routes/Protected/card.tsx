@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Card, Image, Icon, Grid } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { getJobId } from "../../redux/actions/index";
-import PostDetails from "./PostDetails";
+import PostDetails from "./Modal/PostDetails";
 import blue from "../../images/icon.blue.png";
 import yellow from "../../images/icon-yellow.png";
 import pink from "../../images/icon-pink.png";

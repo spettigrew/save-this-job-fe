@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { Redirect } from "react-router-dom";
 import {
   getUser,
   getJobs,
@@ -12,6 +11,7 @@ import store from "store";
 import DashCard from "./card";
 import Loading from "./Loading";
 import Styled from "styled-components";
+import Message from "../../UIElements/Messages";
 import {
   Container,
   Grid,
@@ -39,9 +39,9 @@ const Dashboard = props => {
   };
 
   useEffect(() => {
+    setTokenForExtension();
     props.getUser();
     props.getJobs();
-    setTokenForExtension();
   }, []);
 
   console.log(props);
@@ -49,8 +49,18 @@ const Dashboard = props => {
   return (
     <StyledBackGround>
       <StyledHeader as="h3">
-        {`Welcome back, ${props.user?.firstName}`}{" "}
+        {`Welcome back, ${props.user?.firstName}`}
       </StyledHeader>
+      {props.error && (
+        <Message type={"Error"} visible={true} message={props.error.message} />
+      )}
+      {props.deleteSuccess && (
+        <Message
+          type={"Success"}
+          visible={true}
+          message={"Successfully Deleted Job"}
+        />
+      )}
 
       {props.loading ? (
         <Loading />
@@ -58,7 +68,6 @@ const Dashboard = props => {
         <div style={{ minHeight: "50vh" }}>
           <Grid stackable container columns="equal">
             <Grid.Row stretched>
-              <Header as="h3">{props.error}</Header>
               {props.jobs ? (
                 props.jobs.map((job, index) => (
                   <DashCard key={index} job={job} getJobId={props.getJobId} />
@@ -81,7 +90,8 @@ function mapStateToProps(state) {
     user: state.user,
     jobs: state.jobs,
     loading: state.loading,
-    error: state.error
+    error: state.error,
+    deleteSuccess: state.deleteSuccess
   };
 }
 

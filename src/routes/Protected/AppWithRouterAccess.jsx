@@ -5,7 +5,6 @@ import config from '../../utils/config';
 import Home from '../Home';
 import LoginForm from "../Authentication/LoginForm";
 import Dashboard from "./dashboard";
-import PostDetails from "./PostDetails";
 import Navigation from "../navigation";
 import Footer from '../footer'
 
@@ -23,10 +22,9 @@ const AppWithRouterAccess = () => {
       <Navigation />
       <div>
         <Route exact path='/' component={Home} />
-        <Route path="/implicit/callback" component={LoginCallback} />
+        <Route exact path="/implicit/callback" component={LoginCallback} />
         <Route exact path="/login" component={LoginForm} />
-        <SecureRoute path="/dashboard" component={Dashboard} />
-        <SecureRoute path="/details" component={PostDetails} />
+        <SecureRoute exact path="/dashboard" component={Dashboard} />
       </div>
       <Footer />
     </Security>

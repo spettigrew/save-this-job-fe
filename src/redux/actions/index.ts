@@ -10,11 +10,19 @@ export const GET_USER_LOADING = "GET_USER_LOADING";
 
 export const GET_JOB_ID = "GET_JOB_ID";
 
+export const DELETE_JOBS_LOADING = "DELETE_JOBS_LOADING";
+export const DELETE_JOBS_SUCCESS = "DELETE_JOBS_SUCCESS";
+export const DELETE_JOBS_ERROR = "DELETE_JOBS_ERROR";
+
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
-    const user = store.get("okta-token-storage").idToken.claims.name;
-    dispatch({ type: GET_USER_SUCCESS, payload: user });
+    try {
+      const user = store.get("okta-token-storage").idToken.claims.name;
+      dispatch({ type: GET_USER_SUCCESS, payload: user });
+    } catch (err) {
+      dispatch({ type: GET_USER_ERROR, payload: err });
+    }
   };
 }
 
@@ -35,22 +43,25 @@ export function getJobs() {
 
 export function deleteJob(jobId) {
   return dispatch => {
+    dispatch({ type: DELETE_JOBS_LOADING });
+
     api()
       .delete(`/users/removeJob/${jobId}`)
       .then(res => {
         if (res.status == 200) {
-          console.log(res.status);
           api()
             .get("/users/jobs")
             .then(res => {
-              console.log("fired getjobs");
-              dispatch({ type: GET_JOBS_SUCCESS, payload: res.data });
+              dispatch({ type: DELETE_JOBS_SUCCESS, payload: res.data });
             })
 
             .catch(error => {
-              dispatch({ type: GET_JOBS_ERROR, payload: error });
+              dispatch({ type: DELETE_JOBS_ERROR, payload: error });
             });
         }
+      })
+      .catch(error => {
+        dispatch({ type: DELETE_JOBS_ERROR, payload: error });
       });
 
     // if (response.toString() === "Jwt is expired") {
