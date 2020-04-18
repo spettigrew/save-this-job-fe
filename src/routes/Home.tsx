@@ -7,6 +7,7 @@ import line from "../images/Line.png";
 import icon from "../images/save-this-job-icon.png";
 import Styled from "styled-components";
 import Loading from "./Protected/Loading";
+import Footer from "./footer";
 import {
   Button,
   Container,
@@ -211,6 +212,7 @@ function Home() {
             </StyledButton>
           </Container>
         </StyledBodySegment>
+        <Footer />
       </div>
     );
   };

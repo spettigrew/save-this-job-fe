@@ -4,9 +4,8 @@ import "semantic-ui-less/semantic.less";
 import Footer from "./routes/footer";
 function App() {
   return (
-    <div>
+    <div style={{ minHeight: "100vh" }}>
       <AppWithRouterAccess />
-      <Footer />
     </div>
   );
 }

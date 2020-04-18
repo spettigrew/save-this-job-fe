@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/index";
 import store from "store";
 import DashCard from "./card";
+import Footer from "../footer";
 import Loading from "./Loading";
 import Styled from "styled-components";
 import Message from "../../UIElements/Messages";
@@ -66,11 +67,11 @@ const Dashboard = props => {
       <div style={{ minHeight: "50vh" }}>
         <Grid stackable container columns="equal">
           <Grid.Row stretched>
-            {props.jobs && props.jobs.length > 0 ? (
+            {props.jobs &&
               props.jobs.map((job, index) => (
                 <DashCard key={index} job={job} getJobId={props.getJobId} />
-              ))
-            ) : (
+              ))}
+            {!props.loading && props.jobs && props.jobs.length < 1 && (
               <Header as="h2">
                 You currently have no jobs saved to your account.
               </Header>
@@ -78,6 +79,7 @@ const Dashboard = props => {
           </Grid.Row>
         </Grid>
       </div>
+      <Footer />
     </StyledBackGround>
   );
 };
