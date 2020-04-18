@@ -6,6 +6,7 @@ import cta from "../images/Group 1.png";
 import line from "../images/Line.png";
 import icon from "../images/save-this-job-icon.png";
 import Styled from "styled-components";
+import Loading from "./Protected/Loading";
 import {
   Button,
   Container,
@@ -75,7 +76,7 @@ function Home() {
   const { authState } = useOktaAuth();
 
   if (authState.isPending) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const HomePageHeader = () => {
