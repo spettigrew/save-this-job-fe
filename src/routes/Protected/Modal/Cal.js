@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-
+import "./Cal.css";
 export default function Cal(props) {
   //set a date to backend
   // can pull in date string and pass to new Date like

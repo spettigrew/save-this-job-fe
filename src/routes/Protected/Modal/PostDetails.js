@@ -8,6 +8,7 @@ import {
   Form,
   Grid,
   TextArea,
+  Responsive,
   Rating,
   Label
 } from "semantic-ui-react";
@@ -21,8 +22,6 @@ import Cal from "./Cal";
 
 function PostDetails(props) {
   let thisJob = props.jobs.find(obj => obj.id === props.jobId);
-
-  console.log("fired");
   const [open, setOpen] = useState(false);
   const [job, setJob] = useState({
     rating: thisJob.rating || 3,
@@ -38,58 +37,70 @@ function PostDetails(props) {
   const [view, setView] = useState();
   return (
     <>
-      <Modal
-        open={open}
-        closeOnEscape={false}
-        trigger={
-          <Icon
-            name="edit"
-            size="large"
-            onClick={() => {
-              setOpen(true);
+      <Responsive>
+        <Modal
+          open={open}
+          trigger={
+            <Icon
+              name="edit"
+              size="large"
+              onClick={() => {
+                setOpen(true);
+              }}
+            />
+          }
+        >
+          <Modal.Header
+            style={{
+              display: "flex",
+              width: "100%",
+              padding: ".75rem 5px",
+              justifyContent: "space-between"
             }}
-          />
-        }
-      >
-        {" "}
-        <Icon
-          name="close"
-          style={{
-            position: "relative",
-            top: "0",
-            left: "95%",
-            fontSize: "2em"
-          }}
-          color="red"
-          onClick={() => {
-            setOpen(false);
-          }}
-        />
-        <Modal.Header>{thisJob.companyTitle}</Modal.Header>
-        <DetailsNav setView={setView} job={thisJob} jobId={props.jobId} />
-        <Modal.Content>
-          <Modal.Description>
-            <Grid>
-              <Grid.Column width={10}>{view}</Grid.Column>
-              <Grid.Column floated="right" width={5}>
-                <div>
-                  <Image size="small" src={props.imgSrc} />
-                  <Header as="h3" content={thisJob.jobTitle} />
-                </div>
-                <Rating
-                  style={{ margin: ".5em 0 2em" }}
-                  onRate={handleRating}
-                  rating={job.rating}
-                  maxRating={5}
-                  clearable
-                />
-                <Cal dueDate={thisJob.applicationDeadline || Date.now} />
-                <Remove removeJob={props.deleteJob} id={props.jobId} />
-              </Grid.Column>
-            </Grid>
-          </Modal.Description>
-        </Modal.Content>
-      </Modal>
+          >
+            <h2 style={{ display: "inline-block" }}>{thisJob.companyTitle}</h2>
+            <Icon
+              name="close"
+              style={{
+                fontSize: "1.5em"
+              }}
+              color="red"
+              onClick={() => {
+                setOpen(false);
+              }}
+            />
+          </Modal.Header>
+          <DetailsNav setView={setView} job={thisJob} jobId={props.jobId} />
+          <Modal.Content>
+            <Modal.Description>
+              <Grid stackable>
+                <Grid.Column style={{ marginRight: "0" }} width={10}>
+                  {view}
+                </Grid.Column>
+                <Grid.Column
+                  style={{ marginLeft: "10px" }}
+                  floated="right"
+                  width={5}
+                >
+                  <div>
+                    <Image size="small" src={props.imgSrc} />
+                    <Header as="h3" content={thisJob.jobTitle} />
+                  </div>
+                  <Rating
+                    style={{ margin: ".5em 0 2em" }}
+                    onRate={handleRating}
+                    rating={job.rating}
+                    maxRating={5}
+                    clearable
+                  />
+                  <Cal dueDate={thisJob.applicationDeadline || Date.now} />
+                  <Remove removeJob={props.deleteJob} id={props.jobId} />
+                </Grid.Column>
+              </Grid>
+            </Modal.Description>
+          </Modal.Content>
+        </Modal>
+      </Responsive>
     </>
   );
 }
