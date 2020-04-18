@@ -9,5 +9,11 @@ div.ui.nav.menu{
 }
 
 div.ui.detailsNav.menu > .item{
-    width: 33%;
+    width: 50%;
+    text-align:center;
+    display:block;
+
 }
+
+
+

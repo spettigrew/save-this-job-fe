@@ -14,6 +14,10 @@ export const DELETE_JOBS_LOADING = "DELETE_JOBS_LOADING";
 export const DELETE_JOBS_SUCCESS = "DELETE_JOBS_SUCCESS";
 export const DELETE_JOBS_ERROR = "DELETE_JOBS_ERROR";
 
+export const UPDATE_JOBS_LOADING = "UPDATE_JOBS_LOADING";
+export const UPDATE_JOBS_SUCCESS = "UPDATE_JOBS_SUCCESS";
+export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
+
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
@@ -48,6 +52,7 @@ export function deleteJob(jobId) {
     api()
       .delete(`/users/removeJob/${jobId}`)
       .then(res => {
+        console.log(res.status);
         if (res.status == 200) {
           api()
             .get("/users/jobs")
@@ -73,5 +78,35 @@ export function deleteJob(jobId) {
 export function getJobId(jobId) {
   return dispatch => {
     dispatch({ type: GET_JOB_ID, payload: jobId });
+  };
+}
+export function updateJob(jobId, job) {
+  console.log(job);
+  return dispatch => {
+    dispatch({ type: UPDATE_JOBS_LOADING });
+
+    api()
+      .put(`/users/updateJob/${jobId}`, job)
+      .then(res => {
+        console.log(res.status);
+        if (res.status == 200) {
+          api()
+            .get("/users/jobs")
+            .then(res => {
+              dispatch({ type: UPDATE_JOBS_SUCCESS, payload: res.data });
+            })
+
+            .catch(error => {
+              dispatch({ type: UPDATE_JOBS_ERROR, payload: error });
+            });
+        }
+      })
+      .catch(error => {
+        dispatch({ type: UPDATE_JOBS_ERROR, payload: error });
+      });
+
+    // if (response.toString() === "Jwt is expired") {
+    //  dispatch({type:JWT_EXPIRED,payload:true})
+    // }//<Redirect to="/login" />;
   };
 }

@@ -8,7 +8,10 @@ import {
   GET_JOB_ID,
   DELETE_JOBS_LOADING,
   DELETE_JOBS_SUCCESS,
-  DELETE_JOBS_ERROR
+  DELETE_JOBS_ERROR,
+  UPDATE_JOBS_LOADING,
+  UPDATE_JOBS_SUCCESS,
+  UPDATE_JOBS_ERROR
 } from "../actions/index";
 
 const initialState = {
@@ -82,6 +85,23 @@ export function reducer(state = initialState, action: any): Object {
         deleteSuccess: true
       };
     case DELETE_JOBS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case UPDATE_JOBS_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case UPDATE_JOBS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        jobs: action.payload
+      };
+    case UPDATE_JOBS_ERROR:
       return {
         ...state,
         loading: false,

@@ -19,7 +19,13 @@ function Footer() {
                 <List link inverted>
                   <List.Item as="a">Sitemap</List.Item>
                   <List.Item as="a">Contact Us</List.Item>
-                  <List.Item as="a">Religious Ceremonies</List.Item>
+                  <List.Item
+                    as="a"
+                    href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
+                    target="_blank"
+                  >
+                    Chrome Extension
+                  </List.Item>
                   <List.Item as="a">Gazebo Plans</List.Item>
                 </List>
               </Grid.Column>
