@@ -13,7 +13,10 @@ div.ui.detailsNav.menu > .item{
     text-align:center;
     display:block;
 
+
 }
 
-
+div.ui.detailsNav.menu > {
+    margin-top:0;
+}
 

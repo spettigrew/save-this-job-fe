@@ -20,9 +20,9 @@ function Remove({ removeJob, id }) {
             onClick={handleOpen}
             style={{
               margin: "1em",
-              position: "absolute",
+              position: "relative",
               bottom: "0",
-              right: "0"
+              left: "0%"
             }}
           >
             Remove Job

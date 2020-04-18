@@ -22,7 +22,7 @@ function Navigation(props) {
     }
   }, [activeItem]);
   return (
-    <Menu className="detailsNav">
+    <Menu style={{ marginTop: 0 }} className="detailsNav">
       <Menu.Item
         name="job_details"
         active={activeItem === "job_details"}

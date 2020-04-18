@@ -16,11 +16,11 @@ function Details(props) {
   };
 
   const [job, setJob] = useState({
-    jobTitle: props.job?.jobTitle,
-    urlText: props.job?.urlText,
-    companyTitle: props.job?.companyTitle,
-    companyUrl: !props.job?.companyUrl ? "ACME" : props.job.companyUrl,
-    description: "I'm a detail"
+    jobTitle: props.job?.jobTitle || "",
+    urlText: props.job?.urlText || "",
+    companyTitle: props.job?.companyTitle || "",
+    companyUrl: props.job?.companyUrl || "",
+    description: props.job?.description || ""
   });
   return (
     <>

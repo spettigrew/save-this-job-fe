@@ -23,7 +23,7 @@ function PostDetails(props) {
   let thisJob = props.jobs.find(obj => obj.id === props.jobId);
 
   console.log("fired");
-
+  const [open, setOpen] = useState(false);
   const [job, setJob] = useState({
     rating: thisJob.rating || 3,
     applicationDeadline: new Date("11/11/2020")
@@ -39,19 +39,38 @@ function PostDetails(props) {
   return (
     <>
       <Modal
+        open={open}
         closeOnEscape={false}
-        closeOnDimmerClick={false}
-        style={{ height: "85vh" }}
-        trigger={<Icon name="edit" size="large" />}
+        trigger={
+          <Icon
+            name="edit"
+            size="large"
+            onClick={() => {
+              setOpen(true);
+            }}
+          />
+        }
       >
+        {" "}
+        <Icon
+          name="close"
+          style={{
+            position: "relative",
+            top: "0",
+            left: "95%",
+            fontSize: "2em"
+          }}
+          color="red"
+          onClick={() => {
+            setOpen(false);
+          }}
+        />
         <Modal.Header>{thisJob.companyTitle}</Modal.Header>
-
         <DetailsNav setView={setView} job={thisJob} jobId={props.jobId} />
         <Modal.Content>
           <Modal.Description>
             <Grid>
               <Grid.Column width={10}>{view}</Grid.Column>
-
               <Grid.Column floated="right" width={5}>
                 <div>
                   <Image size="small" src={props.imgSrc} />
@@ -65,11 +84,11 @@ function PostDetails(props) {
                   clearable
                 />
                 <Cal dueDate={thisJob.applicationDeadline || Date.now} />
+                <Remove removeJob={props.deleteJob} id={props.jobId} />
               </Grid.Column>
             </Grid>
           </Modal.Description>
         </Modal.Content>
-        <Remove removeJob={props.deleteJob} id={props.jobId} />
       </Modal>
     </>
   );
