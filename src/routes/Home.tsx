@@ -71,7 +71,6 @@ const StyledDivider = Styled(Divider)({
   margin: "3em 0em",
   marginTop: "5em !important"
 });
-
 function Home() {
   const { authState } = useOktaAuth();
 

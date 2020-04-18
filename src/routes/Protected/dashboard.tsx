@@ -62,25 +62,22 @@ const Dashboard = props => {
         />
       )}
 
-      {props.loading ? (
-        <Loading />
-      ) : (
-        <div style={{ minHeight: "50vh" }}>
-          <Grid stackable container columns="equal">
-            <Grid.Row stretched>
-              {props.jobs ? (
-                props.jobs.map((job, index) => (
-                  <DashCard key={index} job={job} getJobId={props.getJobId} />
-                ))
-              ) : (
-                <Header as="h2">
-                  You currently have no jobs saved to your account.
-                </Header>
-              )}
-            </Grid.Row>
-          </Grid>
-        </div>
-      )}
+      {props.loading && <Loading />}
+      <div style={{ minHeight: "50vh" }}>
+        <Grid stackable container columns="equal">
+          <Grid.Row stretched>
+            {props.jobs && props.jobs.length > 0 ? (
+              props.jobs.map((job, index) => (
+                <DashCard key={index} job={job} getJobId={props.getJobId} />
+              ))
+            ) : (
+              <Header as="h2">
+                You currently have no jobs saved to your account.
+              </Header>
+            )}
+          </Grid.Row>
+        </Grid>
+      </div>
     </StyledBackGround>
   );
 };

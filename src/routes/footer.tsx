@@ -3,8 +3,9 @@ import Styled from "styled-components";
 import { Segment, Container, Grid, Header, List } from "semantic-ui-react";
 const StyledFooter = Styled(Segment)({
   padding: "5em 0em !important",
-  marginTop: "70px !important",
-  background: "#08A6C9 !important"
+  background: "#08A6C9 !important",
+  position: "relative",
+  bottom: "0"
 });
 
 function Footer() {

@@ -27,8 +27,16 @@ export default function DashCard(props) {
   const imgSrc = job.logo || randomIcon();
   return (
     <>
-      <Grid.Column width={4}>
-        <Card raised style={{ marginTop: "50px" }}>
+      <Grid.Column width={5}>
+        <Card
+          raised
+          style={{
+            margin: "50px auto 0",
+            width: "80%",
+            minWidth: "200px",
+            maxWidth: "300px"
+          }}
+        >
           <div
             style={{
               display: "flex",

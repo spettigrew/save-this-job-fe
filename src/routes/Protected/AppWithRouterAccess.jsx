@@ -26,7 +26,6 @@ const AppWithRouterAccess = () => {
         <Route exact path="/login" component={LoginForm} />
         <SecureRoute exact path="/dashboard" component={Dashboard} />
       </div>
-      <Footer />
     </Security>
   );
 };
