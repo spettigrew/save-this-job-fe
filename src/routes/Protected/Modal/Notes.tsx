@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { TextArea, Header, Button } from "semantic-ui-react";
 export default function Notes(props) {
-  const [notes, setNotes] = useState();
+  const [notes, setNotes] = useState({
+    notes: props.job.notes || ""
+  });
   const handleChanges = e => {
     const value = e.target.value;
-    setNotes(value);
+    setNotes({
+      ...notes,
+      [e.target.name]: value
+    });
   };
   const submitHandler = () => {
-    //update notes function
+    //update notes function needed from actions
     console.log(notes);
   };
   return (
@@ -18,7 +23,7 @@ export default function Notes(props) {
         rows={20}
         placeholder="Notes"
         name="notes"
-        value={props.job.notes}
+        value={notes.notes}
         onChange={handleChanges}
       />
       <Button onClick={submitHandler} floated="right">

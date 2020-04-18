@@ -39,6 +39,8 @@ function PostDetails(props) {
   return (
     <>
       <Modal
+        closeOnEscape={false}
+        closeOnDimmerClick={false}
         style={{ height: "85vh" }}
         trigger={<Icon name="edit" size="large" />}
       >
