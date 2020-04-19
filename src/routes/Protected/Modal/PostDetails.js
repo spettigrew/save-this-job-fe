@@ -42,6 +42,7 @@ function PostDetails(props) {
           open={open}
           trigger={
             <Icon
+              style={{ cursor: "pointer" }}
               name="edit"
               size="large"
               onClick={() => {
@@ -54,7 +55,7 @@ function PostDetails(props) {
             style={{
               display: "flex",
               width: "100%",
-              padding: ".75rem 5px",
+              padding: ".5rem 5px 0 15px",
               justifyContent: "space-between"
             }}
           >
@@ -62,7 +63,8 @@ function PostDetails(props) {
             <Icon
               name="close"
               style={{
-                fontSize: "1.5em"
+                fontSize: "1.5em",
+                cursor: "pointer"
               }}
               color="red"
               onClick={() => {

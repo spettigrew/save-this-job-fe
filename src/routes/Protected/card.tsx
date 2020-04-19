@@ -45,7 +45,7 @@ export default function DashCard(props) {
               justifyContent: "space-between"
             }}
           >
-            <Image src={imgSrc} ui={false} style={{ width: "50%" }} />
+            <Image src={imgSrc} ui={false} style={{ width: "75px" }} />
           </div>
           <Card.Content>
             <Card.Header>

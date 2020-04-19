@@ -7,23 +7,25 @@ const StyledFooter = Styled(Segment)`
   background: #08A6C9 !important;
   width:100%;
   position:relative;
-  bottom:0;
+  bottom:-100px;
+  margin-top:4em;
+  
   
 `;
 
 function Footer(props) {
   function calculateMainContentHeight() {
-    if (document.querySelector("#footer") && localStorage.getItem("token")) {
+    if (document.querySelector("#footer") && props.jobs) {
       const mainContent = document.querySelector<HTMLElement>("#content");
       const footerContent = document.querySelector<HTMLElement>("#footer");
       if (mainContent.clientHeight < window.innerHeight) {
         footerContent.style.position = "absolute";
         footerContent.style.bottom = "0";
-        footerContent.style.marginTop = "3em";
+        footerContent.style.marginTop = "4em";
       } else {
         footerContent.style.position = "relative";
         footerContent.style.bottom = "0";
-        footerContent.style.marginTop = "3em";
+        footerContent.style.marginTop = "4em";
       }
     }
   }
