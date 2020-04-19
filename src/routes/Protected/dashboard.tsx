@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import {
-  getUser,
-  getJobs,
-  deleteJob,
-  getJobId
-} from "../../redux/actions/index";
+import { getUser, getJobs, getCurrentJob } from "../../redux/actions/index";
 import store from "store";
 import DashCard from "./card";
 import Footer from "../footer";
@@ -45,8 +40,6 @@ const Dashboard = props => {
     props.getJobs();
   }, []);
 
-  console.log(props);
-
   return (
     <StyledBackGround>
       <StyledHeader as="h3">
@@ -69,7 +62,7 @@ const Dashboard = props => {
           <Grid.Row stretched>
             {props.jobs &&
               props.jobs.map((job, index) => (
-                <DashCard key={index} job={job} getJobId={props.getJobId} />
+                <DashCard key={index} job={job} />
               ))}
             {!props.loading && props.jobs && props.jobs.length < 1 && (
               <Header as="h2">
@@ -97,7 +90,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   getUser,
   getJobs,
-  getJobId
+  getCurrentJob
 };
 
 export default withRouter(

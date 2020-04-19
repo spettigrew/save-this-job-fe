@@ -5,7 +5,7 @@ import {
   GET_JOBS_ERROR,
   GET_JOBS_LOADING,
   GET_JOBS_SUCCESS,
-  GET_JOB_ID,
+  GET_CURRENT_JOB,
   DELETE_JOBS_LOADING,
   DELETE_JOBS_SUCCESS,
   DELETE_JOBS_ERROR,
@@ -23,7 +23,17 @@ const initialState = {
     lastName: ""
   },
   jobs: [],
-  jobId: 0
+  currentJob: {
+    location: "",
+    jobTitle: "",
+    urlText: "",
+    rating: 3,
+    description: "",
+    notes: "",
+    applicationDeadline: Date.now(),
+    companyTitle: "",
+    companyUrl: ""
+  }
 };
 
 export function reducer(state = initialState, action: any): Object {
@@ -107,10 +117,20 @@ export function reducer(state = initialState, action: any): Object {
         loading: false,
         error: action.payload
       };
-    case GET_JOB_ID:
+    case GET_CURRENT_JOB:
+      let thisJob;
+      if (state.jobs.find(obj => obj.id === action.payload)) {
+        thisJob = state.jobs.find(obj => obj.id === action.payload);
+      } else {
+        thisJob = state.currentJob;
+      }
+
       return {
         ...state,
-        jobId: action.payload
+        currentJob: {
+          ...state.currentJob,
+          ...thisJob
+        }
       };
   }
 }

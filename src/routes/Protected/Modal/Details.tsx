@@ -11,7 +11,6 @@ function Details(props) {
     });
   };
   const handleSubmit = () => {
-    console.log(job);
     props.updateJob(props.jobId, job);
   };
 

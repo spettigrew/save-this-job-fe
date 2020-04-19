@@ -8,7 +8,7 @@ export const GET_USER_ERROR = "GET_USER_ERROR";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_LOADING = "GET_USER_LOADING";
 
-export const GET_JOB_ID = "GET_JOB_ID";
+export const GET_CURRENT_JOB = "GET_CURRENT_JOB";
 
 export const DELETE_JOBS_LOADING = "DELETE_JOBS_LOADING";
 export const DELETE_JOBS_SUCCESS = "DELETE_JOBS_SUCCESS";
@@ -75,9 +75,9 @@ export function deleteJob(jobId) {
   };
 }
 
-export function getJobId(jobId) {
+export function getCurrentJob(jobId) {
   return dispatch => {
-    dispatch({ type: GET_JOB_ID, payload: jobId });
+    dispatch({ type: GET_CURRENT_JOB, payload: jobId });
   };
 }
 export function updateJob(jobId, job) {
