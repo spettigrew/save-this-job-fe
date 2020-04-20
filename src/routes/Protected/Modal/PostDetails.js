@@ -91,6 +91,13 @@ function PostDetails(props) {
                 />
               </Modal.Header>
               <DetailsNav setView={setView} />
+              {props.success?.state && (
+                <Messages
+                  visible={true}
+                  type={props.success.type}
+                  message={props.success.message}
+                />
+              )}
               <Modal.Content>
                 <Modal.Description>
                   <Grid stackable>
@@ -108,6 +115,7 @@ function PostDetails(props) {
                       </div>
                       <Rating
                         style={{ margin: ".5em 0 2em" }}
+                        icon="star"
                         onRate={handleChanges}
                         rating={props.currentJob.rating}
                         maxRating={5}
@@ -143,7 +151,8 @@ function PostDetails(props) {
 function mapStateToProps(state) {
   return {
     jobs: state.jobs,
-    currentJob: state.currentJob
+    currentJob: state.currentJob,
+    success: state.success
   };
 }
 

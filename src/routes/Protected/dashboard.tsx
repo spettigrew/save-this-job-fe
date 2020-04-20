@@ -48,7 +48,7 @@ const Dashboard = props => {
       {props.error && (
         <Message type={"Error"} visible={true} message={props.error.message} />
       )}
-      {props.deleteSuccess && (
+      {props.success?.state && (
         <Message
           type={"Success"}
           visible={true}
@@ -83,7 +83,7 @@ function mapStateToProps(state) {
     jobs: state.jobs,
     loading: state.loading,
     error: state.error,
-    deleteSuccess: state.deleteSuccess
+    success: state.success
   };
 }
 

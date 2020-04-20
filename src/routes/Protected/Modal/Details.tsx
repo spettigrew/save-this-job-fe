@@ -72,10 +72,11 @@ function Details(props) {
 
         <h3>Job Details:</h3>
         <TextArea
+          style={{ resize: "none" }}
           rows={20}
           placeholder="Job Description"
           name="description"
-          value={props.currentJob.description}
+          value={props.currentJob.description || ""}
           onChange={handleChanges}
         />
       </Form>

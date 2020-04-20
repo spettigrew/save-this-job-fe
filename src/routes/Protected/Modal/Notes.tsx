@@ -14,8 +14,8 @@ function Notes(props) {
     <div>
       <Header as="h2" content="Notes" />
       <TextArea
-        style={{ width: "90%" }}
-        rows={20}
+        style={{ width: "90%", resize: "none" }}
+        rows={30}
         placeholder="Notes"
         name="notes"
         value={props.currentJob.notes}

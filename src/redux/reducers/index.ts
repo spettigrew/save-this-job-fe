@@ -12,13 +12,18 @@ import {
   UPDATE_JOBS_LOADING,
   UPDATE_JOBS_SUCCESS,
   UPDATE_JOBS_ERROR,
-  UPDATE_CURRENT_JOB
+  UPDATE_CURRENT_JOB,
+  CLEAR_MESSAGES
 } from "../actions/index";
 
 const initialState = {
   loading: false,
   error: "",
-  deleteSuccess: false,
+  success: {
+    state: false,
+    type: "",
+    message: ""
+  },
   user: {
     firstName: "",
     lastName: ""
@@ -75,7 +80,6 @@ export function reducer(state = initialState, action: any): Object {
         loading: false
       };
     case GET_JOBS_ERROR:
-      console.log(action.payload);
       return {
         ...state,
         loading: false,
@@ -85,14 +89,22 @@ export function reducer(state = initialState, action: any): Object {
       return {
         ...state,
         loading: true,
-        deleteSuccess: false
+        success: {
+          state: false,
+          type: "",
+          message: ""
+        }
       };
     case DELETE_JOBS_SUCCESS:
       return {
         ...state,
         jobs: action.payload,
         loading: false,
-        deleteSuccess: true
+        success: {
+          state: true,
+          type: "Deleted",
+          message: "Successfully Deleted"
+        }
       };
     case DELETE_JOBS_ERROR:
       return {
@@ -103,13 +115,23 @@ export function reducer(state = initialState, action: any): Object {
     case UPDATE_JOBS_LOADING:
       return {
         ...state,
-        loading: true
+        loading: true,
+        success: {
+          state: false,
+          type: "",
+          message: ""
+        }
       };
     case UPDATE_JOBS_SUCCESS:
       return {
         ...state,
         loading: false,
-        jobs: action.payload
+        jobs: action.payload,
+        success: {
+          state: true,
+          type: "Updated",
+          message: "Successfully Updated Job"
+        }
       };
     case UPDATE_JOBS_ERROR:
       return {
@@ -137,6 +159,15 @@ export function reducer(state = initialState, action: any): Object {
         currentJob: {
           ...state.currentJob,
           ...action.payload
+        }
+      };
+    case CLEAR_MESSAGES:
+      return {
+        ...state,
+        success: {
+          state: false,
+          type: "",
+          message: ""
         }
       };
   }

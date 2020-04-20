@@ -19,6 +19,8 @@ export const UPDATE_JOBS_LOADING = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOBS_SUCCESS = "UPDATE_JOBS_SUCCESS";
 export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
 
+export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
+
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
@@ -115,5 +117,10 @@ export function updateJob(jobId, job) {
     // if (response.toString() === "Jwt is expired") {
     //  dispatch({type:JWT_EXPIRED,payload:true})
     // }//<Redirect to="/login" />;
+  };
+}
+export function clearMessages() {
+  return dispatch => {
+    dispatch({ type: CLEAR_MESSAGES });
   };
 }
