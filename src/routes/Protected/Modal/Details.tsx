@@ -9,9 +9,11 @@ function Details(props) {
       ...job,
       [e.target.name]: value
     });
-  };
-  const handleSubmit = () => {
-    props.updateJob(props.jobId, job);
+    props.setUpdatedJob({
+      ...props.updatedJob,
+      ...job,
+      [e.target.name]: value
+    });
   };
 
   const [job, setJob] = useState({
@@ -89,9 +91,6 @@ function Details(props) {
           onChange={handleChanges}
         />
       </Form>
-      <Button onClick={() => handleSubmit()} type="submit" floated="right">
-        Update
-      </Button>
     </>
   );
 }

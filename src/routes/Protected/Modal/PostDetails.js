@@ -13,25 +13,47 @@ import {
   Label
 } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { deleteJob, getCurrentJob } from "../../../redux/actions/index";
+import {
+  deleteJob,
+  getCurrentJob,
+  updateJob
+} from "../../../redux/actions/index";
 import Remove from "./Remove";
 import DetailsNav from "./DetailsNav";
 import Messages from "../../../UIElements/Messages";
-import Cal from "./Cal";
+import Calendar from "react-calendar";
+import "./Cal.css";
 
 function PostDetails(props) {
   const [open, setOpen] = useState(false);
   const [job, setJob] = useState({
-    rating: props.currentJob?.rating || 3,
-    applicationDeadline: new Date("11/11/2020")
+    rating: props.currentJob?.rating || 3
   });
+  const [updatedJob, setUpdatedJob] = useState(props.currentJob);
 
   const handleRating = (e, data) => {
     setJob({
       ...job,
       rating: data.rating
     });
+    setUpdatedJob({
+      ...updatedJob,
+      rating: data.rating
+    });
   };
+
+  const handleSubmit = () => {
+    props.updateJob(props.jobId, updatedJob);
+  };
+
+  const onCalChange = date => {
+    console.log(updatedJob, "CAL");
+    setUpdatedJob({
+      ...updatedJob,
+      applicationDeadline: date
+    });
+  };
+
   const [view, setView] = useState();
   return (
     <>
@@ -79,6 +101,8 @@ function PostDetails(props) {
                 setView={setView}
                 job={props.currentJob}
                 jobId={props.jobId}
+                updatedJob={updatedJob}
+                setUpdatedJob={setUpdatedJob}
               />
               <Modal.Content>
                 <Modal.Description>
@@ -102,13 +126,23 @@ function PostDetails(props) {
                         maxRating={5}
                         clearable
                       />
-                      <Cal
-                        dueDate={
-                          props.currentJob.applicationDeadline || Date.now
-                        }
+                      <Calendar
+                        onChange={onCalChange}
+                        value={new Date(props.currentJob.applicationDeadline)}
                       />
                       <Remove removeJob={props.deleteJob} id={props.jobId} />
                     </Grid.Column>
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "100%",
+                        justifyContent: "flex-end"
+                      }}
+                    >
+                      <Button onClick={handleSubmit} type="submit">
+                        Update
+                      </Button>
+                    </div>
                   </Grid>
                 </Modal.Description>
               </Modal.Content>
@@ -128,6 +162,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   deleteJob,
-  getCurrentJob
+  getCurrentJob,
+  updateJob
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);

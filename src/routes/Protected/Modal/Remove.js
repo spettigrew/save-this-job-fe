@@ -7,7 +7,6 @@ function Remove({ removeJob, id, history }) {
 
   const handleOpen = () => setModalOpen(true);
   const handleClose = () => setModalOpen(false);
-  console.log(history);
   const removeAndClose = () => {
     removeJob(id);
     history.push("/dashboard");

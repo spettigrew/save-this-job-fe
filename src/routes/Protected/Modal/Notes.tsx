@@ -10,10 +10,7 @@ export default function Notes(props) {
       ...notes,
       [e.target.name]: value
     });
-  };
-  const submitHandler = () => {
-    //update notes function needed from actions
-    console.log(notes);
+    props.setUpdatedJob({ ...props.updatedJob, notes: e.target.value });
   };
   return (
     <div>
@@ -26,9 +23,6 @@ export default function Notes(props) {
         value={notes.notes}
         onChange={handleChanges}
       />
-      <Button onClick={submitHandler} floated="right">
-        Update
-      </Button>
     </div>
   );
 }
