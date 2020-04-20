@@ -27,9 +27,6 @@ import "./Cal.css";
 
 function PostDetails(props) {
   const [open, setOpen] = useState(false);
-  const [job, setJob] = useState({
-    rating: props.currentJob?.rating || 3
-  });
   const handleChanges = (e, data) => {
     const value = e.target.value;
     props.updateCurrentJob({

@@ -18,7 +18,10 @@ function Footer(props) {
     if (document.querySelector("#footer") && props.jobs) {
       const mainContent = document.querySelector<HTMLElement>("#content");
       const footerContent = document.querySelector<HTMLElement>("#footer");
-      if (mainContent.clientHeight < window.innerHeight) {
+      if (
+        mainContent.clientHeight <
+        window.innerHeight + footerContent.clientHeight
+      ) {
         footerContent.style.position = "absolute";
         footerContent.style.bottom = "0";
         footerContent.style.marginTop = "4em";
