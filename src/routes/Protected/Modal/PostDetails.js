@@ -15,6 +15,7 @@ import {
 import { connect } from "react-redux";
 import {
   deleteJob,
+  updateCurrentJob,
   getCurrentJob,
   updateJob
 } from "../../../redux/actions/index";
@@ -29,27 +30,22 @@ function PostDetails(props) {
   const [job, setJob] = useState({
     rating: props.currentJob?.rating || 3
   });
-  const [updatedJob, setUpdatedJob] = useState(props.currentJob);
-
-  const handleRating = (e, data) => {
-    setJob({
-      ...job,
-      rating: data.rating
-    });
-    setUpdatedJob({
-      ...updatedJob,
+  const handleChanges = (e, data) => {
+    const value = e.target.value;
+    props.updateCurrentJob({
+      ...props.currentJob,
+      [e.target.name]: value,
       rating: data.rating
     });
   };
 
   const handleSubmit = () => {
-    props.updateJob(props.jobId, updatedJob);
+    props.updateJob(props.jobId, props.currentJob);
   };
 
   const onCalChange = date => {
-    console.log(updatedJob, "CAL");
-    setUpdatedJob({
-      ...updatedJob,
+    props.updateCurrentJob({
+      ...props.currentJob,
       applicationDeadline: date
     });
   };
@@ -97,13 +93,7 @@ function PostDetails(props) {
                   }}
                 />
               </Modal.Header>
-              <DetailsNav
-                setView={setView}
-                job={props.currentJob}
-                jobId={props.jobId}
-                updatedJob={updatedJob}
-                setUpdatedJob={setUpdatedJob}
-              />
+              <DetailsNav setView={setView} />
               <Modal.Content>
                 <Modal.Description>
                   <Grid stackable>
@@ -121,8 +111,8 @@ function PostDetails(props) {
                       </div>
                       <Rating
                         style={{ margin: ".5em 0 2em" }}
-                        onRate={handleRating}
-                        rating={job.rating}
+                        onRate={handleChanges}
+                        rating={props.currentJob.rating}
                         maxRating={5}
                         clearable
                       />
@@ -163,6 +153,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   deleteJob,
   getCurrentJob,
-  updateJob
+  updateJob,
+  updateCurrentJob
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);

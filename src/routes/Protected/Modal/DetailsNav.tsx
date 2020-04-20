@@ -12,24 +12,10 @@ function Navigation(props) {
   useEffect(() => {
     switch (activeItem) {
       case "job_details":
-        props.setView(
-          <Details
-            job={props.job}
-            jobId={props.jobId}
-            updatedJob={props.updatedJob}
-            setUpdatedJob={props.setUpdatedJob}
-          />
-        );
+        props.setView(<Details />);
         break;
       case "notes":
-        props.setView(
-          <Notes
-            job={props.job}
-            jobId={props.jobId}
-            updatedJob={props.updatedJob}
-            setUpdatedJob={props.setUpdatedJob}
-          />
-        );
+        props.setView(<Notes />);
         break;
 
       default:

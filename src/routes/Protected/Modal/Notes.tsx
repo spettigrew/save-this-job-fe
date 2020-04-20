@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { TextArea, Header, Button } from "semantic-ui-react";
-export default function Notes(props) {
-  const [notes, setNotes] = useState({
-    notes: props.job.notes || ""
-  });
+import { connect } from "react-redux";
+import { updateCurrentJob } from "../../../redux/actions/index";
+function Notes(props) {
   const handleChanges = e => {
     const value = e.target.value;
-    setNotes({
-      ...notes,
+    props.updateCurrentJob({
+      ...props.currentJob,
       [e.target.name]: value
     });
-    props.setUpdatedJob({ ...props.updatedJob, notes: e.target.value });
   };
   return (
     <div>
@@ -20,9 +18,18 @@ export default function Notes(props) {
         rows={20}
         placeholder="Notes"
         name="notes"
-        value={notes.notes}
+        value={props.currentJob.notes}
         onChange={handleChanges}
       />
     </div>
   );
 }
+function mapStateToProps(state) {
+  return {
+    currentJob: state.currentJob
+  };
+}
+const mapDispatchToProps = {
+  updateCurrentJob
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Notes);

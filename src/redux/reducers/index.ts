@@ -11,7 +11,8 @@ import {
   DELETE_JOBS_ERROR,
   UPDATE_JOBS_LOADING,
   UPDATE_JOBS_SUCCESS,
-  UPDATE_JOBS_ERROR
+  UPDATE_JOBS_ERROR,
+  UPDATE_CURRENT_JOB
 } from "../actions/index";
 
 const initialState = {
@@ -123,12 +124,19 @@ export function reducer(state = initialState, action: any): Object {
       } else {
         thisJob = state.currentJob;
       }
-
       return {
         ...state,
         currentJob: {
           ...state.currentJob,
           ...thisJob
+        }
+      };
+    case UPDATE_CURRENT_JOB:
+      return {
+        ...state,
+        currentJob: {
+          ...state.currentJob,
+          ...action.payload
         }
       };
   }
