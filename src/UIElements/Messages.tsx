@@ -6,11 +6,12 @@ const Messages = props => {
   const [visible, setVisible] = useState(props.visible ? props.visible : false);
 
   function handleDismiss() {
+    props.clearMessages();
+
     setVisible(false);
   }
   if (visible) {
     setTimeout(() => {
-      props.clearMessages();
       handleDismiss();
     }, 2500);
   }

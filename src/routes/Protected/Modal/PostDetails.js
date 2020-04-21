@@ -122,6 +122,7 @@ function PostDetails(props) {
                         maxRating={5}
                         clearable
                       />
+                      <Header as="h4" content={props.currentJob.location} />
                       <Calendar
                         onChange={onCalChange}
                         value={

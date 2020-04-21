@@ -30,12 +30,13 @@ const initialState = {
   },
   jobs: [],
   currentJob: {
+    location: "",
     jobTitle: "",
     urlText: "",
     rating: 3,
     description: "",
     notes: "",
-    applicationDeadline: new Date(Date.now()),
+    applicationDeadline: "",
     companyTitle: "",
     companyUrl: ""
   }

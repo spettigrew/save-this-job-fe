@@ -34,7 +34,7 @@ function Details(props) {
                 <input
                   placeholder="Company URL"
                   name="companyUrl"
-                  value={props.currentJob.companyUrl}
+                  value={props.currentJob.companyUrl || ""}
                   onChange={handleChanges}
                 />
               </Form.Field>
@@ -50,7 +50,7 @@ function Details(props) {
                 <input
                   placeholder="Job Post Title"
                   name="jobTitle"
-                  value={props.currentJob.jobTitle}
+                  value={props.currentJob.jobTitle || ""}
                   onChange={handleChanges}
                 />
               </Form.Field>
@@ -62,7 +62,7 @@ function Details(props) {
                 <input
                   placeholder="Job Post URL"
                   name="urlText"
-                  value={props.currentJob.urlText}
+                  value={props.currentJob.urlText || ""}
                   onChange={handleChanges}
                 />
               </Form.Field>

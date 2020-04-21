@@ -18,7 +18,7 @@ function Notes(props) {
         rows={30}
         placeholder="Notes"
         name="notes"
-        value={props.currentJob.notes}
+        value={props.currentJob.notes || ""}
         onChange={handleChanges}
       />
     </div>
