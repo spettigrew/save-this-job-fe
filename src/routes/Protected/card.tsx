@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Image, Icon, Grid } from "semantic-ui-react";
-import Remove from "./Remove";
-import PostDetails from "./PostDetails";
+import { connect } from "react-redux";
+import PostDetails from "./Modal/PostDetails";
 import blue from "../../images/icon.blue.png";
 import yellow from "../../images/icon-yellow.png";
 import pink from "../../images/icon-pink.png";
@@ -9,19 +9,29 @@ import orange from "../../images/icon-orange.png";
 import green from "../../images/icon-green.png";
 import drkBlue from "../../images/icon-drkBlue.png";
 
-export const DashCard = ({ job }) => {
+export default function DashCard(props) {
   const randomIcon = () => {
     const iconArray = [blue, yellow, pink, orange, green, drkBlue];
 
-    let randomNumber = Math.floor(Math.random() * iconArray.length);
+    const randomNumber = Math.floor(Math.random() * iconArray.length);
     return iconArray[randomNumber];
   };
+
+  const job = props.job;
 
   const imgSrc = job.logo || randomIcon();
   return (
     <>
-      <Grid.Column width={4}>
-        <Card raised style={{ marginTop: "50px" }}>
+      <Grid.Column width={5}>
+        <Card
+          raised
+          style={{
+            margin: "50px auto 0",
+            width: "80%",
+            minWidth: "200px",
+            maxWidth: "300px"
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -30,7 +40,7 @@ export const DashCard = ({ job }) => {
               justifyContent: "space-between"
             }}
           >
-            <Image src={imgSrc} ui={false} style={{ width: "50%" }} />
+            <Image src={imgSrc} ui={false} style={{ width: "75px" }} />
           </div>
           <Card.Content>
             <Card.Header>
@@ -57,15 +67,15 @@ export const DashCard = ({ job }) => {
                 width: "100%"
               }}
             >
-              <a href={job.url}>
+              <a href={job.urlText} target="_blank">
                 <Icon name="thumbtack" />
                 View Post
               </a>
-              <PostDetails jobId={job.id} imgSrc={imgSrc} />
+              <PostDetails imgSrc={imgSrc} jobId={job.id} />
             </div>
           </Card.Content>
         </Card>
       </Grid.Column>
     </>
   );
-};
+}

@@ -4,9 +4,19 @@
 div.ui.nav.menu{
     position: fixed;
     width: 100%;
-    zIndex: 3;
+    z-index: 2;
+    
 }
 
 div.ui.detailsNav.menu > .item{
-    width: 33%;
+    width: 50%;
+    text-align:center;
+    display:block;
+
+
 }
+
+div.ui.detailsNav.menu > {
+    margin-top:0;
+}
+

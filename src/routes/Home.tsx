@@ -6,6 +6,8 @@ import cta from "../images/Group 1.png";
 import line from "../images/Line.png";
 import icon from "../images/save-this-job-icon.png";
 import Styled from "styled-components";
+import Loading from "./Protected/Loading";
+import Footer from "./footer";
 import {
   Button,
   Container,
@@ -70,12 +72,11 @@ const StyledDivider = Styled(Divider)({
   margin: "3em 0em",
   marginTop: "5em !important"
 });
-
 function Home() {
   const { authState } = useOktaAuth();
 
   if (authState.isPending) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const HomePageHeader = () => {
@@ -211,6 +212,7 @@ function Home() {
             </StyledButton>
           </Container>
         </StyledBodySegment>
+        <Footer />
       </div>
     );
   };

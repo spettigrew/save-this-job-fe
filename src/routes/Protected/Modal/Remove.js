@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
 
-function Remove({ removeJob, id }) {
+function Remove({ removeJob, id, history }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpen = () => setModalOpen(true);
   const handleClose = () => setModalOpen(false);
   const removeAndClose = () => {
     removeJob(id);
+    history.push("/dashboard");
     return handleClose();
   };
+
   return (
     <div style={{ textAlign: "center" }}>
       <Modal
@@ -19,9 +22,9 @@ function Remove({ removeJob, id }) {
             onClick={handleOpen}
             style={{
               margin: "1em",
-              position: "absolute",
+              position: "relative",
               bottom: "0",
-              right: "0"
+              left: "0%"
             }}
           >
             Remove Job
@@ -49,4 +52,4 @@ function Remove({ removeJob, id }) {
   );
 }
 
-export default Remove;
+export default withRouter(Remove);

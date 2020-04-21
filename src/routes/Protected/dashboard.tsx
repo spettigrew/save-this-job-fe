@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getUser, getJobs, deleteJob } from "../../redux/actions/index";
+import { withRouter } from "react-router";
+import { getUser, getJobs, getCurrentJob } from "../../redux/actions/index";
 import store from "store";
-import { useOktaAuth } from "okta-react-bug-fix";
-import { Redirect } from "react-router-dom";
-import api from "../../utils/api";
-import { DashCard } from "./card";
+import DashCard from "./card";
+import Footer from "../footer";
 import Loading from "./Loading";
 import Styled from "styled-components";
+import Message from "../../UIElements/Messages";
 import {
   Container,
   Grid,
@@ -35,42 +35,44 @@ const Dashboard = props => {
   };
 
   useEffect(() => {
+    setTokenForExtension();
     props.getUser();
     props.getJobs();
-    setTokenForExtension();
   }, []);
 
-  useEffect(() => {
-    if (props) {
-      console.log(props.user);
-    }
-  }, [props]);
   return (
     <StyledBackGround>
       <StyledHeader as="h3">
-        {`Welcome back, ${props.user?.firstName}`}{" "}
+        {`Welcome back, ${props.user?.firstName}`}
       </StyledHeader>
-
-      {props.loading ? (
-        <Loading />
-      ) : (
-        <div style={{ minHeight: "50vh" }}>
-          <Grid stackable container columns="equal">
-            <Grid.Row stretched>
-              <Header as="h3">{props.error}</Header>
-              {props.jobs ? (
-                props.jobs.map((job, index) => (
-                  <DashCard key={index} job={job} />
-                ))
-              ) : (
-                <Header as="h2">
-                  You currently have no jobs saved to your account.
-                </Header>
-              )}
-            </Grid.Row>
-          </Grid>
-        </div>
+      {props.error && (
+        <Message type={"Error"} visible={true} message={props.error.message} />
       )}
+      {props.success?.state && (
+        <Message
+          type={"Success"}
+          visible={true}
+          message={"Successfully Deleted Job"}
+        />
+      )}
+
+      {props.loading && <Loading />}
+      <div style={{ minHeight: "50vh" }}>
+        <Grid stackable container columns="equal">
+          <Grid.Row stretched>
+            {props.jobs &&
+              props.jobs.map((job, index) => (
+                <DashCard key={index} job={job} />
+              ))}
+            {!props.loading && props.jobs && props.jobs.length < 1 && (
+              <Header as="h2">
+                You currently have no jobs saved to your account.
+              </Header>
+            )}
+          </Grid.Row>
+        </Grid>
+      </div>
+      <Footer />
     </StyledBackGround>
   );
 };
@@ -80,13 +82,17 @@ function mapStateToProps(state) {
     user: state.user,
     jobs: state.jobs,
     loading: state.loading,
-    error: state.error
+    error: state.error,
+    success: state.success
   };
 }
 
 const mapDispatchToProps = {
   getUser,
-  getJobs
+  getJobs,
+  getCurrentJob
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+);
