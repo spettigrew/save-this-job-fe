@@ -35,7 +35,7 @@ const initialState = {
     rating: 3,
     description: "",
     notes: "",
-    applicationDeadline: "",
+    applicationDeadline: new Date(Date.now()),
     companyTitle: "",
     companyUrl: ""
   }

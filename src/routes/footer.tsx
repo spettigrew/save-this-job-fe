@@ -20,7 +20,7 @@ function Footer(props) {
       const footerContent = document.querySelector<HTMLElement>("#footer");
       if (
         mainContent.clientHeight <
-        window.innerHeight + footerContent.clientHeight
+        window.innerHeight - footerContent.clientHeight
       ) {
         footerContent.style.position = "absolute";
         footerContent.style.bottom = "0";

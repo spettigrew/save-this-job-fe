@@ -41,6 +41,7 @@ function PostDetails(props) {
   };
 
   const onCalChange = date => {
+    console.log(date);
     props.updateCurrentJob({
       ...props.currentJob,
       applicationDeadline: date
@@ -117,13 +118,17 @@ function PostDetails(props) {
                         style={{ margin: ".5em 0 2em" }}
                         icon="star"
                         onRate={handleChanges}
-                        rating={props.currentJob.rating}
+                        rating={props.currentJob.rating || 3}
                         maxRating={5}
                         clearable
                       />
                       <Calendar
                         onChange={onCalChange}
-                        value={new Date(props.currentJob.applicationDeadline)}
+                        value={
+                          new Date(
+                            props.currentJob.applicationDeadline || Date.now()
+                          )
+                        }
                       />
                       <Remove removeJob={props.deleteJob} id={props.jobId} />
                     </Grid.Column>
