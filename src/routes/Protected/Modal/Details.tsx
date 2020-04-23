@@ -58,7 +58,10 @@ function Details(props) {
 
             <Grid.Column>
               <Form.Field>
-                <label>Job Post URL:</label>
+                <label>
+                  Job Post URL:{" "}
+                  <a href={props.currentJob.urlText || "#"}>view</a>
+                </label>
                 <input
                   placeholder="Job Post URL"
                   name="urlText"

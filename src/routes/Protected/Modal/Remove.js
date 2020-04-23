@@ -39,14 +39,20 @@ function Remove({ removeJob, id, history }) {
         <Modal.Content>
           <h3>Are you sure you want to delete this Job posting?</h3>
         </Modal.Content>
-        <Modal.Actions>
-          <Button basic color="red" onClick={handleClose} inverted>
-            <Icon name="remove" /> Cancel
+        <Modal.Content>
+          <Button
+            style={{ marginRight: "15px" }}
+            basic
+            color="grey"
+            onClick={handleClose}
+            inverted
+          >
+            Cancel
           </Button>
-          <Button color="green" onClick={removeAndClose} inverted>
-            <Icon name="checkmark" /> Delete
+          <Button color="red" onClick={removeAndClose} inverted>
+            <Icon name="remove" /> Remove
           </Button>
-        </Modal.Actions>
+        </Modal.Content>
       </Modal>
     </div>
   );
