@@ -36,7 +36,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject",
-    "lint": "tslint --project"
+    "lint": "tslint --project",
+    "coverage": "CI=true npm run test -- --coverage --watchAll=false || true"
   },
   "browserslist": {
     "production": [
