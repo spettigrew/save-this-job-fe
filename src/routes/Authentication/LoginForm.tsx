@@ -13,7 +13,7 @@ const LoginForm = () => {
       baseUrl: process.env.REACT_APP_BASEURL,
       clientId,
       redirectUri,
-      logo: logo,
+      logo: "logo",
       language: "en",
       brandName: "Save this Job",
       // Overrides default text when using English.
