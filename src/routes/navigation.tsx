@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Image } from "semantic-ui-react";
-import Styled from "styled-components";
 import { useOktaAuth } from "okta-react-bug-fix";
 import logo from "../images/Group 1.png";
-import Loading from "../routes/Protected/Loading";
 import config from "../utils/config";
 
 function Navigation() {
@@ -27,10 +25,6 @@ function Navigation() {
 
     await authService.logout("/");
   };
-
-  // if (authState.isPending) {
-  //   return <Loading />;
-  // }
 
   return (
     <Menu className="nav">

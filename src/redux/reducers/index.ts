@@ -42,7 +42,7 @@ const initialState = {
   }
 };
 
-export function reducer(state = initialState, action: any): Object {
+export function reducer(state = initialState, action: any): object {
   switch (action.type) {
     default:
       return {

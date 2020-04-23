@@ -111,7 +111,10 @@ function PostDetails(props) {
                       width={5}
                     >
                       <div>
-                        <Image size="small" src={props.imgSrc} />
+                        <Image
+                          style={{ maxWidth: "30px", maxHeight: "30px" }}
+                          src={props.imgSrc}
+                        />
                         <Header as="h3" content={props.currentJob.jobTitle} />
                       </div>
                       <Rating

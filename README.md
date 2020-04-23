@@ -1,63 +1,62 @@
 🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
+🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be completed by. Make sure to delete the numbers by the end of Labs.
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Title of project goes here
+# 1️⃣ Save this Job
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+1️⃣ You can find the deployed project at https://www.savethisjob.com/
 
-## 4️⃣ Contributors
+## Save this Job Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
+| [Ken Boelter <img src="https://github.com/favicon.ico" width="20">](https://github.com/krboelter) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/ken-boelter) | [Kevin Carr<img src="https://github.com/favicon.ico" width="20">](https://github.com/kevcarr11) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/kevin-carr) | [Rose Landroche<img src="https://github.com/favicon.ico" width="20">](https://github.com/roselandroche) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/rose-landroche) | [Roger Lee<img src="https://github.com/favicon.ico" width="20">](https://github.com/rm-lee) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/roger-m-lee) | [Michelle Scott<img src="https://github.com/favicon.ico" width="20">](https://github.com/scottmm374) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/michelle-scott)  
+| [Sara Pettigrew<img src="https://github.com/favicon.ico" width="20">](https://github.com/spettigrew) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/sara-pettigrew) | [Aaron Spurgeon<img src="https://github.com/favicon.ico" width="20">](https://github.com/aaronspurgeon) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/aaron-spurgeon) |
 
-|                                                      [Student 1](https://github.com/)                                                       |                                                       [Student 2](https://github.com/)                                                        |                                                      [Student 3](https://github.com/)                                                       |                                                       [Student 4](https://github.com/)                                                        |                                                      [Student 5](https://github.com/)                                                       |
-| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/) |
-|                                [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                                |                            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)                             |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)                           |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)                           |                           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)                            |
-|                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |                 [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                 |                [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/)                |
-
+| [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" /> ](https://github.com/krboelter) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/kevcarr11) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/roselandroche) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/rm-lee) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/scottmm374) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/spettigrew) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/aaronspurgeon)  
 <br>
 <br>
-
 🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
+![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![Maintainability](https://api.codeclimate.com/v1/badges/99a65f2fd0c0526440e3/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/job-book-chrome-ext/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/99a65f2fd0c0526440e3/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/job-book-chrome-ext/test_coverage)
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
 
-## Project Overview
+## Save this Job Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board]https://trello.com/b/cvKexAA0/labspt8-job-book
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas]https://www.notion.so/Save-this-Job-d479015f772845d8b86099d2a9acb252
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+1️⃣ [UX Design files]https://www.figma.com/file/kgXSUPtM7EBnAMRLt9lcMn/Save-this-Job?node-id=0%3A1
 
-🚫 Replace lorem ipsum with a description of your project
+Description of Save this Job project:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Save this Job is a Chrome extension that lets you grab and save job postings with a rating of how interested you are in the job.
 
 ### 4️⃣ Key Features
 
-- feature one
-- feature two
-- feature three
-- feature four
-- feature five
+- Use Chrome extensions from other sites
+- Save job searches, all in one place
+- Keep job searches organized
+- Categorize jobs, applications, interviews, etc.
+- Rate jobs by how much interest you have in the job
 
 ## 1️⃣ Tech Stack
 
 ### Front end built using:
 
 #### _Front end framework goes here_
+
+- React
+- Redux w/ ReduxToolkit (includes hooks)
+- Typescript
 
 🚫 Why did you choose this framework?
 
@@ -72,7 +71,9 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 #### [Back end](🚫link to back end repo here) built using:
 
-#### 🚫 back end framework goes here
+Node/Express
+PostgreSQL
+Hosted on AWS
 
 - point one
 - point two
@@ -84,15 +85,23 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 ## 2️⃣ Authentication API here
 
+https://developer.okta.com/
+
+- Secure register and login
+- 2 point authentication at registering
+- Easier to maintain
+
 🚫Replace text below with a description of the API
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+- Secure register and login
+- 2 point authentication at registering
+- Easier to maintain
 
 ## 2️⃣ Payment API here
 
 🚫Replace text below with a description of the API
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+This is the way you take out your frustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
 
 ## 3️⃣ Misc API here
 
@@ -112,11 +121,6 @@ When you do it your way you can go anywhere you choose. Let your heart take you 
 
 Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
 
-## Code Climate
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/5447db5513a0d0acc8e2/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/job-book-fe/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/5447db5513a0d0acc8e2/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/job-book-fe/test_coverage)
-
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
@@ -131,7 +135,7 @@ In order for the app to function correctly, the user must set up their own envir
     *  REACT_APP_messagingSenderId - in the Firebase dashboard
     *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
     *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
+    *  REACT_APP_clientId - this is the Stripe_connect clientID, generated in Stripe_connect settings
     *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
 
 # 5️⃣ Content Licenses
@@ -155,7 +159,7 @@ In order for the app to function correctly, the user must set up their own envir
 
 🚫replace these examples with your own
 
-    * typecheck - runs the TypeScript compiler
+    * type-check - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
     * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
@@ -199,4 +203,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫*link to your backend readme here*) for details on the backend of our project.
+See [Backend Documentation] https://github.com/Lambda-School-Labs/job-book-be/blob/master/README.mdfor details on the backend of our project.

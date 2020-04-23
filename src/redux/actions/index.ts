@@ -56,7 +56,7 @@ export function deleteJob(jobId) {
       .delete(`/users/removeJob/${jobId}`)
       .then(res => {
         console.log(res.status);
-        if (res.status == 200) {
+        if (res.status === 200) {
           api()
             .get("/users/jobs")
             .then(res => {
@@ -71,10 +71,6 @@ export function deleteJob(jobId) {
       .catch(error => {
         dispatch({ type: DELETE_JOBS_ERROR, payload: error });
       });
-
-    // if (response.toString() === "Jwt is expired") {
-    //  dispatch({type:JWT_EXPIRED,payload:true})
-    // }//<Redirect to="/login" />;
   };
 }
 
@@ -98,7 +94,7 @@ export function updateJob(jobId, job) {
       .put(`/users/updateJob/${jobId}`, job)
       .then(res => {
         console.log(res.status);
-        if (res.status == 200) {
+        if (res.status === 200) {
           api()
             .get("/users/jobs")
             .then(res => {
@@ -113,10 +109,6 @@ export function updateJob(jobId, job) {
       .catch(error => {
         dispatch({ type: UPDATE_JOBS_ERROR, payload: error });
       });
-
-    // if (response.toString() === "Jwt is expired") {
-    //  dispatch({type:JWT_EXPIRED,payload:true})
-    // }//<Redirect to="/login" />;
   };
 }
 export function clearMessages() {
