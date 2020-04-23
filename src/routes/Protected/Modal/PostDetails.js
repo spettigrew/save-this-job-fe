@@ -48,6 +48,11 @@ function PostDetails(props) {
     });
   };
 
+  let editedJob = props.job;
+  useEffect(() => {
+    editedJob = props.currentJob;
+  }, [props.success?.type]);
+
   const [view, setView] = useState();
   return (
     <>
@@ -57,12 +62,14 @@ function PostDetails(props) {
           trigger={
             <Icon
               style={{ cursor: "pointer" }}
-              name="edit"
-              size="large"
+              name="ellipsis horizontal"
+              size="big"
+              color="grey"
               onClick={() => {
                 setOpen(true);
                 props.getCurrentJob(props.jobId);
               }}
+              style={{ margin: "10px", cursor: "pointer" }}
             />
           }
         >
@@ -77,7 +84,7 @@ function PostDetails(props) {
                 }}
               >
                 <h2 style={{ display: "inline-block" }}>
-                  {props.currentJob.companyTitle}
+                  {editedJob.companyTitle}
                 </h2>
                 <Icon
                   name="close"
@@ -112,10 +119,10 @@ function PostDetails(props) {
                     >
                       <div>
                         <Image
-                          style={{ maxWidth: "30px", maxHeight: "30px" }}
+                          style={{ maxHeight: "50px" }}
                           src={props.imgSrc}
                         />
-                        <Header as="h3" content={props.currentJob.jobTitle} />
+                        <Header as="h3" content={editedJob.jobTitle} />
                       </div>
                       <Rating
                         style={{ margin: ".5em 0 2em" }}
@@ -125,27 +132,33 @@ function PostDetails(props) {
                         maxRating={5}
                         clearable
                       />
-                      <Header as="h4" content={props.currentJob.location} />
-                      <Calendar
+                      <Header
+                        as="h4"
+                        content={`Location: ${props.currentJob.location}`}
+                      />
+                      {/*<Calendar
                         onChange={onCalChange}
                         value={
                           new Date(
                             props.currentJob.applicationDeadline || Date.now()
                           )
                         }
-                      />
-                      <Remove removeJob={props.deleteJob} id={props.jobId} />
+                      />*/}
                     </Grid.Column>
                     <div
                       style={{
                         display: "flex",
+                        alignItems: "center",
                         width: "100%",
-                        justifyContent: "flex-end"
+                        justifyContent: "space-between"
                       }}
                     >
-                      <Button onClick={handleSubmit} type="submit">
-                        Update
-                      </Button>
+                      <Remove removeJob={props.deleteJob} id={props.jobId} />
+                      <Button
+                        onClick={handleSubmit}
+                        type="submit"
+                        content="Update"
+                      />
                     </div>
                   </Grid>
                 </Modal.Description>

@@ -39,6 +39,17 @@ const initialState = {
     applicationDeadline: "",
     companyTitle: "",
     companyUrl: ""
+  },
+  unedditedJob: {
+    location: "",
+    jobTitle: "",
+    urlText: "",
+    rating: 3,
+    description: "",
+    notes: "",
+    applicationDeadline: "",
+    companyTitle: "",
+    companyUrl: ""
   }
 };
 

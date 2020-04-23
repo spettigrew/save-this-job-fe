@@ -40,7 +40,12 @@ export default function DashCard(props) {
               justifyContent: "space-between"
             }}
           >
-            <Image src={imgSrc} ui={false} style={{ width: "75px" }} />
+            <Image
+              src={imgSrc}
+              ui={false}
+              style={{ height: "75px", maxWidth: "75%" }}
+            />
+            <PostDetails imgSrc={imgSrc} jobId={job.id} job={job} />
           </div>
           <Card.Content>
             <Card.Header>
@@ -71,7 +76,6 @@ export default function DashCard(props) {
                 <Icon name="thumbtack" />
                 View Post
               </a>
-              <PostDetails imgSrc={imgSrc} jobId={job.id} />
             </div>
           </Card.Content>
         </Card>
