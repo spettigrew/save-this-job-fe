@@ -173,6 +173,7 @@ function PostDetails(props) {
                     >
                       <Remove removeJob={props.deleteJob} id={props.jobId} />
                       <Button
+                        color={props.updateDisabled ? null : "blue"}
                         onClick={handleSubmit}
                         type="submit"
                         content="Update"
