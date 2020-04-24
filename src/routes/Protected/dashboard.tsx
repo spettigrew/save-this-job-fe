@@ -57,7 +57,7 @@ const Dashboard = props => {
       )}
 
       {props.loading && <Loading />}
-      <div style={{ minHeight: "50vh" }}>
+      <div>
         <Grid stackable container columns="equal">
           <Grid.Row stretched>
             {props.jobs &&

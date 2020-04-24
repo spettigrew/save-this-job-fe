@@ -75,10 +75,6 @@ const StyledDivider = Styled(Divider)({
 function Home() {
   const { authState } = useOktaAuth();
 
-  if (authState.isPending) {
-    return <Loading />;
-  }
-
   const HomePageHeader = () => {
     return (
       <StyledBackground>
