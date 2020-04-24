@@ -22,10 +22,12 @@ function Footer(props) {
         mainContent.clientHeight <
         window.innerHeight - footerContent.clientHeight
       ) {
+        console.log("less");
         footerContent.style.position = "absolute";
         footerContent.style.bottom = "0";
         footerContent.style.marginTop = "4em";
       } else {
+        console.log("mored");
         footerContent.style.position = "relative";
         footerContent.style.bottom = "0";
         footerContent.style.marginTop = "4em";

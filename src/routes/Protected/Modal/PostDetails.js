@@ -4,6 +4,7 @@ import {
   Button,
   Image,
   Header,
+  Confirm,
   Icon,
   Form,
   Grid,
@@ -35,6 +36,10 @@ function PostDetails(props) {
       rating: data.rating
     });
   };
+  let editedJob = props.job;
+  useEffect(() => {
+    editedJob = props.currentJob;
+  }, [props.success?.type]);
 
   const handleSubmit = () => {
     props.updateJob(props.jobId, props.currentJob);
@@ -47,15 +52,28 @@ function PostDetails(props) {
       applicationDeadline: date
     });
   };
-
-  let editedJob = props.job;
-  useEffect(() => {
-    editedJob = props.currentJob;
-  }, [props.success?.type]);
+  const [confirmClose, setConfirmClose] = useState(false);
+  function closeModal() {
+    if (!props.updateDisabled) {
+      setConfirmClose(true);
+    } else {
+      setOpen(false);
+    }
+  }
 
   const [view, setView] = useState();
   return (
     <>
+      <Confirm
+        header="Changes Were Made"
+        open={confirmClose}
+        onCancel={() => setConfirmClose(false)}
+        content="Are you sure you want to exit without saving?"
+        onConfirm={() => {
+          setConfirmClose(false);
+          setOpen(false);
+        }}
+      />
       <Responsive>
         <Modal
           open={open}
@@ -94,7 +112,7 @@ function PostDetails(props) {
                   }}
                   color="red"
                   onClick={() => {
-                    setOpen(false);
+                    closeModal();
                   }}
                 />
               </Modal.Header>
@@ -158,6 +176,7 @@ function PostDetails(props) {
                         onClick={handleSubmit}
                         type="submit"
                         content="Update"
+                        disabled={props.updateDisabled}
                       />
                     </div>
                   </Grid>
@@ -174,7 +193,8 @@ function mapStateToProps(state) {
   return {
     jobs: state.jobs,
     currentJob: state.currentJob,
-    success: state.success
+    success: state.success,
+    updateDisabled: state.updateDisabled
   };
 }
 

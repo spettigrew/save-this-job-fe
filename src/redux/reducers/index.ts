@@ -40,17 +40,7 @@ const initialState = {
     companyTitle: "",
     companyUrl: ""
   },
-  unedditedJob: {
-    location: "",
-    jobTitle: "",
-    urlText: "",
-    rating: 3,
-    description: "",
-    notes: "",
-    applicationDeadline: "",
-    companyTitle: "",
-    companyUrl: ""
-  }
+  updateDisabled: true
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -143,7 +133,8 @@ export function reducer(state = initialState, action: any): object {
           state: true,
           type: "Updated",
           message: "Successfully Updated Job"
-        }
+        },
+        updateDisabled: true
       };
     case UPDATE_JOBS_ERROR:
       return {
@@ -163,7 +154,8 @@ export function reducer(state = initialState, action: any): object {
         currentJob: {
           ...state.currentJob,
           ...thisJob
-        }
+        },
+        updateDisabled: true
       };
     case UPDATE_CURRENT_JOB:
       return {
@@ -171,7 +163,8 @@ export function reducer(state = initialState, action: any): object {
         currentJob: {
           ...state.currentJob,
           ...action.payload
-        }
+        },
+        updateDisabled: false
       };
     case CLEAR_MESSAGES:
       return {
