@@ -48,7 +48,7 @@ const Dashboard = props => {
       {props.error && (
         <Message type={"Error"} visible={true} message={props.error.message} />
       )}
-      {props.success?.state && (
+      {props.success?.state && props.success?.type == "Deleted" && (
         <Message
           type={"Success"}
           visible={true}
