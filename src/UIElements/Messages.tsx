@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Message } from "semantic-ui-react";
-import { clearMessages } from "../redux/actions/index";
-import { connect } from "react-redux";
 const Messages = props => {
   const [visible, setVisible] = useState(props.visible ? props.visible : false);
-
-  useEffect(() => {
-    return () => props.clearMessages;
-  }, []);
 
   function handleDismiss() {
     setVisible(false);
   }
+
   if (visible) {
     setTimeout(() => {
       handleDismiss();
@@ -35,7 +30,5 @@ const Messages = props => {
     </>
   );
 };
-const mapDispatchToState = {
-  clearMessages
-};
-export default connect(null, mapDispatchToState)(Messages);
+
+export default Messages;

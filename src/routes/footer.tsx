@@ -9,8 +9,8 @@ const StyledFooter = Styled(Segment)`
   position:relative;
   bottom:-100px;
   margin-top:4em;
-  
-  
+
+
 `;
 
 function Footer(props) {
@@ -19,16 +19,23 @@ function Footer(props) {
       const mainContent = document.querySelector<HTMLElement>("#content");
       const footerContent = document.querySelector<HTMLElement>("#footer");
       if (
-        mainContent.clientHeight <
-        window.innerHeight - footerContent.clientHeight
+        mainContent.offsetHeight <
+        window.innerHeight - footerContent.offsetHeight
       ) {
+        console.log("less");
         footerContent.style.position = "absolute";
         footerContent.style.bottom = "0";
-        footerContent.style.marginTop = "4em";
+        footerContent.style.marginTop = "6em";
       } else {
+        console.log("mored");
         footerContent.style.position = "relative";
         footerContent.style.bottom = "0";
-        footerContent.style.marginTop = "4em";
+        footerContent.style.marginTop = "6em";
+        console.log(
+          window.innerHeight,
+          footerContent.offsetHeight,
+          mainContent.offsetHeight
+        );
       }
     }
   }

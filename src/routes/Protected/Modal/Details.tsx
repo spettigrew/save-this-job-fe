@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Grid, Button, TextArea } from "semantic-ui-react";
+import { Form, Grid, Button, Icon, TextArea, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { updateJob, updateCurrentJob } from "../../../redux/actions/index";
 function Details(props) {
@@ -10,7 +10,7 @@ function Details(props) {
       [e.target.name]: value
     });
   };
-
+  const [editUrl, setEditUrl] = useState(false);
   return (
     <>
       <Form style={{ marginLeft: "20px" }}>
@@ -57,18 +57,56 @@ function Details(props) {
             </Grid.Column>
 
             <Grid.Column>
-              <Form.Field>
-                <label>
-                  Job Post URL:{" "}
-                  <a href={props.currentJob.urlText || "#"}>view</a>
-                </label>
-                <input
-                  placeholder="Job Post URL"
-                  name="urlText"
-                  value={props.currentJob.urlText || ""}
-                  onChange={handleChanges}
-                />
-              </Form.Field>
+              {editUrl ? (
+                <Form.Field>
+                  <label style={{ fontWeight: "bold" }}>
+                    Job Post URL:
+                    <Icon
+                      style={{ marginLeft: "20px", cursor: "pointer" }}
+                      name="edit"
+                      color="blue"
+                      onClick={() => setEditUrl(!editUrl)}
+                    />
+                  </label>
+
+                  <input
+                    placeholder="Job Post URL"
+                    name="urlText"
+                    value={props.currentJob.urlText || ""}
+                    onChange={handleChanges}
+                  />
+                </Form.Field>
+              ) : (
+                <>
+                  <label style={{ fontWeight: "bold" }}>
+                    Job Post URL:
+                    <Icon
+                      style={{ marginLeft: "20px", cursor: "pointer" }}
+                      name="edit"
+                      color="blue"
+                      onClick={() => setEditUrl(!editUrl)}
+                    />
+                  </label>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      height: "80%",
+                      width: "100%"
+                    }}
+                  >
+                    <a
+                      style={{ fontSize: "1.1rem" }}
+                      href={props.currentJob.urlText || "#"}
+                    >
+                      {props.currentJob.urlText.length > 27
+                        ? props.currentJob.urlText.slice(0, 24) + "..."
+                        : props.currentJob.urlText}
+                    </a>
+                  </div>
+                </>
+              )}
             </Grid.Column>
           </Grid.Row>
         </Grid>

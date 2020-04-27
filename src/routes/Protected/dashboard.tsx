@@ -48,7 +48,7 @@ const Dashboard = props => {
       {props.error && (
         <Message type={"Error"} visible={true} message={props.error.message} />
       )}
-      {props.success?.state && (
+      {props.success?.state && props.success?.type == "Deleted" && (
         <Message
           type={"Success"}
           visible={true}
@@ -57,7 +57,7 @@ const Dashboard = props => {
       )}
 
       {props.loading && <Loading />}
-      <div style={{ minHeight: "50vh" }}>
+      <div>
         <Grid stackable container columns="equal">
           <Grid.Row stretched>
             {props.jobs &&
