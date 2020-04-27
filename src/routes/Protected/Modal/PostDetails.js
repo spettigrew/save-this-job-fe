@@ -117,7 +117,7 @@ function PostDetails(props) {
                 />
               </Modal.Header>
               <DetailsNav setView={setView} />
-              {props.success?.state && (
+              {props.success?.state && props.success?.type === "Updated" && (
                 <Messages
                   visible={true}
                   type={props.success.type}

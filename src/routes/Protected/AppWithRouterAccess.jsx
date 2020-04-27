@@ -15,17 +15,16 @@ const AppWithRouterAccess = () => {
   };
 
   return (
-    <Security 
+    <Security
       {...config.oidc}
       onAuthRequired={onAuthRequired}
-    ><div  id="content">
-      <Navigation />
-      <div>
+    >
+      <div id="content">
+        <Navigation />
         <Route exact path='/' component={Home} />
         <Route exact path="/implicit/callback" component={LoginCallback} />
         <Route exact path="/login" component={LoginForm} />
         <SecureRoute exact path="/dashboard" component={Dashboard} />
-      </div>
       </div>
     </Security>
   );

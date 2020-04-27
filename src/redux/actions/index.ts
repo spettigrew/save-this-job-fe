@@ -62,6 +62,11 @@ export function deleteJob(jobId) {
             .then(res => {
               dispatch({ type: DELETE_JOBS_SUCCESS, payload: res.data });
             })
+            .then(() => {
+              setTimeout(() => {
+                dispatch({ type: CLEAR_MESSAGES });
+              }, 2500);
+            })
 
             .catch(error => {
               dispatch({ type: DELETE_JOBS_ERROR, payload: error });
@@ -99,6 +104,11 @@ export function updateJob(jobId, job) {
             .get("/users/jobs")
             .then(res => {
               dispatch({ type: UPDATE_JOBS_SUCCESS, payload: res.data });
+            })
+            .then(() => {
+              setTimeout(() => {
+                dispatch({ type: CLEAR_MESSAGES });
+              }, 2500);
             })
 
             .catch(error => {
