@@ -45,9 +45,9 @@ const Dashboard = props => {
       <StyledHeader as="h3">
         {`Welcome back, ${props.user?.firstName}`}
       </StyledHeader>
-      {props.error && (
+      {/* {props.error && (
         <Message type={"Error"} visible={true} message={props.error.message} />
-      )}
+      )} */}
       {props.success?.state && props.success?.type == "Deleted" && (
         <Message
           type={"Success"}
