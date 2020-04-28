@@ -8,6 +8,7 @@ function getToken() {
 function api() {
   return axios.create({
     baseURL: baseApi(),
+
     headers: {
       Authorization: `Bearer ${getToken()}`
     }
