@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_API_URL } from "./constants";
+import { baseApi } from "./constants";
 
 function getToken() {
   return localStorage.getItem("token");
@@ -7,7 +7,8 @@ function getToken() {
 
 function api() {
   return axios.create({
-    baseURL: BASE_API_URL,
+    baseURL: baseApi(),
+
     headers: {
       Authorization: `Bearer ${getToken()}`
     }
