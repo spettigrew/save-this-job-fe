@@ -50,7 +50,9 @@ export default function DashCard(props) {
           <Card.Content>
             <Card.Header>
               {job.companyUrl ? (
-                <a href={job.companyUrl}>{job.companyTitle}</a>
+                <a href={job.companyUrl} target="_blank">
+                  {job.companyTitle}
+                </a>
               ) : (
                 job.companyTitle
               )}
