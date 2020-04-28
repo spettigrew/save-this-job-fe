@@ -1,13 +1,9 @@
-import React, { useState } from "react";
-import "./App.css";
-import Footer from "./routes/footer";
+import React from "react";
 import AppWithRouterAccess from "./routes/Protected/AppWithRouterAccess";
-
 import "semantic-ui-less/semantic.less";
-
 function App() {
   return (
-    <div className="App">
+    <div>
       <AppWithRouterAccess />
     </div>
   );

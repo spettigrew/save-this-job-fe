@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
-import Styled from "styled-components";
+import { Menu, Image } from "semantic-ui-react";
 import { useOktaAuth } from "okta-react-bug-fix";
 import logo from "../images/Group 1.png";
-
 import config from "../utils/config";
-
-const LogoImg = Styled.img`
-width: 80px !important;
-`;
 
 function Navigation() {
   const [activeItem, setActiveItem] = useState<string>();
@@ -24,22 +18,16 @@ function Navigation() {
   const logout = async () => {
     // Read idToken before local session is cleared
     const idToken = authState.idToken;
-    await authService.logout("/");
-    // clear user email and token that was set for the extension
-    localStorage.removeItem("email");
+    // clear user token that was set for the extension
     localStorage.removeItem("token");
     // Clear remote session
     window.location.href = `${issuer}/v1/logout?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
+
+    await authService.logout("/");
   };
 
-  if (authState.isPending) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <Menu
-      style={{ top: "0", position: "fixed", zIndex: "99999", width: "100%" }}
-    >
+    <Menu className="nav">
       <Menu.Item
         as={Link}
         to="/"
@@ -49,7 +37,7 @@ function Navigation() {
           handleItemClick("save_this_job");
         }}
       >
-        {<LogoImg src={logo} alt="save this job" />}
+        {<Image src={logo} size="tiny" spaced alt="save this job" />}
       </Menu.Item>
       {authState.isAuthenticated ? (
         <>

@@ -1,14 +1,18 @@
 import axios from "axios";
+import { baseApi } from "./constants";
 
-export const getToken = () => {
+function getToken() {
   return localStorage.getItem("token");
-};
+}
 
-export const api = () => {
-  axios.create({
-    baseURL: "",
+function api() {
+  return axios.create({
+    baseURL: baseApi(),
+
     headers: {
-      Authorization: getToken()
+      Authorization: `Bearer ${getToken()}`
     }
   });
-};
+}
+
+export default api;
