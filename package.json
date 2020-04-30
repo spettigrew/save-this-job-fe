@@ -43,9 +43,12 @@
     "coverage": "CI=true npm run test -- --coverage --watchAll=false || true"
   },
   "jest": {
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    }
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts,tsx}", 
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__tests__/**"
+    ]
   },
   "browserslist": {
     "production": [

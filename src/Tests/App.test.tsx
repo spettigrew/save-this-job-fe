@@ -2,19 +2,37 @@ import React from "react";
 import { render } from "@testing-library/react";
 import Footer from "../routes/footer";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
+import { createStore } from "redux";
 import { reducer } from "../redux/reducers/index";
-import { composeWithDevTools } from "redux-devtools-extension";
+import Home from "../routes/Home";
+const store = createStore(reducer);
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
-
-test("renders learn react link", () => {
+jest.mock("okta-react-bug-fix", () => ({
+  useOktaAuth: () => {
+    return {
+      authState: {},
+      authService: {}
+    };
+  }
+}));
+test("should render button", () => {
   const { getByText } = render(
     <Provider store={store}>
       <Footer />
     </Provider>
   );
   const linkElement = getByText(/Sitemap/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+test("should render h3", () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
+  const myMock = jest.fn();
+
+  const linkElement = getByText(/How do I get the extension?/i);
   expect(linkElement).toBeInTheDocument();
 });
