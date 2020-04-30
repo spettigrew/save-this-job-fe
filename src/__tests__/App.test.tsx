@@ -6,6 +6,10 @@ import { createStore } from "redux";
 import { reducer } from "../redux/reducers/index";
 import Home from "../routes/Home";
 const store = createStore(reducer);
+//set env to staging for baseUrl use
+beforeAll(() => {
+  process.env = Object.assign(process.env, { NODE_ENV: "staging" });
+});
 
 jest.mock("okta-react-bug-fix", () => ({
   useOktaAuth: () => {

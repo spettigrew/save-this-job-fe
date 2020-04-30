@@ -15,7 +15,6 @@
     "@types/redux-logger": "^3.0.7",
     "@types/styled-components": "^5.0.1",
     "axios": "^0.19.2",
-    "jest": "^25.5.2",
     "okta-react-bug-fix": "^2.0.7",
     "react": "^16.13.0",
     "react-calendar": "^3.0.1",
@@ -44,7 +43,7 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "**/*.{js,jsx,ts,tsx}", 
+      "**/*.{js,jsx,ts,tsx}",
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/__tests__/**"
