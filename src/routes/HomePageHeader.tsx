@@ -46,7 +46,6 @@ function HomePageHeader() {
           </StyledButton>
         </StyledContainer>
       </StyledBackground>
-      );
     </div>
   );
 }
