@@ -54,7 +54,13 @@ function TopBodySegment() {
             </StyledParagraph>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
-            <StyledTimeImg bordered rounded size="large" src={time} />
+            <StyledTimeImg
+              bordered
+              rounded
+              size="large"
+              src={time}
+              data-testid="time"
+            />
             <Image alt="icon" src={line} />
           </Grid.Column>
         </Grid.Row>

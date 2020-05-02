@@ -73,6 +73,7 @@ function BottomBodySection() {
           view.
             </StyledParagraph>
         <StyledButton
+          data-testid="login-button"
           animated="fade"
           size="huge"
           href={`${window.location.origin}/login`}
