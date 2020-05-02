@@ -6,12 +6,9 @@ import {
   Header,
   Confirm,
   Icon,
-  Form,
   Grid,
-  TextArea,
   Responsive,
-  Rating,
-  Label
+  Rating
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import {
@@ -23,7 +20,6 @@ import {
 import Remove from "./Remove";
 import DetailsNav from "./DetailsNav";
 import Messages from "../../../UIElements/Messages";
-import Calendar from "react-calendar";
 import "./Cal.css";
 
 function PostDetails(props) {
@@ -154,14 +150,6 @@ function PostDetails(props) {
                         as="h4"
                         content={`Location: ${props.currentJob.location}`}
                       />
-                      {/*<Calendar
-                        onChange={onCalChange}
-                        value={
-                          new Date(
-                            props.currentJob.applicationDeadline || Date.now()
-                          )
-                        }
-                      />*/}
                     </Grid.Column>
                     <div
                       style={{
@@ -190,6 +178,7 @@ function PostDetails(props) {
     </>
   );
 }
+
 function mapStateToProps(state) {
   return {
     jobs: state.jobs,
