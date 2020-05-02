@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import { reducer } from "../redux/reducers/index";
 import Home from "../routes/Home";
+import Navigation from "../routes/Protected/Modal/DetailsNav";
 const store = createStore(reducer);
 //set env to staging for baseUrl use
 beforeAll(() => {
@@ -40,4 +41,33 @@ test("should render h3", () => {
 
   const linkElement = getByText(/How do I get the extension?/i);
   expect(linkElement).toBeInTheDocument();
+});
+
+it("button should be enabled", () => {
+  const { getByTestId } = render(
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
+  expect(getByTestId("button-up")).not.toHaveAttribute("disabled");
+});
+
+test("should render text on hover", () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
+  const callToAction = getByText(/Install Extension/i);
+  expect(callToAction).toBeInTheDocument();
+});
+
+test("Render string Problem", () => {
+  const { getByText } = render(
+    <Provider store={store}>
+      <Home />
+    </Provider>
+  );
+  const element = { getByText }.getByText(/Problem/i);
+  expect(element).toBeVisible();
 });
