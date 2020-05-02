@@ -47,7 +47,10 @@ function MiddleBodySegment() {
             <StyledParagraph>
               The extension is available for download in the chrome web store.
               Click{" "}
-              <a href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl">
+              <a
+                data-testid="chromeLink"
+                href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
+              >
                 here
               </a>{" "}
               to get started.

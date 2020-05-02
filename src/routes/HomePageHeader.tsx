@@ -37,6 +37,7 @@ function HomePageHeader() {
           <LineImg alt="icon" src={line} />
 
           <StyledButton
+            data-testid="main-button"
             animated="fade"
             size="huge"
             href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
