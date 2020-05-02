@@ -14,6 +14,7 @@ module.exports = {
       "<rootDir>/src/__tests__/Mocks/filemocks.js",
     "\\.(css|less)$": "<rootDir>src/__tests__/Mocks/filemocks.js"
   },
+  testPathIgnorePatterns: ["<rootDir>/src/__tests__/Mocks"],
   transformIgnorePatterns: ["node_modules/?!(react-router)"],
   // Runs special logic, such as cleaning up components
   // when using React Testing Library and adds special
