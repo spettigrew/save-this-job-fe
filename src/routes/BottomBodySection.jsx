@@ -69,10 +69,11 @@ function BottomBodySection() {
             </StyledHeaderAsH3>
         <StyledParagraph>
           Visualize the state of your job search in a kanban board. See how
-          many applications, interviews and offers youâ€™ve received in one
+          many applications, interviews and offers you've received in one
           view.
             </StyledParagraph>
         <StyledButton
+          data-testid="login-button"
           animated="fade"
           size="huge"
           href={`${window.location.origin}/login`}
