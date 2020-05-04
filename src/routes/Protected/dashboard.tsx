@@ -2,37 +2,17 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getUser, getJobs, getCurrentJob } from "../../redux/actions/index";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import store from "store";
 import DashCard from "./card";
-import Footer from "../footer";
 import Loading from "./Loading";
-import Styled from "styled-components";
 import Message from "../../UIElements/Messages";
-import {
-  Container,
-  Grid,
-  Header,
-  List,
-  Segment,
-  Dimmer,
-  Image
-} from "semantic-ui-react";
-
-const StyledHeader = Styled(Header)({
-  paddingTop: "100px",
-  marginLeft: "5%"
-});
-
-const StyledBackGround = Styled.div`
-  background: #F3F8F9;
-`;
+import { Header } from "semantic-ui-react";
+import { onDragEnd } from "./dragDropContext/onDragEnd";
+import { initialColumn } from "./dragDropContext/initialColumn";
 
 const Dashboard = props => {
-  // This is used for the purpose of the chrome extension to authenticate users once they login
-  const setTokenForExtension = () => {
-    const token = store.get("okta-token-storage").accessToken.accessToken;
-    localStorage.setItem("token", token);
-  };
+  const [columns, setColumns] = useState(initialColumn);
 
   useEffect(() => {
     setTokenForExtension();
@@ -40,14 +20,32 @@ const Dashboard = props => {
     props.getJobs();
   }, []);
 
+  useEffect(() => {
+    handleJobs();
+  }, [props.jobs]);
+
+  // This is used for the purpose of the chrome extension to authenticate users once they login
+  const setTokenForExtension = () => {
+    const token = store.get("okta-token-storage").accessToken.accessToken;
+    localStorage.setItem("token", token);
+  };
+
+  const handleJobs = () => {
+    props.jobs &&
+      setColumns({
+        ...columns,
+        ["column-1"]: {
+          name: "Interested",
+          items: props.jobs
+        }
+      });
+  };
+
   return (
-    <StyledBackGround>
-      <StyledHeader as="h3">
-        {`Welcome back, ${props.user?.firstName}`}
-      </StyledHeader>
-      {/* {props.error && (
+    <>
+      {props.error && (
         <Message type={"Error"} visible={true} message={props.error.message} />
-      )} */}
+      )}
       {props.success?.state && props.success?.type == "Deleted" && (
         <Message
           type={"Success"}
@@ -56,24 +54,97 @@ const Dashboard = props => {
         />
       )}
 
+      {!props.loading && props.jobs && props.jobs.length < 1 && (
+        <Header as="h2">
+          You currently have no jobs saved to your account.
+        </Header>
+      )}
       {props.loading && <Loading />}
-      <div>
-        <Grid stackable container columns="equal">
-          <Grid.Row stretched>
-            {props.jobs &&
-              props.jobs.map((job, index) => (
-                <DashCard key={index} job={job} />
-              ))}
-            {!props.loading && props.jobs && props.jobs.length < 1 && (
-              <Header as="h2">
-                You currently have no jobs saved to your account.
-              </Header>
-            )}
-          </Grid.Row>
-        </Grid>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          height: "100%",
+          paddingTop: "100px"
+        }}
+      >
+        <DragDropContext
+          onDragEnd={result => onDragEnd(result, columns, setColumns)}
+        >
+          {Object.entries(columns).map(([columnId, column], index) => {
+            return (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "290px",
+                  verticalAlign: "top",
+                  padding: "30px 10px",
+                  borderLeft: "1px solid #ece9f2",
+                  height: "100%",
+                  overflow: "hidden"
+                }}
+                key={columnId}
+              >
+                <h2
+                  style={{
+                    fontFamily: "Lato",
+                    fontSize: "16px"
+                  }}
+                >
+                  {column.name}
+                </h2>
+                <div style={{ margin: 8 }}>
+                  <Droppable droppableId={columnId} key={columnId}>
+                    {(provided, snapshot) => {
+                      return (
+                        <div
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                          style={{
+                            background: snapshot.isDraggingOver
+                              ? "#08A6C9"
+                              : "",
+                            padding: 4,
+                            width: 250,
+                            minHeight: 1000
+                          }}
+                        >
+                          {props.jobs &&
+                            column.items.map((item, index) => {
+                              return (
+                                <Draggable
+                                  key={item.id.toString()}
+                                  draggableId={item.id.toString()}
+                                  index={index}
+                                >
+                                  {(provided, snapshot) => {
+                                    return (
+                                      <div
+                                        ref={provided.innerRef}
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                      >
+                                        <DashCard key={index} job={item} />
+                                      </div>
+                                    );
+                                  }}
+                                </Draggable>
+                              );
+                            })}
+                          {provided.placeholder}
+                        </div>
+                      );
+                    }}
+                  </Droppable>
+                </div>
+              </div>
+            );
+          })}
+        </DragDropContext>
       </div>
-      <Footer />
-    </StyledBackGround>
+    </>
   );
 };
 
