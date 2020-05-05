@@ -19,6 +19,7 @@ import {
 } from "../../../redux/actions/index";
 import Remove from "./Remove";
 import DetailsNav from "./DetailsNav";
+import Tasks from "./Tasks";
 import Messages from "../../../UIElements/Messages";
 import "./Cal.css";
 
@@ -150,6 +151,7 @@ function PostDetails(props) {
                         as="h4"
                         content={`Location: ${props.currentJob.location}`}
                       />
+                      <Tasks />
                     </Grid.Column>
                     <div
                       style={{
