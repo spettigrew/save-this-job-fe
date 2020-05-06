@@ -1,0 +1,17 @@
+#trapezoid {
+  border-bottom: 30px solid #08a6c9;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 100px;
+  transform: rotate(90deg);
+  position: absolute;
+  left: 0;
+  margin-left: -40px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 2;
+  color: white;
+  margin-top: 100px;
+  backdrop-filter: 4px 4px 2px black;
+}
