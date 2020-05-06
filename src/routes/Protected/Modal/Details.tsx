@@ -113,7 +113,7 @@ function Details(props) {
 
         <h3>Job Details:</h3>
         <TextArea
-          style={{ resize: "none" }}
+          style={{ resize: "none", width: "100%" }}
           rows={20}
           placeholder="Job Description"
           name="description"

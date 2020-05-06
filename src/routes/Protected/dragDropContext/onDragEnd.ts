@@ -1,4 +1,4 @@
-export const onDragEnd = (result, columns, setColumns) => {
+export const onDragEnd = (result, columns, setColumns, updateJob) => {
   if (!result.destination) return;
   const { source, destination } = result;
 
@@ -20,6 +20,9 @@ export const onDragEnd = (result, columns, setColumns) => {
         items: destItems
       }
     });
+    updateJob(localStorage.getItem("jobId"), {
+      column_id: destination.droppableId
+    });
   } else {
     const column = columns[source.droppableId];
     const copiedItems = [...column.items];
@@ -32,5 +35,6 @@ export const onDragEnd = (result, columns, setColumns) => {
         items: copiedItems
       }
     });
+    updateJob(localStorage.getItem("jobId"), { index: destination.index });
   }
 };

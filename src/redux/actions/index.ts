@@ -19,6 +19,9 @@ export const UPDATE_JOBS_LOADING = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOBS_SUCCESS = "UPDATE_JOBS_SUCCESS";
 export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
 
+export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
+export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
+
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 
 export function getUser() {
@@ -93,7 +96,7 @@ export function updateCurrentJob(job) {
 export function updateJob(jobId, job) {
   console.log(job);
   return dispatch => {
-    dispatch({ type: UPDATE_JOBS_LOADING });
+    // dispatch({ type: UPDATE_JOBS_LOADING });
 
     api()
       .put(`/users/updateJob/${jobId}`, job)
@@ -121,6 +124,7 @@ export function updateJob(jobId, job) {
       });
   };
 }
+
 export function clearMessages() {
   return dispatch => {
     dispatch({ type: CLEAR_MESSAGES });
