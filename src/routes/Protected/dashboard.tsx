@@ -38,6 +38,7 @@ const Dashboard = props => {
   const handleJobs = () => {
     const filterJobs = columnId => {
       const jobs = props.jobs;
+      console.log(jobs);
       const filterColumns = jobs.filter(job => job.column_id === columnId);
       filterColumns.sort(function(a, b) {
         return a.index - b.index;
