@@ -1,15 +1,22 @@
-import React, { useState } from "react";
-import { List, Header, Form, Button } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { List, Header, Form, Button, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { getTasks } from "../../../redux/actions/index";
 
 function Tasks(props) {
-  const handleChanges = e => {
-    const value = e.target.value;
-    // props.updateCurrentJob({
-    //   ...props.currentJob,
-    //   [e.target.name]: value,
-    // });
-  };
+  // const handleChanges = (e) => {
+  //   const value = e.target.value;
+  //   props.updateCurrentTask({
+  //     ...props.currentTask,
+  //     [e.target.name]: value,
+  //   });
+  // };
+
+  useEffect(() => {
+    props.getTasks();
+  }, []);
+
+  console.log("tasks", props.tasks);
 
   return (
     <div>
@@ -22,12 +29,23 @@ function Tasks(props) {
 
         <Form.Button>Submit</Form.Button>
       </Form>
-      <List></List>
+      <List>
+        {props.tasks?.map(task => (
+          <List.Item>
+            {task.taskName}
+            {task.date}
+          </List.Item>
+        ))}
+      </List>
     </div>
   );
 }
 function mapStateToProps(state) {
-  return {};
+  return {
+    tasks: state.tasks
+  };
 }
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getTasks
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

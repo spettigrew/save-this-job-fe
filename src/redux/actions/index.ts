@@ -1,5 +1,6 @@
 import api from "../../utils/api";
 import store from "store";
+import { applyMiddleware } from "redux";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
 export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
@@ -18,6 +19,13 @@ export const DELETE_JOBS_ERROR = "DELETE_JOBS_ERROR";
 export const UPDATE_JOBS_LOADING = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOBS_SUCCESS = "UPDATE_JOBS_SUCCESS";
 export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
+
+export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
+export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
+
+export const GET_TASKS_LOADING = "GET_TASK_LOADING";
+export const GET_TASKS_ERROR = "GET_TASKS_ERROR";
+export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
 
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 
@@ -93,7 +101,7 @@ export function updateCurrentJob(job) {
 export function updateJob(jobId, job) {
   console.log(job);
   return dispatch => {
-    dispatch({ type: UPDATE_JOBS_LOADING });
+    // dispatch({ type: UPDATE_JOBS_LOADING });
 
     api()
       .put(`/users/updateJob/${jobId}`, job)
@@ -121,6 +129,25 @@ export function updateJob(jobId, job) {
       });
   };
 }
+
+export function getTasks() {
+  return dispatch => {
+    dispatch({ type: GET_TASKS_LOADING });
+    // api()
+    // .get("/tasks")
+    // .then((res) => {
+    dispatch({
+      type: GET_TASKS_SUCCESS,
+      payload: [{ taskName: "apply", date: "02/20/2020", completed: false }]
+    });
+    // })
+
+    //     .catch((error) => {
+    //       dispatch({ type: GET_TASKS_ERROR, payload: error });
+    //     });
+  };
+}
+
 export function clearMessages() {
   return dispatch => {
     dispatch({ type: CLEAR_MESSAGES });

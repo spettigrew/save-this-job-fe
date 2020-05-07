@@ -13,6 +13,9 @@ import {
   UPDATE_JOBS_SUCCESS,
   UPDATE_JOBS_ERROR,
   UPDATE_CURRENT_JOB,
+  GET_TASKS_ERROR,
+  GET_TASKS_LOADING,
+  GET_TASKS_SUCCESS,
   CLEAR_MESSAGES
 } from "../actions/index";
 
@@ -40,6 +43,7 @@ const initialState = {
     companyTitle: "",
     companyUrl: ""
   },
+  tasks: [],
   updateDisabled: true
 };
 
@@ -165,6 +169,21 @@ export function reducer(state = initialState, action: any): object {
           ...action.payload
         },
         updateDisabled: false
+      };
+    case GET_TASKS_LOADING:
+      return { ...state, loading: true };
+
+    case GET_TASKS_SUCCESS:
+      return {
+        ...state,
+        tasks: action.payload,
+        loading: false
+      };
+    case GET_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       };
     case CLEAR_MESSAGES:
       return {
