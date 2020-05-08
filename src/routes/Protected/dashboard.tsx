@@ -27,7 +27,7 @@ const Dashboard = props => {
 
   useEffect(() => {
     handleJobs();
-  }, [props.jobs]);
+  }, [props.loading]);
 
   // This is used for the purpose of the chrome extension to authenticate users once they login
   const setTokenForExtension = () => {
@@ -38,11 +38,8 @@ const Dashboard = props => {
   const handleJobs = () => {
     const filterJobs = columnId => {
       const jobs = props.jobs;
-      console.log(jobs);
-      const filterColumns = jobs.filter(job => job.column_id === columnId);
-      filterColumns.sort(function(a, b) {
-        return a.index - b.index;
-      });
+      const filterColumns =
+        jobs && jobs.filter(job => job.column_id === columnId);
       return filterColumns;
     };
     props.jobs &&
@@ -70,6 +67,7 @@ const Dashboard = props => {
         }
       });
   };
+  props.jobs && console.log(columns, "look here");
 
   return (
     <div>

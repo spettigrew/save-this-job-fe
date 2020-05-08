@@ -35,6 +35,5 @@ export const onDragEnd = (result, columns, setColumns, updateJob) => {
         items: copiedItems
       }
     });
-    updateJob(localStorage.getItem("jobId"), { index: destination.index });
   }
 };
