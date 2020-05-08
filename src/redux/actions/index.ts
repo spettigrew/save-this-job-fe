@@ -94,14 +94,12 @@ export function updateCurrentJob(job) {
   };
 }
 export function updateJob(jobId, job) {
-  console.log(job);
   return dispatch => {
     // dispatch({ type: UPDATE_JOBS_LOADING });
 
     api()
       .put(`/users/updateJob/${jobId}`, job)
       .then(res => {
-        console.log(res.status);
         if (res.status === 200) {
           api()
             .get("/users/jobs")

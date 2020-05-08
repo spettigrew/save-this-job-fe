@@ -40,60 +40,98 @@ const Dashboard = props => {
       const jobs = props.jobs;
       const filterColumns =
         jobs && jobs.filter(job => job.column_id === columnId);
+
       return filterColumns;
     };
+
+    const storageCheck = column_id => {
+      try {
+        const items = localStorage.getItem("destItems");
+
+        if (!items) {
+          return undefined;
+        }
+
+        const parsedItems = JSON.parse(items);
+        const columnChange_id = localStorage.getItem("destId");
+
+        if (columnChange_id === column_id) {
+          console.log(columnChange_id);
+          return parsedItems;
+        }
+      } catch (err) {
+        console.log(err);
+        return undefined;
+      }
+    };
+
     props.jobs &&
       setColumns({
         ...columns,
         ["column-1"]: {
-          name: "Interested",
-          items: filterJobs("column-1")
+          ...columns["column-1"],
+          items: !storageCheck("column-1")
+            ? filterJobs("column-1")
+            : storageCheck("column-1")
         },
         ["column-2"]: {
-          name: "Applied",
-          items: filterJobs("column-2")
+          ...columns["column-2"],
+          items: !storageCheck("column-2")
+            ? filterJobs("column-2")
+            : storageCheck("column-2")
         },
         ["column-3"]: {
-          name: "Interview",
-          items: filterJobs("column-3")
+          ...columns["column-3"],
+          items: !storageCheck("column-3")
+            ? filterJobs("column-3")
+            : storageCheck("column-3")
         },
         ["column-4"]: {
-          name: "Offer",
-          items: filterJobs("column-4")
+          ...columns["column-4"],
+          items: !storageCheck("column-4")
+            ? filterJobs("column-4")
+            : storageCheck("column-4")
         },
         ["column-5"]: {
-          name: "Rejected",
-          items: filterJobs("column-5")
+          ...columns["column-5"],
+          items: !storageCheck("column-5")
+            ? filterJobs("column-5")
+            : storageCheck("column-5")
         }
       });
   };
-  props.jobs && console.log(columns, "look here");
 
   return (
-    <div>
-      {props.error && (
-        <Message type={"Error"} visible={true} message={props.error.message} />
-      )}
-      {props.success?.state && props.success?.type == "Deleted" && (
-        <Message
-          type={"Success"}
-          visible={true}
-          message={"Successfully Deleted Job"}
-        />
-      )}
+    <div style={{ paddingTop: "100px" }}>
+      <div>
+        {props.error && (
+          <Message
+            type={"Error"}
+            visible={true}
+            message={props.error.message}
+          />
+        )}
+        {props.success?.state && props.success?.type == "Deleted" && (
+          <Message
+            type={"Success"}
+            visible={true}
+            message={"Successfully Deleted Job"}
+          />
+        )}
 
-      {!props.loading && props.jobs && props.jobs.length < 1 && (
-        <Header as="h2">
-          You currently have no jobs saved to your account.
-        </Header>
-      )}
-      {props.loading && <Loading />}
+        {!props.loading && props.jobs && props.jobs.length < 1 && (
+          <Header as="h2">
+            You currently have no jobs saved to your account.
+          </Header>
+        )}
+        {props.loading && <Loading />}
+      </div>
+
       <div
         style={{
           display: "flex",
           justifyContent: "center",
-          height: "100%",
-          paddingTop: "100px"
+          height: "100%"
         }}
       >
         <DragDropContext
