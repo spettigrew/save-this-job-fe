@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Image, Icon, Confirm } from "semantic-ui-react";
+import { Card, Image, Confirm } from "semantic-ui-react";
 import PostDetails from "./Modal/PostDetails";
 import blue from "../../images/icon.blue.png";
 
