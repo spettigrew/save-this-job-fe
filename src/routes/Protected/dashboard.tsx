@@ -131,7 +131,10 @@ const Dashboard = props => {
         style={{
           display: "flex",
           justifyContent: "center",
-          height: "100%"
+          height: "100%",
+          width: "100%",
+          maxWidth: "100%",
+          margin: "0, auto"
         }}
       >
         <DragDropContext
@@ -146,9 +149,9 @@ const Dashboard = props => {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  width: "280px",
+                  width: "262px",
                   verticalAlign: "top",
-                  padding: "30px 10px",
+                  padding: "25px 8px",
                   borderLeft: "1px solid #ece9f2",
                   height: "85vh",
                   overflow: "auto",
@@ -192,7 +195,8 @@ const Dashboard = props => {
                             padding: 20,
                             width: 260,
                             height: "auto",
-                            minHeight: "67vh"
+                            minHeight: "67vh",
+                            minWidth: 260
                           }}
                         >
                           {props.jobs &&

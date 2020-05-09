@@ -44,8 +44,8 @@ export default function DashCard(props) {
         }}
         raised
         style={{
-          margin: "10px auto 0",
-          minWidth: "200px"
+          margin: "8px auto 0",
+          minWidth: "180px"
         }}
       >
         <Card.Content>
