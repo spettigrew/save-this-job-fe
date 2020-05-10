@@ -4,7 +4,6 @@ import { Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Pin from "./Pin";
 import axios from "axios";
-import { getLatAndLong } from "../utils/GetLatLongApi";
 function MapDisplay(props) {
   const token =
     "pk.eyJ1Ijoicm1sZWUwMDAiLCJhIjoiY2szM21qZjZ1MHRkeDNtb2IyNnFvOHFuMiJ9.2WbYxj4f5zia415x9pIYdA";
@@ -36,7 +35,6 @@ function MapDisplay(props) {
       }
     });
   }, []);
-  console.log(jobs);
   function getWindowWidth() {
     setViewport({ ...viewport, width: window.innerWidth });
   }

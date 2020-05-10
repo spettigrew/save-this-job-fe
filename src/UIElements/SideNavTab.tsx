@@ -8,7 +8,7 @@ export default function SideNavTab(props) {
         props.setVisible(true);
       }}
     >
-      Menu
+      <p> Menu</p>
     </div>
   );
 }

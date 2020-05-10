@@ -13,8 +13,11 @@ import {
   UPDATE_JOBS_SUCCESS,
   UPDATE_JOBS_ERROR,
   UPDATE_CURRENT_JOB,
-  CLEAR_MESSAGES
+  CLEAR_MESSAGES,
+  TAGS,
+  TAG_FILTER
 } from "../actions/index";
+import Tags from "../../UIElements/Tags";
 
 const initialState = {
   loading: false,
@@ -29,6 +32,7 @@ const initialState = {
     lastName: ""
   },
   jobs: [],
+  filteredJobs: [],
   currentJob: {
     location: "",
     jobTitle: "",
@@ -40,7 +44,8 @@ const initialState = {
     companyTitle: "",
     companyUrl: ""
   },
-  updateDisabled: true
+  updateDisabled: true,
+  tags: []
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -174,6 +179,24 @@ export function reducer(state = initialState, action: any): object {
           type: "",
           message: ""
         }
+      };
+    case TAGS:
+      let jobIds = [];
+      state.jobs.forEach(job => {
+        jobIds = [...jobIds, job.id];
+      });
+      let filteredTags = action.payload.filter(tag => {
+        return jobIds.indexOf(tag.jobPosts_id) > -1;
+      });
+      return {
+        ...state,
+        tags: filteredTags
+      };
+    case TAG_FILTER:
+      console.log(action.payload);
+      return {
+        ...state,
+        jobs: action.payload
       };
   }
 }

@@ -31,7 +31,6 @@ const Dashboard = props => {
     const token = store.get("okta-token-storage").accessToken.accessToken;
     localStorage.setItem("token", token);
   };
-  const [visible, setVisible] = useState(false);
   const handleJobs = () => {
     props.jobs &&
       setColumns({
@@ -46,8 +45,7 @@ const Dashboard = props => {
   return (
     <>
       {" "}
-      <SideBar visible={visible} setVisible={setVisible}>
-        <SideNavTab setVisible={setVisible} />
+      <SideBar>
         {props.error && (
           <Message
             type={"Error"}

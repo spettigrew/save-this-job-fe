@@ -11,6 +11,7 @@ import {
   Rating
 } from "semantic-ui-react";
 import { connect } from "react-redux";
+import TagDropdown from "../../../UIElements/Tags";
 import {
   deleteJob,
   updateCurrentJob,
@@ -150,6 +151,7 @@ function PostDetails(props) {
                         as="h4"
                         content={`Location: ${props.currentJob.location}`}
                       />
+                      <TagDropdown jobID={props.jobId} />
                     </Grid.Column>
                     <div
                       style={{

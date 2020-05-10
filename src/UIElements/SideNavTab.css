@@ -12,6 +12,11 @@
   cursor: pointer;
   z-index: 2;
   color: white;
-  margin-top: 100px;
-  backdrop-filter: 4px 4px 2px black;
+  top: 100px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  filter: drop-shadow(20px 35px 15px #333333);
+}
+p {
+  padding-top: 5%;
 }
