@@ -23,7 +23,8 @@ export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
 
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
-
+export const TAG_FILTER = "TAG_FILTER";
+export const TAGS = "TAGS";
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
@@ -38,6 +39,7 @@ export function getUser() {
 
 export function getJobs() {
   return dispatch => {
+    console.log("fired get jobs");
     dispatch({ type: GET_JOBS_LOADING });
     api()
       .get("/users/jobs")
@@ -126,5 +128,37 @@ export function updateJob(jobId, job) {
 export function clearMessages() {
   return dispatch => {
     dispatch({ type: CLEAR_MESSAGES });
+  };
+}
+export function getTags() {
+  return dispatch => {
+    api()
+      .get("/tags")
+      .then(res => {
+        dispatch({ type: TAGS, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function addTag(tag, id) {
+  console.log(tag);
+  return dispatch => {
+    api()
+      .post(`/tags/addTag/${id}`, { tagName: tag })
+      .then(res => {
+        api()
+          .get("/tags")
+          .then(res => {
+            dispatch({ type: TAGS, payload: res.data });
+          });
+      });
+  };
+}
+export function filterByTag(tag) {
+  return dispatch => {
+    dispatch({ type: TAG_FILTER, payload: tag });
   };
 }
