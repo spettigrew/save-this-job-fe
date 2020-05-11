@@ -19,6 +19,9 @@ export const UPDATE_JOBS_LOADING = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOBS_SUCCESS = "UPDATE_JOBS_SUCCESS";
 export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
 
+export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
+export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
+
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const TAG_FILTER = "TAG_FILTER";
 export const TAGS = "TAGS";
@@ -36,6 +39,7 @@ export function getUser() {
 
 export function getJobs() {
   return dispatch => {
+    console.log("fired get jobs");
     dispatch({ type: GET_JOBS_LOADING });
     api()
       .get("/users/jobs")
@@ -92,14 +96,12 @@ export function updateCurrentJob(job) {
   };
 }
 export function updateJob(jobId, job) {
-  console.log(job);
   return dispatch => {
-    dispatch({ type: UPDATE_JOBS_LOADING });
+    // dispatch({ type: UPDATE_JOBS_LOADING });
 
     api()
       .put(`/users/updateJob/${jobId}`, job)
       .then(res => {
-        console.log(res.status);
         if (res.status === 200) {
           api()
             .get("/users/jobs")
@@ -122,6 +124,7 @@ export function updateJob(jobId, job) {
       });
   };
 }
+
 export function clearMessages() {
   return dispatch => {
     dispatch({ type: CLEAR_MESSAGES });
@@ -141,6 +144,7 @@ export function getTags() {
 }
 
 export function addTag(tag, id) {
+  console.log(tag);
   return dispatch => {
     api()
       .post(`/tags/addTag/${id}`, { tagName: tag })
@@ -153,11 +157,8 @@ export function addTag(tag, id) {
       });
   };
 }
-export function filterByTag(tag, jobs) {
+export function filterByTag(tag) {
   return dispatch => {
-    let filteredJobs = jobs.filter(job => {
-      return job.tag.includes(tag);
-    });
-    dispatch({ type: TAG_FILTER, payload: filteredJobs });
+    dispatch({ type: TAG_FILTER, payload: tag });
   };
 }

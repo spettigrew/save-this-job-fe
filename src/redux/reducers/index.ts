@@ -185,18 +185,28 @@ export function reducer(state = initialState, action: any): object {
       state.jobs.forEach(job => {
         jobIds = [...jobIds, job.id];
       });
-      let filteredTags = action.payload.filter(tag => {
+      let usersTags = action.payload.filter(tag => {
         return jobIds.indexOf(tag.jobPosts_id) > -1;
       });
       return {
         ...state,
-        tags: filteredTags
+        tags: usersTags
       };
+
     case TAG_FILTER:
-      console.log(action.payload);
+      let postIds = [];
+      let filteredTags = state.tags.filter(tag => {
+        return tag.tagName === action.payload;
+      }); //tags that match[{"dfs",postid :3},{"dfs",postid :5}]
+      filteredTags.forEach(tag => {
+        postIds = [...postIds, tag.jobPosts_id];
+      });
+      let filteredJobs = state.jobs.filter(job => {
+        return postIds.indexOf(job.id) > -1;
+      });
       return {
         ...state,
-        jobs: action.payload
+        jobs: filteredJobs
       };
   }
 }

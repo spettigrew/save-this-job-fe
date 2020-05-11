@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Dropdown, Input } from "semantic-ui-react";
+import { Dropdown, Input, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { getTags, getJobs } from "../redux/actions/index";
+import { getTags, getJobs, filterByTag } from "../redux/actions/index";
 
 function SearchAndFilter(props) {
   const [tags, setTags] = useState([]);
@@ -51,7 +51,9 @@ function SearchAndFilter(props) {
     <Dropdown
       style={{ width: "100%" }}
       text="Filter Jobs"
-      icon="filter"
+      icon={
+        <Icon name="refresh" onClick={() => props.getJobs()} color="blue" />
+      }
       floating
       labeled
       button
@@ -71,10 +73,21 @@ function SearchAndFilter(props) {
         />
         <Dropdown.Divider />
         <Dropdown.Header icon="tags" content="Tag Label" />
+        <Dropdown.Item onClick={() => props.getJobs()}>
+          Clear Filter
+        </Dropdown.Item>
+        <Dropdown.Divider />
+
         <Dropdown.Menu style={{ maxHeight: "100px" }} scrolling>
           {/*make onClick to set filtered job posts only with option.value as tag */}
           {filteredTags.map(option => (
-            <Dropdown.Item key={option.value} {...option} />
+            <Dropdown.Item
+              key={option.value}
+              onClick={() => {
+                props.filterByTag(option.text);
+              }}
+              {...option}
+            />
           ))}
         </Dropdown.Menu>
       </Dropdown.Menu>
@@ -90,6 +103,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   getTags,
+  filterByTag,
   getJobs
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SearchAndFilter);

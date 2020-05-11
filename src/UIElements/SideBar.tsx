@@ -31,11 +31,15 @@ export default function SideBar(props) {
           vertical
           visible={visible}
         >
-          <Header textAlign="center">Save This Job</Header>
-          <SearchAndFilter />
           <List selection>
+            <SearchAndFilter />
             <List.Item
-              style={{ fontSize: "1.2rem", color: "#333", textAlign: "center" }}
+              style={{
+                fontSize: "1.2rem",
+                color: "#333",
+                textAlign: "center",
+                marginTop: "5px"
+              }}
               onClick={() => setMapView(!mapView)}
             >
               <Icon
@@ -44,6 +48,29 @@ export default function SideBar(props) {
               />
               <List.Content>
                 <List.Header>{!mapView ? "Map View" : "Kanban"}</List.Header>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ marginTop: "10px" }}>
+              <Icon color={"blue"} name={"briefcase"} />
+              <List.Content>
+                <List.Header
+                  style={{ textAlign: "center", fontSize: "1.2rem" }}
+                >
+                  {" "}
+                  Find Jobs
+                </List.Header>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a href="https://indeed.com">Indeed</a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a href="https://careerbuilder.com">CareerBuilder</a>
               </List.Content>
             </List.Item>
           </List>

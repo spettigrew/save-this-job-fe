@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import Pin from "./Pin";
 import axios from "axios";
 function MapDisplay(props) {
-  const token =
-    "pk.eyJ1Ijoicm1sZWUwMDAiLCJhIjoiY2szM21qZjZ1MHRkeDNtb2IyNnFvOHFuMiJ9.2WbYxj4f5zia415x9pIYdA";
+  const token = "";
 
   const [viewport, setViewport] = useState({
     latitude: 29.8946952,

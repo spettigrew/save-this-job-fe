@@ -24,7 +24,6 @@ import Messages from "../../../UIElements/Messages";
 import "./Cal.css";
 
 function PostDetails(props) {
-  const [open, setOpen] = useState(false);
   const handleChanges = (e, data) => {
     const value = e.target.value;
     props.updateCurrentJob({
@@ -49,45 +48,20 @@ function PostDetails(props) {
       applicationDeadline: date
     });
   };
-  const [confirmClose, setConfirmClose] = useState(false);
-  function closeModal() {
-    if (!props.updateDisabled) {
-      setConfirmClose(true);
-    } else {
-      setOpen(false);
-    }
-  }
+  // const [confirmClose, setConfirmClose] = useState(false);
+  // function closeModal() {
+  //   if (!props.updateDisabled) {
+  //     setConfirmClose(true);
+  //   } else {
+  //     props.setOpen(false);
+  //   }
+  // }
 
   const [view, setView] = useState();
   return (
     <>
-      <Confirm
-        header="Changes Were Made"
-        open={confirmClose}
-        onCancel={() => setConfirmClose(false)}
-        content="Are you sure you want to exit without saving?"
-        onConfirm={() => {
-          setConfirmClose(false);
-          setOpen(false);
-        }}
-      />
       <Responsive>
-        <Modal
-          open={open}
-          trigger={
-            <Icon
-              style={{ cursor: "pointer" }}
-              name="ellipsis horizontal"
-              size="big"
-              color="grey"
-              onClick={() => {
-                setOpen(true);
-                props.getCurrentJob(props.jobId);
-              }}
-              style={{ margin: "10px", cursor: "pointer" }}
-            />
-          }
-        >
+        <Modal open={props.open}>
           {props.currentJob && (
             <>
               <Modal.Header
@@ -108,9 +82,7 @@ function PostDetails(props) {
                     cursor: "pointer"
                   }}
                   color="red"
-                  onClick={() => {
-                    closeModal();
-                  }}
+                  onClick={() => props.closeModal()}
                 />
               </Modal.Header>
               <DetailsNav setView={setView} />
