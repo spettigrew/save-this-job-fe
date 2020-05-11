@@ -27,6 +27,10 @@ export const GET_TASKS_LOADING = "GET_TASK_LOADING";
 export const GET_TASKS_ERROR = "GET_TASKS_ERROR";
 export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
 
+export const GET_INTERVIEWS_LOADING = "GET_INTERVIEWS_LOADING";
+export const GET_INTERVIEWS_ERROR = "GET_INTERVIEWS_ERROR";
+export const GET_INTERVIEWS_SUCCESS = "GET_INTERVIEWS_SUCCESS";
+
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 
 export function getUser() {
@@ -139,6 +143,26 @@ export function getTasks() {
     dispatch({
       type: GET_TASKS_SUCCESS,
       payload: [{ taskName: "apply", date: "02/20/2020", completed: false }]
+    });
+    // })
+
+    //     .catch((error) => {
+    //       dispatch({ type: GET_TASKS_ERROR, payload: error });
+    //     });
+  };
+}
+
+export function getInterviews() {
+  return dispatch => {
+    dispatch({ type: GET_INTERVIEWS_LOADING });
+    // api()
+    // .get("/tasks")
+    // .then((res) => {
+    dispatch({
+      type: GET_INTERVIEWS_SUCCESS,
+      payload: [
+        { interviewName: "Phone 1st", date: "02/20/2020", time: "2:30 pm" }
+      ]
     });
     // })
 

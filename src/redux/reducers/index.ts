@@ -16,6 +16,9 @@ import {
   GET_TASKS_ERROR,
   GET_TASKS_LOADING,
   GET_TASKS_SUCCESS,
+  GET_INTERVIEWS_ERROR,
+  GET_INTERVIEWS_LOADING,
+  GET_INTERVIEWS_SUCCESS,
   CLEAR_MESSAGES
 } from "../actions/index";
 
@@ -44,7 +47,8 @@ const initialState = {
     companyUrl: ""
   },
   tasks: [],
-  updateDisabled: true
+  updateDisabled: true,
+  interviews: []
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -180,6 +184,21 @@ export function reducer(state = initialState, action: any): object {
         loading: false
       };
     case GET_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case GET_INTERVIEWS_LOADING:
+      return { ...state, loading: true };
+
+    case GET_INTERVIEWS_SUCCESS:
+      return {
+        ...state,
+        interviews: action.payload,
+        loading: false
+      };
+    case GET_INTERVIEWS_ERROR:
       return {
         ...state,
         loading: false,
