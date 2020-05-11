@@ -40,7 +40,7 @@ const Dashboard = props => {
       const jobs = props.jobs;
       const filterColumns =
         jobs && jobs.filter(job => job.column_id === columnId);
-
+      console.log(jobs);
       return filterColumns;
     };
 
