@@ -29,7 +29,7 @@ const Dashboard = props => {
   useEffect(() => {
     handleJobs();
   }, [props.loading, props.jobs]);
-  console.log(props.jobs);
+  
   // This is used for the purpose of the chrome extension to authenticate users once they login
   const setTokenForExtension = () => {
     const token = store.get("okta-token-storage").accessToken.accessToken;
@@ -42,7 +42,7 @@ const Dashboard = props => {
       const filterColumns =
         jobs && jobs.filter(job => job.column_id === columnId);
 
-      return jobs;
+      return filterColumns;
     };
 
     const storageCheck = column_id => {
