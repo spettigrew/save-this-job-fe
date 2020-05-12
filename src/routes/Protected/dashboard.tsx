@@ -29,7 +29,7 @@ const Dashboard = props => {
   useEffect(() => {
     handleJobs();
   }, [props.loading, props.jobs]);
-  
+
   // This is used for the purpose of the chrome extension to authenticate users once they login
   const setTokenForExtension = () => {
     const token = store.get("okta-token-storage").accessToken.accessToken;
@@ -41,7 +41,7 @@ const Dashboard = props => {
       const jobs = props.jobs;
       const filterColumns =
         jobs && jobs.filter(job => job.column_id === columnId);
-
+      console.log(jobs);
       return filterColumns;
     };
 
@@ -57,8 +57,9 @@ const Dashboard = props => {
         const columnChange_id = localStorage.getItem("destId");
 
         if (columnChange_id === column_id) {
-          console.log(columnChange_id);
           return parsedItems;
+        } else {
+          return filterJobs(column_id);
         }
       } catch (err) {
         console.log(err);
@@ -103,8 +104,8 @@ const Dashboard = props => {
   };
 
   return (
-    <SideBar>
-      <div style={{ paddingTop: "100px" }}>
+    <SideBar user={props.user}>
+      <div style={{ paddingTop: "36px" }}>
         <div>
           {props.error && (
             <Message
@@ -151,20 +152,24 @@ const Dashboard = props => {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    width: "262px",
+                    width: "280px",
                     verticalAlign: "top",
-                    padding: "25px 8px",
+                    padding: "20px 20px",
                     borderLeft: "1px solid #ece9f2",
-                    height: "85vh",
-                    overflow: "auto",
-                    position: "relative"
+                    height: "95vh",
+                    overflow: "auto"
                   }}
                   key={columnId}
                 >
                   <div
                     style={{
-                      zIndex: 100,
-                      position: "relative"
+                      height: "80px",
+                      margin: 0,
+                      alignItems: "center",
+                      position: "fixed",
+                      background: "#f4f8f9",
+                      zIndex: 10000000000,
+                      width: "250px"
                     }}
                   >
                     <h2
@@ -172,18 +177,16 @@ const Dashboard = props => {
                       style={{
                         fontFamily: "Lato",
                         fontSize: "16px",
-                        position: "relative",
-                        padding: "0px 15px",
-                        height: "40px",
-                        margin: "10px",
-                        overflow: "hidden"
+                        padding: "40px 45px",
+                        height: "50px",
+                        textAlign: "center"
                       }}
                     >
                       {column.name}
                     </h2>
                   </div>
 
-                  <div style={{ margin: 8 }}>
+                  <div style={{ paddingTop: 80 }}>
                     <Droppable droppableId={columnId} key={columnId}>
                       {(provided, snapshot) => {
                         return (
@@ -195,10 +198,10 @@ const Dashboard = props => {
                                 ? "#B4E4EE"
                                 : "",
                               padding: 20,
-                              width: 260,
+                              width: 269,
                               height: "auto",
-                              minHeight: "67vh",
-                              minWidth: 260
+                              minHeight: "78vh",
+                              minWidth: 269
                             }}
                           >
                             {props.jobs &&

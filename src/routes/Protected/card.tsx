@@ -49,7 +49,14 @@ export default function DashCard(props) {
         }}
       >
         <Card.Content>
-          <Card.Header style={{ textOverflow: "ellipsis" }}>
+          <Card.Header
+            style={{
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              width: "180px"
+            }}
+          >
             <Image
               src={imgSrc}
               ui={false}
@@ -58,15 +65,16 @@ export default function DashCard(props) {
                 marginRight: "15px"
               }}
             />
-            {job.companyUrl ? (
-              <a href={job.companyUrl} target="_blank">
-                {job.companyTitle}
-              </a>
-            ) : (
-              job.companyTitle
-            )}
+            {job.companyTitle}
           </Card.Header>
-          <Card.Description style={{ textOverflow: "ellipsis" }}>
+          <Card.Description
+            style={{
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              width: "180px"
+            }}
+          >
             {job.jobTitle}
           </Card.Description>
         </Card.Content>

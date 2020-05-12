@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import Pin from "./Pin";
 import axios from "axios";
 function MapDisplay(props) {
-  const token = "";
-
   const [viewport, setViewport] = useState({
     latitude: 29.8946952,
     longitude: -81.3145395,
@@ -24,7 +22,7 @@ function MapDisplay(props) {
       if (job.location) {
         axios
           .get(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${job.location}.json?access_token=${token}`
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${job.location}.json?access_token=${process.env.REACT_APP_MAP_TOKEN}`
           )
           .then(res => {
             let coords = res.data.features[0].center;
@@ -50,8 +48,8 @@ function MapDisplay(props) {
         <div style={fixWidth}>
           <ReactMapGl
             {...viewport}
-            mapboxApiAccessToken={token}
-            mapStyle="mapbox://styles/rmlee000/ck9svicmu088e1imr6o2pq1ff"
+            mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
+            mapStyle={process.env.REACT_APP_MAP_STYLE}
             onViewportChange={viewport => {
               setViewport(viewport);
             }}
@@ -86,11 +84,7 @@ function MapDisplay(props) {
                 }}
               >
                 <div style={pop}>
-                  <img
-                    style={imgStyle}
-                    src={clickedExp.logo}
-                    alt="experience"
-                  />
+                  <img style={imgStyle} src={clickedExp.logo} alt="" />
                   <h3>{clickedExp.jobTitle}</h3>
                   <p>{clickedExp.companyTitle}</p>
                 </div>

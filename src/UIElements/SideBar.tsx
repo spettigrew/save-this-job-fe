@@ -16,7 +16,6 @@ import SearchAndFilter from "./SearchAndFilter";
 export default function SideBar(props) {
   const [mapView, setMapView] = useState(false);
   const [visible, setVisible] = useState(false);
-
   return (
     <Sidebar.Pushable style={{ height: "100%", overflowY: "hidden" }}>
       <div onMouseLeave={() => setVisible(false)}>
@@ -31,6 +30,7 @@ export default function SideBar(props) {
           visible={visible}
         >
           <List selection>
+            <h5>{`Welcome Back, ${props.user && props.user.firstName}`}</h5>
             <SearchAndFilter />
             <List.Item
               style={{
