@@ -1,6 +1,6 @@
 export function baseApi() {
   const ENV = {
-    development: "https://staging-save-this-job.herokuapp.com",
+    development: "http://localhost:8080",
     staging: "https://staging-save-this-job.herokuapp.com",
     production: "https://save-this-job.herokuapp.com"
   };

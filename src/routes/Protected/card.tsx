@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Image, Icon, Confirm } from "semantic-ui-react";
+import { Card, Image, Confirm } from "semantic-ui-react";
 import PostDetails from "./Modal/PostDetails";
 import blue from "../../images/icon.blue.png";
 
@@ -44,12 +44,19 @@ export default function DashCard(props) {
         }}
         raised
         style={{
-          margin: "10px auto 0",
-          minWidth: "200px"
+          margin: "8px auto 0",
+          minWidth: "180px"
         }}
       >
         <Card.Content>
-          <Card.Header style={{ textOverflow: "ellipsis" }}>
+          <Card.Header
+            style={{
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              width: "180px"
+            }}
+          >
             <Image
               src={imgSrc}
               ui={false}
@@ -58,15 +65,16 @@ export default function DashCard(props) {
                 marginRight: "15px"
               }}
             />
-            {job.companyUrl ? (
-              <a href={job.companyUrl} target="_blank">
-                {job.companyTitle}
-              </a>
-            ) : (
-              job.companyTitle
-            )}
+            {job.companyTitle}
           </Card.Header>
-          <Card.Description style={{ textOverflow: "ellipsis" }}>
+          <Card.Description
+            style={{
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              whiteSpace: "nowrap",
+              width: "180px"
+            }}
+          >
             {job.jobTitle}
           </Card.Description>
         </Card.Content>

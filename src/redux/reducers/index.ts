@@ -13,23 +13,11 @@ import {
   UPDATE_JOBS_SUCCESS,
   UPDATE_JOBS_ERROR,
   UPDATE_CURRENT_JOB,
-  GET_TASKS_ERROR,
-  GET_TASKS_LOADING,
-  GET_TASKS_SUCCESS,
-  ADD_TASKS_ERROR,
-  ADD_TASKS_LOADING,
-  ADD_TASKS_SUCCESS,
-  UPDATE_TASKS_ERROR,
-  UPDATE_TASKS_LOADING,
-  UPDATE_TASKS_SUCCESS,
-  DELETE_TASKS_ERROR,
-  DELETE_TASKS_LOADING,
-  DELETE_TASKS_SUCCESS,
-  GET_INTERVIEWS_ERROR,
-  GET_INTERVIEWS_LOADING,
-  GET_INTERVIEWS_SUCCESS,
-  CLEAR_MESSAGES
+  CLEAR_MESSAGES,
+  TAGS,
+  TAG_FILTER
 } from "../actions/index";
+import Tags from "../../UIElements/Tags";
 
 const initialState = {
   loading: false,
@@ -44,6 +32,7 @@ const initialState = {
     lastName: ""
   },
   jobs: [],
+  filteredJobs: [],
   currentJob: {
     location: "",
     jobTitle: "",
@@ -55,9 +44,8 @@ const initialState = {
     companyTitle: "",
     companyUrl: ""
   },
-  tasks: [],
   updateDisabled: true,
-  interviews: []
+  tags: []
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -248,6 +236,34 @@ export function reducer(state = initialState, action: any): object {
           type: "",
           message: ""
         }
+      };
+    case TAGS:
+      let jobIds = [];
+      state.jobs.forEach(job => {
+        jobIds = [...jobIds, job.id];
+      });
+      let usersTags = action.payload.filter(tag => {
+        return jobIds.indexOf(tag.jobPosts_id) > -1;
+      });
+      return {
+        ...state,
+        tags: usersTags
+      };
+
+    case TAG_FILTER:
+      let postIds = [];
+      let filteredTags = state.tags.filter(tag => {
+        return tag.tagName === action.payload;
+      }); //tags that match[{"dfs",postid :3},{"dfs",postid :5}]
+      filteredTags.forEach(tag => {
+        postIds = [...postIds, tag.jobPosts_id];
+      });
+      let filteredJobs = state.jobs.filter(job => {
+        return postIds.indexOf(job.id) > -1;
+      });
+      return {
+        ...state,
+        jobs: filteredJobs
       };
   }
 }
