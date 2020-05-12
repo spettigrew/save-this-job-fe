@@ -16,6 +16,15 @@ import {
   GET_TASKS_ERROR,
   GET_TASKS_LOADING,
   GET_TASKS_SUCCESS,
+  ADD_TASKS_ERROR,
+  ADD_TASKS_LOADING,
+  ADD_TASKS_SUCCESS,
+  UPDATE_TASKS_ERROR,
+  UPDATE_TASKS_LOADING,
+  UPDATE_TASKS_SUCCESS,
+  DELETE_TASKS_ERROR,
+  DELETE_TASKS_LOADING,
+  DELETE_TASKS_SUCCESS,
   GET_INTERVIEWS_ERROR,
   GET_INTERVIEWS_LOADING,
   GET_INTERVIEWS_SUCCESS,
@@ -184,6 +193,33 @@ export function reducer(state = initialState, action: any): object {
         loading: false
       };
     case GET_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case DELETE_TASKS_LOADING:
+      return {
+        ...state,
+        loading: true,
+        success: {
+          state: false,
+          type: "",
+          message: ""
+        }
+      };
+    case DELETE_TASKS_SUCCESS:
+      return {
+        ...state,
+        tasks: action.payload,
+        loading: false,
+        success: {
+          state: true,
+          type: "Deleted",
+          message: "Task Successfully Deleted"
+        }
+      };
+    case DELETE_TASKS_ERROR:
       return {
         ...state,
         loading: false,

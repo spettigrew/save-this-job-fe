@@ -27,6 +27,10 @@ export const GET_TASKS_LOADING = "GET_TASK_LOADING";
 export const GET_TASKS_ERROR = "GET_TASKS_ERROR";
 export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
 
+export const DELETE_TASKS_LOADING = "DELETE_JOBS_LOADING";
+export const DELETE_TASKS_SUCCESS = "DELETE_TASKS_SUCCESS";
+export const DELETE_TASKS_ERROR = "DELETE_TASKS_ERROR";
+
 export const GET_INTERVIEWS_LOADING = "GET_INTERVIEWS_LOADING";
 export const GET_INTERVIEWS_ERROR = "GET_INTERVIEWS_ERROR";
 export const GET_INTERVIEWS_SUCCESS = "GET_INTERVIEWS_SUCCESS";
@@ -137,18 +141,49 @@ export function updateJob(jobId, job) {
 export function getTasks() {
   return dispatch => {
     dispatch({ type: GET_TASKS_LOADING });
-    // api()
-    // .get("/tasks")
-    // .then((res) => {
-    dispatch({
-      type: GET_TASKS_SUCCESS,
-      payload: [{ taskName: "apply", date: "02/20/2020", completed: false }]
-    });
-    // })
+    api()
+      .get("/tasks")
+      .then(res => {
+        dispatch({
+          type: GET_TASKS_SUCCESS,
+          payload: [{ taskName: "apply", date: "02/20/2020", completed: false }]
+        });
+      })
 
-    //     .catch((error) => {
-    //       dispatch({ type: GET_TASKS_ERROR, payload: error });
-    //     });
+      .catch(error => {
+        dispatch({ type: GET_TASKS_ERROR, payload: error });
+      });
+  };
+}
+
+export function deleteTask(taskId) {
+  return dispatch => {
+    dispatch({ type: DELETE_TASKS_LOADING });
+
+    api()
+      .delete(`/users/ADD WHAT IS NEEDED/${taskId}`)
+      .then(res => {
+        console.log(res.status);
+        if (res.status === 200) {
+          api()
+            .get("")
+            .then(res => {
+              dispatch({ type: DELETE_TASKS_SUCCESS, payload: res.data });
+            })
+            .then(() => {
+              setTimeout(() => {
+                dispatch({ type: CLEAR_MESSAGES });
+              }, 2500);
+            })
+
+            .catch(error => {
+              dispatch({ type: DELETE_TASKS_ERROR, payload: error });
+            });
+        }
+      })
+      .catch(error => {
+        dispatch({ type: DELETE_TASKS_ERROR, payload: error });
+      });
   };
 }
 
