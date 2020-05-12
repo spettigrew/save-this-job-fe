@@ -12,7 +12,6 @@ import {
 } from "semantic-ui-react";
 import MapView from "./MapView";
 import SideNavTab from "./SideNavTab";
-import Footer from "../routes/footer";
 import SearchAndFilter from "./SearchAndFilter";
 export default function SideBar(props) {
   const [mapView, setMapView] = useState(false);
@@ -64,13 +63,46 @@ export default function SideBar(props) {
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
-                <a href="https://indeed.com">Indeed</a>
+                <a target="_blank" href="https://indeed.com">
+                  Indeed
+                </a>
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
-                <a href="https://careerbuilder.com">CareerBuilder</a>
+                <a target="_blank" href="https://careerbuilder.com">
+                  CareerBuilder
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a target="_blank" href="https://monster.com">
+                  Monster
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Header style={{ textAlign: "center", fontSize: "1.2rem" }}>
+                {" "}
+                Cost of Living
+              </List.Header>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Image
+                style={{ width: "15px" }}
+                src="https://a.omappapi.com/users/b7a235343fc6/images/db14e90f97e61563891076-04-Social-square-B.png"
+              />
+
+              <List.Content style={{ width: "91%" }}>
+                <a
+                  target="_blank"
+                  href="https://www.bankrate.com/calculators/savings/moving-cost-of-living-calculator.aspx"
+                >
+                  Bankrate
+                </a>
               </List.Content>
             </List.Item>
           </List>
