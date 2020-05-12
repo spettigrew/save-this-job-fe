@@ -13,6 +13,18 @@ import {
   UPDATE_JOBS_SUCCESS,
   UPDATE_JOBS_ERROR,
   UPDATE_CURRENT_JOB,
+  GET_TASKS_ERROR,
+  GET_TASKS_LOADING,
+  GET_TASKS_SUCCESS,
+  ADD_TASKS_ERROR,
+  ADD_TASKS_LOADING,
+  ADD_TASKS_SUCCESS,
+  UPDATE_TASKS_ERROR,
+  UPDATE_TASKS_LOADING,
+  UPDATE_TASKS_SUCCESS,
+  DELETE_TASKS_ERROR,
+  DELETE_TASKS_LOADING,
+  DELETE_TASKS_SUCCESS,
   CLEAR_MESSAGES,
   TAGS,
   TAG_FILTER
@@ -213,21 +225,7 @@ export function reducer(state = initialState, action: any): object {
         loading: false,
         error: action.payload
       };
-    case GET_INTERVIEWS_LOADING:
-      return { ...state, loading: true };
 
-    case GET_INTERVIEWS_SUCCESS:
-      return {
-        ...state,
-        interviews: action.payload,
-        loading: false
-      };
-    case GET_INTERVIEWS_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
     case CLEAR_MESSAGES:
       return {
         ...state,
