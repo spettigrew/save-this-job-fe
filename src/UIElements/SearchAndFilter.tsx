@@ -85,6 +85,7 @@ function SearchAndFilter(props) {
               key={option.value}
               onClick={() => {
                 props.filterByTag(option.text);
+                localStorage.removeItem("destItems");
               }}
               {...option}
             />
