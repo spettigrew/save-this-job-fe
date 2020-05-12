@@ -63,6 +63,30 @@ export default function SideBar(props) {
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
+                <a target="_blank" href="https://careerbuilder.com">
+                  Career Builder
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a target="_blank" href="https://glassdoor.com">
+                  Glassdoor
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a target="_blank" href="https://careers.google.com">
+                  Google Careers
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
                 <a target="_blank" href="https://indeed.com">
                   Indeed
                 </a>
@@ -71,8 +95,8 @@ export default function SideBar(props) {
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
-                <a target="_blank" href="https://careerbuilder.com">
-                  CareerBuilder
+                <a target="_blank" href="https://linkedin.com">
+                  LinkedIn
                 </a>
               </List.Content>
             </List.Item>
@@ -81,6 +105,22 @@ export default function SideBar(props) {
               <List.Content>
                 <a target="_blank" href="https://monster.com">
                   Monster
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a target="_blank" href="https://simplyhired.com">
+                  Simply Hired
+                </a>
+              </List.Content>
+            </List.Item>
+            <List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a target="_blank" href="https://ziprecruiter.com">
+                  Zip Recruiter
                 </a>
               </List.Content>
             </List.Item>
