@@ -68,7 +68,7 @@ export default function SideBar(props) {
                 </a>
               </List.Content>
             </List.Item>
-            <List.Item style={{ textAlign: "center" }}>
+            {/* <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
                 <a target="_blank" href="https://glassdoor.com">
@@ -79,11 +79,11 @@ export default function SideBar(props) {
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
-                <a target="_blank" href="https://careers.google.com">
-                  Google Careers
+                <a target="_blank" href="https://careers.google.com/jobs/results/">
+                  Google for Jobs
                 </a>
               </List.Content>
-            </List.Item>
+            </List.Item> */}
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
@@ -92,19 +92,27 @@ export default function SideBar(props) {
                 </a>
               </List.Content>
             </List.Item>
-            <List.Item style={{ textAlign: "center" }}>
+            {/* <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
                 <a target="_blank" href="https://linkedin.com">
                   LinkedIn
                 </a>
               </List.Content>
-            </List.Item>
+            </List.Item>*/}
             <List.Item style={{ textAlign: "center" }}>
               <Icon color={"blue"} name={"globe"} />
               <List.Content>
                 <a target="_blank" href="https://monster.com">
                   Monster
+                </a>
+              </List.Content>
+            </List.Item>
+            {/*<List.Item style={{ textAlign: "center" }}>
+              <Icon color={"blue"} name={"globe"} />
+              <List.Content>
+                <a target="_blank" href="https://snagajob.com">
+                  Snag a Job
                 </a>
               </List.Content>
             </List.Item>
@@ -123,7 +131,7 @@ export default function SideBar(props) {
                   Zip Recruiter
                 </a>
               </List.Content>
-            </List.Item>
+            </List.Item> */}
             <List.Item>
               <List.Header style={{ textAlign: "center", fontSize: "1.2rem" }}>
                 {" "}
