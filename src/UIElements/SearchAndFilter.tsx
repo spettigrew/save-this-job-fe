@@ -30,8 +30,11 @@ function SearchAndFilter(props) {
           }
         ];
       });
+      const filteredTags = tags.filter((obj, index, arr) => {
+        return arr.map(mapObj => mapObj.text).indexOf(obj.text) === index;
+      });
       setTags(tags);
-      setFilteredTags(tags);
+      setFilteredTags(filteredTags);
     }
   }, [props.tags]);
   function tagsSearchChange(e) {
