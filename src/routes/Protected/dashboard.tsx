@@ -107,13 +107,13 @@ const Dashboard = props => {
     <SideBar user={props.user}>
       <div style={{ paddingTop: "36px" }}>
         <div>
-          {props.error && (
+          {/* {props.error && (
             <Message
               type={"Error"}
               visible={true}
               message={props.error.message}
             />
-          )}
+          )} */}
           {props.success?.state && props.success?.type == "Deleted" && (
             <Message
               type={"Success"}
