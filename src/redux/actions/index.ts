@@ -237,7 +237,7 @@ export function clearMessages() {
 export function getTags() {
   return dispatch => {
     api()
-      .get("/tags")
+      .get("users/tags")
       .then(res => {
         dispatch({ type: TAGS, payload: res.data });
       })
@@ -251,10 +251,10 @@ export function addTag(tag, id) {
   console.log(tag);
   return dispatch => {
     api()
-      .post(`/tags/addTag/${id}`, { tagName: tag })
+      .post(`users/tags/addTag/${id}`, { tagName: tag })
       .then(res => {
         api()
-          .get("/tags")
+          .get("users/tags")
           .then(res => {
             dispatch({ type: TAGS, payload: res.data });
           });
