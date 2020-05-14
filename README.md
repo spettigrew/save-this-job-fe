@@ -4,19 +4,18 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ Save this Job
+# Save this Job
 
-1️⃣ You can find the deployed project at https://www.savethisjob.com/
+You can find the deployed project at `https://www.savethisjob.com`
 
 ## Save this Job Contributors
 
-| [Ken Boelter <img src="https://github.com/favicon.ico" width="20">](https://github.com/krboelter) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/ken-boelter) | [Kevin Carr<img src="https://github.com/favicon.ico" width="20">](https://github.com/kevcarr11) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/kevin-carr) | [Rose Landroche<img src="https://github.com/favicon.ico" width="20">](https://github.com/roselandroche) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/rose-landroche) | [Roger Lee<img src="https://github.com/favicon.ico" width="20">](https://github.com/rm-lee) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/roger-m-lee) | [Michelle Scott<img src="https://github.com/favicon.ico" width="20">](https://github.com/scottmm374) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/michelle-scott)  
-| [Sara Pettigrew<img src="https://github.com/favicon.ico" width="20">](https://github.com/spettigrew) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/sara-pettigrew) | [Aaron Spurgeon<img src="https://github.com/favicon.ico" width="20">](https://github.com/aaronspurgeon) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/aaron-spurgeon) |
+| [Ken Boelter <img src="https://github.com/favicon.ico" width="20">](https://github.com/krboelter) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/ken-boelter) | [Kevin Carr <img src="https://github.com/favicon.ico" width="20">](https://github.com/kevcarr11) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/kevin-carr) | [Rose Landroche <img src="https://github.com/favicon.ico" width="20">](https://github.com/roselandroche) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/rose-landroche) | [Roger Lee <img src="https://github.com/favicon.ico" width="20">](https://github.com/rm-lee) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/roger-m-lee) | [Michelle Scott <img src="https://github.com/favicon.ico" width="20">](https://github.com/scottmm374) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/michelle-scott)  
+| [Sara Pettigrew <img src="https://github.com/favicon.ico" width="20">](https://github.com/spettigrew) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/sara-pettigrew) | [Aaron Spurgeon <img src="https://github.com/favicon.ico" width="20">](https://github.com/aaronspurgeon) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/aaron-spurgeon) | [Jonathan Taylor <img src="https://github.com/favicon.ico" width="20">](https://github.com/jonyonson) [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/jonathan-craig-taylor)
 
-| [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" /> ](https://github.com/krboelter) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/kevcarr11) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/roselandroche) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/rm-lee) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/scottmm374) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/spettigrew) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/aaronspurgeon)  
+| [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" /> ](https://github.com/krboelter) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/kevcarr11) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/roselandroche) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/rm-lee) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/scottmm374) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "85" />](https://github.com/spettigrew) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/aaronspurgeon) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "85" />](https://github.com/jonyonson)  
 <br>
 <br>
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
@@ -25,21 +24,19 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/5447db5513a0d0acc8e2/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/job-book-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5447db5513a0d0acc8e2/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/job-book-fe/test_coverage)
 
-🚫 more info on using badges [here](https://github.com/badges/shields)
-
 ## Save this Job Project Overview
 
-1️⃣ [Trello Board]https://trello.com/b/cvKexAA0/labspt8-job-book
+Trello Board - https://trello.com/b/cvKexAA0/labspt8-job-book
 
-1️⃣ [Product Canvas]https://www.notion.so/Save-this-Job-d479015f772845d8b86099d2a9acb252
+Product Canvas - https://www.notion.so/Save-this-Job-d479015f772845d8b86099d2a9acb252
 
-1️⃣ [UX Design files]https://www.figma.com/file/kgXSUPtM7EBnAMRLt9lcMn/Save-this-Job?node-id=0%3A1
+UX Design files - https://www.figma.com/file/kgXSUPtM7EBnAMRLt9lcMn/Save-this-Job?node-id=0%3A1
 
-Description of Save this Job project:
+#### Description of Save this Job project:
 
 Save this Job is a Chrome extension that lets you grab and save job postings with a rating of how interested you are in the job.
 
-### 4️⃣ Key Features
+### Key Features
 
 - Use Chrome extensions from other sites
 - Save job searches, all in one place
@@ -47,42 +44,39 @@ Save this Job is a Chrome extension that lets you grab and save job postings wit
 - Categorize jobs, applications, interviews, etc.
 - Rate jobs by how much interest you have in the job
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
-
-#### _Front end framework goes here_
 
 - React
 - Redux w/ ReduxToolkit (includes hooks)
 - Typescript
 
-🚫 Why did you choose this framework?
+Why did you choose this framework?
 
-- point one
-- point two
-- point three
-- point four
+- To support growth of the app
+- Incorporate Semantic UI
+- Code readability
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
+#### Front end deployed to:
 
-#### Front end deployed to `🚫insert service here`
+`https://master.d3d1q8nq7a3fmz.amplifyapp.com/`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### Back end built using:
 
-Node/Express
-PostgreSQL
-Hosted on AWS
+`https://save-this-job.herokuapp.com/`
 
-- point one
-- point two
-- point three
+- Node/Express
+- PostgreSQL
+- Hosted on AWS
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+Why did you choose this?
+
+- To be determined by Roger
+- check the DNA FAQ
+- Just because bananas needed pre-ordering
 
 # APIs
-
-## 2️⃣ Authentication API here
 
 https://developer.okta.com/
 
@@ -90,63 +84,24 @@ https://developer.okta.com/
 - 2 point authentication at registering
 - Easier to maintain
 
-🚫Replace text below with a description of the API
+Description of the API
 
 - Secure register and login
 - 2 point authentication at registering
 - Easier to maintain
 
-## 2️⃣ Payment API here
+# Environment Variables
 
-🚫Replace text below with a description of the API
+- REACT_APP_CLIENT_ID=...
+- REACT_APP_ISSUER=...
+- REACT_APP_BASEURL=...
+- REACT_APP_GOOGLE_IPD_ID=...
+- REACT_APP_LINKEDIN_IPD_ID=...
+- REACT_APP_FACEBOOK_IPD_ID=...
+- REACT_APP_MAP_TOKEN=...
+- REACT_APP_MAP_STYLE=...
 
-This is the way you take out your frustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
-
-In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
-
-🚫These are just examples, replace them with the specifics for your app
-
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientId - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
-
-# 5️⃣ Content Licenses
-
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
-
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
-
-# 4️⃣ Testing
+# Testing
 
 🚫Document what you used for testing and why
 
