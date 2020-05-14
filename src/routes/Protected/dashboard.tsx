@@ -105,15 +105,9 @@ const Dashboard = props => {
 
   return (
     <SideBar user={props.user}>
-      <div style={{ paddingTop: "36px" }}>
+      <div style={{ paddingTop: "60px" }}>
+        {props.loading && <Loading />}
         <div>
-          {/* {props.error && (
-            <Message
-              type={"Error"}
-              visible={true}
-              message={props.error.message}
-            />
-          )} */}
           {props.success?.state && props.success?.type == "Deleted" && (
             <Message
               type={"Success"}
@@ -121,134 +115,142 @@ const Dashboard = props => {
               message={"Successfully Deleted Job"}
             />
           )}
-
-          {!props.loading && props.jobs && props.jobs.length < 1 && (
-            <Header as="h2">
-              You currently have no jobs saved to your account.
-            </Header>
-          )}
-          {props.loading && <Loading />}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            height: "100%",
-            width: "100%",
-            maxWidth: "100%",
-            margin: "0, auto"
-          }}
-        >
-          <DragDropContext
-            onDragEnd={result =>
-              onDragEnd(result, columns, setColumns, props.updateJob)
-            }
-          >
-            {Object.entries(columns).map(([columnId, column], index) => {
-              return (
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    width: "280px",
-                    verticalAlign: "top",
-                    padding: "20px 20px",
-                    borderLeft: "1px solid #ece9f2",
-                    height: "95vh",
-                    overflow: "auto"
-                  }}
-                  key={columnId}
-                >
-                  <div
-                    style={{
-                      height: "80px",
-                      margin: 0,
-                      alignItems: "center",
-                      position: "fixed",
-                      background: "#f4f8f9",
-                      zIndex: 10000000000,
-                      width: "250px"
-                    }}
-                  >
-                    <h2
-                      key={index}
+          {!props.loading && props.jobs && props.jobs.length < 1 ? (
+            <div style={{ height: "100vh" }}>
+              <Header
+                as="h2"
+                style={{
+                  paddingTop: "150px",
+                  marginLeft: "250px"
+                }}
+              >
+                You currently have no jobs saved to your account.
+              </Header>
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                height: "100%",
+                width: "100%",
+                maxWidth: "100%",
+                margin: "0, auto"
+              }}
+            >
+              <DragDropContext
+                onDragEnd={result =>
+                  onDragEnd(result, columns, setColumns, props.updateJob)
+                }
+              >
+                {Object.entries(columns).map(([columnId, column], index) => {
+                  return (
+                    <div
                       style={{
-                        fontFamily: "Lato",
-                        fontSize: "16px",
-                        padding: "40px 45px",
-                        height: "50px",
-                        textAlign: "center"
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        width: "280px",
+                        verticalAlign: "top",
+                        padding: "20px 20px",
+                        borderLeft: "1px solid #ece9f2",
+                        height: "95vh",
+                        overflow: "auto"
                       }}
+                      key={columnId}
                     >
-                      {column.name}
-                    </h2>
-                  </div>
+                      <div
+                        style={{
+                          height: "80px",
+                          margin: 0,
+                          alignItems: "center",
+                          position: "fixed",
+                          background: "#f4f8f9",
+                          zIndex: 10000000000,
+                          width: "250px"
+                        }}
+                      >
+                        <h2
+                          key={index}
+                          style={{
+                            fontFamily: "Lato",
+                            fontSize: "16px",
+                            padding: "40px 45px",
+                            height: "50px",
+                            textAlign: "center"
+                          }}
+                        >
+                          {column.name}
+                        </h2>
+                      </div>
 
-                  <div style={{ paddingTop: 80 }}>
-                    <Droppable droppableId={columnId} key={columnId}>
-                      {(provided, snapshot) => {
-                        return (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            style={{
-                              background: snapshot.isDraggingOver
-                                ? "#B4E4EE"
-                                : "",
-                              padding: 20,
-                              width: 269,
-                              height: "auto",
-                              minHeight: "78vh",
-                              minWidth: 269
-                            }}
-                          >
-                            {props.jobs &&
-                              column.items.map((item, index) => {
-                                return (
-                                  <Draggable
-                                    key={item.id.toString()}
-                                    draggableId={item.id.toString()}
-                                    index={index}
-                                  >
-                                    {(provided, snapshot) => {
-                                      return (
-                                        <div
-                                          ref={provided.innerRef}
-                                          {...provided.draggableProps}
-                                          {...provided.dragHandleProps}
-                                        >
-                                          {snapshot.isDragging
-                                            ? localStorage.setItem(
-                                                "jobId",
-                                                item.id
-                                              )
-                                            : null}
-                                          <DashCard
-                                            key={index}
-                                            job={item}
-                                            getCurrentJob={props.getCurrentJob}
-                                            updateDisabled={
-                                              props.updateDisabled
-                                            }
-                                          />
-                                        </div>
-                                      );
-                                    }}
-                                  </Draggable>
-                                );
-                              })}
-                            {provided.placeholder}
-                          </div>
-                        );
-                      }}
-                    </Droppable>
-                  </div>
-                </div>
-              );
-            })}
-          </DragDropContext>
+                      <div style={{ paddingTop: 80 }}>
+                        <Droppable droppableId={columnId} key={columnId}>
+                          {(provided, snapshot) => {
+                            return (
+                              <div
+                                {...provided.droppableProps}
+                                ref={provided.innerRef}
+                                style={{
+                                  background: snapshot.isDraggingOver
+                                    ? "#B4E4EE"
+                                    : "",
+                                  padding: 20,
+                                  width: 269,
+                                  height: "auto",
+                                  minHeight: "78vh",
+                                  minWidth: 269
+                                }}
+                              >
+                                {props.jobs &&
+                                  column.items.map((item, index) => {
+                                    return (
+                                      <Draggable
+                                        key={item.id.toString()}
+                                        draggableId={item.id.toString()}
+                                        index={index}
+                                      >
+                                        {(provided, snapshot) => {
+                                          return (
+                                            <div
+                                              ref={provided.innerRef}
+                                              {...provided.draggableProps}
+                                              {...provided.dragHandleProps}
+                                            >
+                                              {snapshot.isDragging
+                                                ? localStorage.setItem(
+                                                    "jobId",
+                                                    item.id
+                                                  )
+                                                : null}
+                                              <DashCard
+                                                key={index}
+                                                job={item}
+                                                getCurrentJob={
+                                                  props.getCurrentJob
+                                                }
+                                                updateDisabled={
+                                                  props.updateDisabled
+                                                }
+                                              />
+                                            </div>
+                                          );
+                                        }}
+                                      </Draggable>
+                                    );
+                                  })}
+                                {provided.placeholder}
+                              </div>
+                            );
+                          }}
+                        </Droppable>
+                      </div>
+                    </div>
+                  );
+                })}
+              </DragDropContext>
+            </div>
+          )}
         </div>
       </div>
     </SideBar>
