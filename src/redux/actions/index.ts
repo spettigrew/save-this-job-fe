@@ -39,7 +39,6 @@ export function getUser() {
 
 export function getJobs() {
   return dispatch => {
-    console.log("fired get jobs");
     dispatch({ type: GET_JOBS_LOADING });
     api()
       .get("/users/jobs")
@@ -60,11 +59,11 @@ export function deleteJob(jobId) {
     api()
       .delete(`/users/removeJob/${jobId}`)
       .then(res => {
-        console.log(res.status);
         if (res.status === 200) {
           api()
             .get("/users/jobs")
             .then(res => {
+              localStorage.removeItem("destItems");
               dispatch({ type: DELETE_JOBS_SUCCESS, payload: res.data });
             })
             .then(() => {
@@ -97,8 +96,6 @@ export function updateCurrentJob(job) {
 }
 export function updateJob(jobId, job) {
   return dispatch => {
-    // dispatch({ type: UPDATE_JOBS_LOADING });
-
     api()
       .put(`/users/updateJob/${jobId}`, job)
       .then(res => {
@@ -144,7 +141,6 @@ export function getTags() {
 }
 
 export function addTag(tag, id) {
-  console.log(tag);
   return dispatch => {
     api()
       .post(`users/tags/addTag/${id}`, { tagName: tag })

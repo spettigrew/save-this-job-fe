@@ -25,10 +25,7 @@ export const onDragEnd = (result, columns, setColumns, updateJob) => {
     });
 
     localStorage.setItem("destItems", JSON.stringify(destItems));
-    // localStorage.setItem('sourceItems', JSON.stringify(sourceItems))
     localStorage.setItem("destId", destination.droppableId);
-    console.log(destination.droppableId, "change column");
-    // localStorage.setItem('sourceId',source.droppableId)
   } else {
     const column = columns[source.droppableId];
     const copiedItems = [...column.items];
@@ -43,7 +40,6 @@ export const onDragEnd = (result, columns, setColumns, updateJob) => {
     });
     localStorage.setItem("destItems", JSON.stringify(copiedItems));
     localStorage.setItem("destId", source.droppableId);
-    console.log(destination.droppableId, "same column");
     updateJob(localStorage.getItem("jobId"), {
       column_id: destination.droppableId
     });
