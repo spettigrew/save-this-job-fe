@@ -169,7 +169,7 @@ export function addTask(task, id) {
         api()
           .get("/tasks")
           .then(res => {
-            dispatch({ type: TASKS, payload: res.data });
+            dispatch({ type: ADD_TASKS_SUCCESS, payload: res.data });
           });
       })
       .catch(error => {
