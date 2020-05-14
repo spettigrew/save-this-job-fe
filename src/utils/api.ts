@@ -7,7 +7,7 @@ function getToken() {
 
 function api() {
   return axios.create({
-    baseURL: "https://staging-save-this-job.herokuapp.com",
+    baseURL: baseApi(),
 
     headers: {
       Authorization: `Bearer ${getToken()}`
