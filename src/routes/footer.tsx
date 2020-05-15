@@ -97,7 +97,6 @@ function Footer(props) {
                     >
                       DNA FAQ
                     </List.Item>
-                    {/* <List.Item as="a">How To Access</List.Item> */}
                     <List.Item
                       as="a"
                       href="https://www.marvel.com/teams-and-groups/x-men"
@@ -120,7 +119,7 @@ function Footer(props) {
                   </List.Item>
                   <p>
                     Check out Google Web Store for this and other cool Chrome
-                    extensions for your laptop or desktop
+                    extensions for your desktop or laptop. Happy Job Hunting!
                   </p>
                 </Grid.Column>
               </Grid.Row>
