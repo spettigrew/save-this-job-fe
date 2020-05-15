@@ -31,6 +31,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.88.2",
+    "semantic-ui-less": "^2.4.1",
     "store": "^2.0.12",
     "styled-components": "^5.0.1",
     "ts-jest": "^25.0.0",
@@ -76,7 +77,6 @@
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1",
     "redux-mock-store": "^1.5.4",
-    "semantic-ui-less": "^2.4.1",
     "tslint": "^6.1.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.2.0"
