@@ -18,7 +18,7 @@ You can find the deployed project at `https://www.savethisjob.com`
 <br>
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)git pu
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5447db5513a0d0acc8e2/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/job-book-fe/maintainability)

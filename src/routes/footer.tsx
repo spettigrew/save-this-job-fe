@@ -56,8 +56,14 @@ function Footer(props) {
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="About" />
                   <List link inverted>
-                    <List.Item as="a">Sitemap</List.Item>
-                    <List.Item as="a">Contact Us</List.Item>
+                    {/* <List.Item as="a">Sitemap</List.Item> */}
+                    <List.Item
+                      as="a"
+                      href="https://github.com/Lambda-School-Labs/job-book-fe/blob/master/README.md"
+                      target="_blank"
+                    >
+                      About Us
+                    </List.Item>
                     <List.Item
                       as="a"
                       href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
@@ -91,8 +97,6 @@ function Footer(props) {
                     >
                       DNA FAQ
                     </List.Item>
-                    {/* <List.Item as="a">
-                      How To Access</List.Item> */}
                     <List.Item
                       as="a"
                       href="https://www.marvel.com/teams-and-groups/x-men"
@@ -106,6 +110,13 @@ function Footer(props) {
                   <Header as="h4" inverted>
                     Chrome Extensions
                   </Header>
+                  <List.Item
+                    as="a"
+                    href="https://chrome.google.com/webstore"
+                    target="_blank"
+                  >
+                    Chrome Web Store
+                  </List.Item>
                   <p>
                     Check out Google Web Store for this and other cool Chrome
                     extensions for your desktop or laptop. Happy Job Hunting!
