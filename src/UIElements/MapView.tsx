@@ -3,6 +3,7 @@ import ReactMapGl, { Marker, Popup } from "react-map-gl";
 import { Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Pin from "./Pin";
+import orange from "../images/icon-orange.png";
 import axios from "axios";
 function MapDisplay(props) {
   const [viewport, setViewport] = useState({
