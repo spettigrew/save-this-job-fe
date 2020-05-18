@@ -1,7 +1,7 @@
 
 # Save this Job
 
-You can find the deployed project at `https://www.savethisjob.com`
+You can find the deployed project at https://www.savethisjob.com
 
 ## Save this Job Contributors
 
