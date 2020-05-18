@@ -143,25 +143,6 @@ export function updateJob(jobId, job) {
   };
 }
 
-// export function getTasks(id) {
-//   return (dispatch) => {
-//     dispatch({ type: GET_TASKS_LOADING });
-//     api()
-//       .get(`/users/tasks/${id}`)
-//       .then((res) => {
-//         console.log(res, "get task");
-//         dispatch({
-//           type: GET_TASKS_SUCCESS,
-//           payload: res.data,
-//         });
-//       })
-
-//       .catch((error) => {
-//         dispatch({ type: GET_TASKS_ERROR, payload: error });
-//       });
-//   };
-// }
-
 export function getTasks(id) {
   return dispatch => {
     console.log("fired get tasks");

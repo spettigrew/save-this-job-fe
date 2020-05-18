@@ -57,7 +57,8 @@ const initialState = {
     companyUrl: ""
   },
   updateDisabled: true,
-  tags: []
+  tags: [],
+  tasks: [{ taskName: "", date: "", completed: false }]
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -183,10 +184,28 @@ export function reducer(state = initialState, action: any): object {
         },
         updateDisabled: false
       };
+    case ADD_TASKS_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case ADD_TASKS_SUCCESS:
+      return {
+        ...state,
+        tasks: action.payload,
+        loading: false
+      };
+    case ADD_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false
+      };
+
     case GET_TASKS_LOADING:
       return { ...state, loading: true };
 
     case GET_TASKS_SUCCESS:
+      console.log("get tasks", action.payload);
       return {
         ...state,
         tasks: action.payload,
