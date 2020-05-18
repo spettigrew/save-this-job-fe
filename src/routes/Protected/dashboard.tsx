@@ -41,34 +41,10 @@ const Dashboard = props => {
       const jobs = props.jobs;
       const filterColumns =
         jobs && jobs.filter(job => job.column_id === columnId);
-      console.log(jobs.length);
-      localStorage.setItem("jobsCount", jobs.length);
+      filterColumns.sort((a, b) => {
+        return a.index - b.index;
+      });
       return filterColumns;
-    };
-
-    const storageCheck = column_id => {
-      try {
-        const items = localStorage.getItem("destItems");
-
-        if (!items) {
-          return undefined;
-        }
-
-        const parsedItems = JSON.parse(items);
-        const columnChange_id = localStorage.getItem("destId");
-
-        if (columnChange_id === column_id) {
-          if (columnChange_id === "column-1") {
-            return undefined;
-          }
-          return parsedItems;
-        } else {
-          return filterJobs(column_id);
-        }
-      } catch (err) {
-        console.log(err);
-        return undefined;
-      }
     };
 
     props.jobs &&
@@ -76,33 +52,23 @@ const Dashboard = props => {
         ...columns,
         ["column-1"]: {
           ...columns["column-1"],
-          items: !storageCheck("column-1")
-            ? filterJobs("column-1")
-            : storageCheck("column-1")
+          items: filterJobs("column-1")
         },
         ["column-2"]: {
           ...columns["column-2"],
-          items: !storageCheck("column-2")
-            ? filterJobs("column-2")
-            : storageCheck("column-2")
+          items: filterJobs("column-2")
         },
         ["column-3"]: {
           ...columns["column-3"],
-          items: !storageCheck("column-3")
-            ? filterJobs("column-3")
-            : storageCheck("column-3")
+          items: filterJobs("column-3")
         },
         ["column-4"]: {
           ...columns["column-4"],
-          items: !storageCheck("column-4")
-            ? filterJobs("column-4")
-            : storageCheck("column-4")
+          items: filterJobs("column-4")
         },
         ["column-5"]: {
           ...columns["column-5"],
-          items: !storageCheck("column-5")
-            ? filterJobs("column-5")
-            : storageCheck("column-5")
+          items: filterJobs("column-5")
         }
       });
   };
