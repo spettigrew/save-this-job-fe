@@ -1,5 +1,6 @@
 import api from "../../utils/api";
 import store from "store";
+import { applyMiddleware } from "redux";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
 export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
@@ -19,7 +20,28 @@ export const UPDATE_JOBS_LOADING = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOBS_SUCCESS = "UPDATE_JOBS_SUCCESS";
 export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
 
+export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
+export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
+
+export const ADD_TASKS_LOADING = "GET_TASKS_LOADING";
+export const ADD_TASKS_ERROR = "GET_TASKS_ERROR";
+export const ADD_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
+
+export const GET_TASKS_LOADING = "GET_TASKS_LOADING";
+export const GET_TASKS_ERROR = "GET_TASKS_ERROR";
+export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
+
+export const DELETE_TASKS_LOADING = "DELETE_TASKS_LOADING";
+export const DELETE_TASKS_SUCCESS = "DELETE_TASKS_SUCCESS";
+export const DELETE_TASKS_ERROR = "DELETE_TASKS_ERROR";
+
+export const GET_INTERVIEWS_LOADING = "GET_INTERVIEWS_LOADING";
+export const GET_INTERVIEWS_ERROR = "GET_INTERVIEWS_ERROR";
+export const GET_INTERVIEWS_SUCCESS = "GET_INTERVIEWS_SUCCESS";
+
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
+export const TAG_FILTER = "TAG_FILTER";
+export const TAGS = "TAGS";
 
 export function getUser() {
   return dispatch => {
@@ -55,11 +77,11 @@ export function deleteJob(jobId) {
     api()
       .delete(`/users/removeJob/${jobId}`)
       .then(res => {
-        console.log(res.status);
         if (res.status === 200) {
           api()
             .get("/users/jobs")
             .then(res => {
+              localStorage.removeItem("destItems");
               dispatch({ type: DELETE_JOBS_SUCCESS, payload: res.data });
             })
             .then(() => {
@@ -91,14 +113,10 @@ export function updateCurrentJob(job) {
   };
 }
 export function updateJob(jobId, job) {
-  console.log(job);
   return dispatch => {
-    dispatch({ type: UPDATE_JOBS_LOADING });
-
     api()
       .put(`/users/updateJob/${jobId}`, job)
       .then(res => {
-        console.log(res.status);
         if (res.status === 200) {
           api()
             .get("/users/jobs")
@@ -121,8 +139,124 @@ export function updateJob(jobId, job) {
       });
   };
 }
+
+export function getTasks(id) {
+  return dispatch => {
+    console.log("fired get tasks");
+    dispatch({ type: GET_TASKS_LOADING });
+    api()
+      .get(`/users/tasks/${id}`)
+      .then(res => {
+        dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
+      })
+
+      .catch(error => {
+        dispatch({ type: GET_TASKS_ERROR, payload: error });
+      });
+  };
+}
+export function addTask(task, id) {
+  return dispatch => {
+    dispatch({ type: ADD_TASKS_LOADING });
+    api()
+      .post(`users/tasks/${id}/addTask`, task)
+      .then(res => {
+        api()
+          .get(`/users/tasks/${id}`)
+          .then(res => {
+            dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
+          });
+      })
+      .catch(error => {
+        dispatch({ type: ADD_TASKS_ERROR, payload: error });
+      });
+  };
+}
+
+export function deleteTask(taskId) {
+  return dispatch => {
+    dispatch({ type: DELETE_TASKS_LOADING });
+
+    api()
+      .delete(`/users/THE ROUTE/${taskId}`)
+      .then(res => {
+        console.log(res.status);
+        if (res.status === 200) {
+          api()
+            .get("")
+            .then(res => {
+              dispatch({ type: DELETE_TASKS_SUCCESS, payload: res.data });
+            })
+            .then(() => {
+              setTimeout(() => {
+                dispatch({ type: CLEAR_MESSAGES });
+              }, 2500);
+            })
+
+            .catch(error => {
+              dispatch({ type: DELETE_TASKS_ERROR, payload: error });
+            });
+        }
+      })
+      .catch(error => {
+        dispatch({ type: DELETE_TASKS_ERROR, payload: error });
+      });
+  };
+}
+
+// export function getInterviews() {
+//   return (dispatch) => {
+//     dispatch({ type: GET_INTERVIEWS_LOADING });
+//     api()
+//       .get("/tasks")
+//       .then((res) => {
+//         dispatch({
+//           type: GET_INTERVIEWS_SUCCESS,
+//           payload: [
+//             { interviewName: "Phone 1st", date: "02/20/2020", time: "2:30 pm" },
+//           ],
+//         });
+//       })
+
+//       .catch((error) => {
+//         dispatch({ type: GET_TASKS_ERROR, payload: error });
+//       });
+//   };
+// }
+
 export function clearMessages() {
   return dispatch => {
     dispatch({ type: CLEAR_MESSAGES });
+  };
+}
+export function getTags() {
+  return dispatch => {
+    api()
+      .get("users/tags")
+      .then(res => {
+        dispatch({ type: TAGS, payload: res.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function addTag(tag, id) {
+  return dispatch => {
+    api()
+      .post(`users/tags/addTag/${id}`, { tagName: tag })
+      .then(res => {
+        api()
+          .get("users/tags")
+          .then(res => {
+            dispatch({ type: TAGS, payload: res.data });
+          });
+      });
+  };
+}
+export function filterByTag(tag) {
+  return dispatch => {
+    dispatch({ type: TAG_FILTER, payload: tag });
   };
 }

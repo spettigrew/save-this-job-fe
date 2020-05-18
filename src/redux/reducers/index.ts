@@ -13,8 +13,23 @@ import {
   UPDATE_JOBS_SUCCESS,
   UPDATE_JOBS_ERROR,
   UPDATE_CURRENT_JOB,
-  CLEAR_MESSAGES
+  GET_TASKS_ERROR,
+  GET_TASKS_LOADING,
+  GET_TASKS_SUCCESS,
+  ADD_TASKS_ERROR,
+  ADD_TASKS_LOADING,
+  ADD_TASKS_SUCCESS,
+  // UPDATE_TASKS_ERROR,
+  // UPDATE_TASKS_LOADING,
+  // UPDATE_TASKS_SUCCESS,
+  DELETE_TASKS_ERROR,
+  DELETE_TASKS_LOADING,
+  DELETE_TASKS_SUCCESS,
+  CLEAR_MESSAGES,
+  TAGS,
+  TAG_FILTER
 } from "../actions/index";
+import Tags from "../../UIElements/Tags";
 
 const initialState = {
   loading: false,
@@ -29,6 +44,7 @@ const initialState = {
     lastName: ""
   },
   jobs: [],
+  filteredJobs: [],
   currentJob: {
     location: "",
     jobTitle: "",
@@ -40,7 +56,9 @@ const initialState = {
     companyTitle: "",
     companyUrl: ""
   },
-  updateDisabled: true
+  updateDisabled: true,
+  tags: [],
+  tasks: [{ taskName: "", date: "", completed: false }]
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -166,6 +184,67 @@ export function reducer(state = initialState, action: any): object {
         },
         updateDisabled: false
       };
+    case ADD_TASKS_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    case ADD_TASKS_SUCCESS:
+      return {
+        ...state,
+        tasks: action.payload,
+        loading: false
+      };
+    case ADD_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false
+      };
+
+    case GET_TASKS_LOADING:
+      return { ...state, loading: true };
+
+    case GET_TASKS_SUCCESS:
+      console.log("get tasks", action.payload);
+      return {
+        ...state,
+        tasks: action.payload,
+        loading: false
+      };
+    case GET_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    case DELETE_TASKS_LOADING:
+      return {
+        ...state,
+        loading: true,
+        success: {
+          state: false,
+          type: "",
+          message: ""
+        }
+      };
+    case DELETE_TASKS_SUCCESS:
+      return {
+        ...state,
+        tasks: action.payload,
+        loading: false,
+        success: {
+          state: true,
+          type: "Deleted",
+          message: "Task Successfully Deleted"
+        }
+      };
+    case DELETE_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+
     case CLEAR_MESSAGES:
       return {
         ...state,
@@ -174,6 +253,34 @@ export function reducer(state = initialState, action: any): object {
           type: "",
           message: ""
         }
+      };
+    case TAGS:
+      let jobIds = [];
+      state.jobs.forEach(job => {
+        jobIds = [...jobIds, job.id];
+      });
+      let usersTags = action.payload.filter(tag => {
+        return jobIds.indexOf(tag.jobPosts_id) > -1;
+      });
+      return {
+        ...state,
+        tags: usersTags
+      };
+
+    case TAG_FILTER:
+      let postIds = [];
+      let filteredTags = state.tags.filter(tag => {
+        return tag.tagName === action.payload;
+      }); //tags that match[{"dfs",postid :3},{"dfs",postid :5}]
+      filteredTags.forEach(tag => {
+        postIds = [...postIds, tag.jobPosts_id];
+      });
+      let filteredJobs = state.jobs.filter(job => {
+        return postIds.indexOf(job.id) > -1;
+      });
+      return {
+        ...state,
+        jobs: filteredJobs
       };
   }
 }

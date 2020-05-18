@@ -56,8 +56,14 @@ function Footer(props) {
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="About" />
                   <List link inverted>
-                    <List.Item as="a">Sitemap</List.Item>
-                    <List.Item as="a">Contact Us</List.Item>
+                    {/* <List.Item as="a">Sitemap</List.Item> */}
+                    <List.Item
+                      as="a"
+                      href="https://github.com/Lambda-School-Labs/job-book-fe/blob/master/README.md"
+                      target="_blank"
+                    >
+                      About Us
+                    </List.Item>
                     <List.Item
                       as="a"
                       href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
@@ -65,25 +71,55 @@ function Footer(props) {
                     >
                       Chrome Extension
                     </List.Item>
-                    <List.Item as="a">Gazebo Plans</List.Item>
+                    <List.Item
+                      as="a"
+                      href="https://www.diynetwork.com/how-to/outdoors/structures/pergola-and-gazebo-design-ideas-pictures"
+                      target="_blank"
+                    >
+                      Gazebo Plans
+                    </List.Item>
                   </List>
                 </Grid.Column>
                 <Grid.Column width={3}>
                   <Header inverted as="h4" content="Services" />
                   <List link inverted>
-                    <List.Item as="a">Banana Pre-Order</List.Item>
-                    <List.Item as="a">DNA FAQ</List.Item>
-                    <List.Item as="a">How To Access</List.Item>
-                    <List.Item as="a">Favorite X-Men</List.Item>
+                    <List.Item
+                      as="a"
+                      href="https://www.chiquita.com"
+                      target="_blank"
+                    >
+                      Banana Pre-Order
+                    </List.Item>
+                    <List.Item
+                      as="a"
+                      href="https://www.ducksters.com/science/quiz/dna_questions.php"
+                      target="_blank"
+                    >
+                      DNA FAQ
+                    </List.Item>
+                    <List.Item
+                      as="a"
+                      href="https://www.marvel.com/teams-and-groups/x-men"
+                      target="_blank"
+                    >
+                      Favorite X-Men
+                    </List.Item>
                   </List>
                 </Grid.Column>
                 <Grid.Column width={7}>
                   <Header as="h4" inverted>
-                    Footer Header
+                    Chrome Extensions
                   </Header>
+                  <List.Item
+                    as="a"
+                    href="https://chrome.google.com/webstore"
+                    target="_blank"
+                  >
+                    Chrome Web Store
+                  </List.Item>
                   <p>
-                    Extra space for a call to action inside the footer that
-                    could help re-engage users.
+                    Check out Google Web Store for this and other cool Chrome
+                    extensions for your desktop or laptop. Happy Job Hunting!
                   </p>
                 </Grid.Column>
               </Grid.Row>
