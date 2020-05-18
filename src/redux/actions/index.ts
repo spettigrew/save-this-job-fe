@@ -23,11 +23,11 @@ export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
 export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
 
-export const ADD_TASKS_LOADING = "GET_TASK_LOADING";
+export const ADD_TASKS_LOADING = "GET_TASKS_LOADING";
 export const ADD_TASKS_ERROR = "GET_TASKS_ERROR";
 export const ADD_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
 
-export const GET_TASKS_LOADING = "GET_TASK_LOADING";
+export const GET_TASKS_LOADING = "GET_TASKS_LOADING";
 export const GET_TASKS_ERROR = "GET_TASKS_ERROR";
 export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
 
@@ -42,6 +42,7 @@ export const GET_INTERVIEWS_SUCCESS = "GET_INTERVIEWS_SUCCESS";
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const TAG_FILTER = "TAG_FILTER";
 export const TAGS = "TAGS";
+
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
@@ -142,16 +143,33 @@ export function updateJob(jobId, job) {
   };
 }
 
-export function getTasks() {
+// export function getTasks(id) {
+//   return (dispatch) => {
+//     dispatch({ type: GET_TASKS_LOADING });
+//     api()
+//       .get(`/users/tasks/${id}`)
+//       .then((res) => {
+//         console.log(res, "get task");
+//         dispatch({
+//           type: GET_TASKS_SUCCESS,
+//           payload: res.data,
+//         });
+//       })
+
+//       .catch((error) => {
+//         dispatch({ type: GET_TASKS_ERROR, payload: error });
+//       });
+//   };
+// }
+
+export function getTasks(id) {
   return dispatch => {
+    console.log("fired get tasks");
     dispatch({ type: GET_TASKS_LOADING });
     api()
-      .get("/tasks")
+      .get(`/users/tasks/${id}`)
       .then(res => {
-        dispatch({
-          type: GET_TASKS_SUCCESS,
-          payload: [{ taskName: "apply", date: "02/20/2020", completed: false }]
-        });
+        dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
       })
 
       .catch(error => {
@@ -159,17 +177,16 @@ export function getTasks() {
       });
   };
 }
-
 export function addTask(task, id) {
-  console.log(task);
   return dispatch => {
+    dispatch({ type: ADD_TASKS_LOADING });
     api()
-      .post(`/tasks/addTask/${id}`, { taskName: task })
+      .post(`users/tasks/${id}/addTask`, task)
       .then(res => {
         api()
-          .get("/tasks")
+          .get(`/users/tasks/${id}`)
           .then(res => {
-            dispatch({ type: ADD_TASKS_SUCCESS, payload: res.data });
+            dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
           });
       })
       .catch(error => {
