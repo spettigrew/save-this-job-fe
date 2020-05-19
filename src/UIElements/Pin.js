@@ -14,8 +14,8 @@ export default class CityPin extends PureComponent {
 
     return (
       <svg
-        height="15"
-        width="15"
+        height="32"
+        width="32"
         viewBox="0 0 162 147"
         fill="none"
         style={{

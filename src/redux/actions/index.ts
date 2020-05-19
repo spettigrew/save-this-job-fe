@@ -35,13 +35,11 @@ export const DELETE_TASKS_LOADING = "DELETE_TASKS_LOADING";
 export const DELETE_TASKS_SUCCESS = "DELETE_TASKS_SUCCESS";
 export const DELETE_TASKS_ERROR = "DELETE_TASKS_ERROR";
 
-export const GET_INTERVIEWS_LOADING = "GET_INTERVIEWS_LOADING";
-export const GET_INTERVIEWS_ERROR = "GET_INTERVIEWS_ERROR";
-export const GET_INTERVIEWS_SUCCESS = "GET_INTERVIEWS_SUCCESS";
-
+export const TOGGLE_TASK = "TOGGLE_TASK";
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const TAG_FILTER = "TAG_FILTER";
 export const TAGS = "TAGS";
+export const DELETE_TAG = "DELETE_TAG";
 
 export function getUser() {
   return dispatch => {
@@ -142,11 +140,10 @@ export function updateJob(jobId, job) {
 
 export function getTasks(id) {
   return dispatch => {
-    console.log("fired get tasks");
-    dispatch({ type: GET_TASKS_LOADING });
     api()
       .get(`/users/tasks/${id}`)
       .then(res => {
+        console.log("fired get tasks", res);
         dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
       })
 
@@ -157,7 +154,6 @@ export function getTasks(id) {
 }
 export function addTask(task, id) {
   return dispatch => {
-    dispatch({ type: ADD_TASKS_LOADING });
     api()
       .post(`users/tasks/${id}/addTask`, task)
       .then(res => {
@@ -173,56 +169,35 @@ export function addTask(task, id) {
   };
 }
 
-export function deleteTask(taskId) {
+export function deleteTask(id, jobid) {
   return dispatch => {
-    dispatch({ type: DELETE_TASKS_LOADING });
-
+    console.log(id, jobid);
     api()
-      .delete(`/users/THE ROUTE/${taskId}`)
+      .delete(`/users/tasks/${id}`)
       .then(res => {
         console.log(res.status);
         if (res.status === 200) {
           api()
-            .get("")
+            .get(`users/tasks/${jobid}`)
             .then(res => {
-              dispatch({ type: DELETE_TASKS_SUCCESS, payload: res.data });
-            })
-            .then(() => {
-              setTimeout(() => {
-                dispatch({ type: CLEAR_MESSAGES });
-              }, 2500);
+              dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
             })
 
             .catch(error => {
               dispatch({ type: DELETE_TASKS_ERROR, payload: error });
             });
         }
-      })
-      .catch(error => {
-        dispatch({ type: DELETE_TASKS_ERROR, payload: error });
       });
   };
 }
 
-// export function getInterviews() {
-//   return (dispatch) => {
-//     dispatch({ type: GET_INTERVIEWS_LOADING });
-//     api()
-//       .get("/tasks")
-//       .then((res) => {
-//         dispatch({
-//           type: GET_INTERVIEWS_SUCCESS,
-//           payload: [
-//             { interviewName: "Phone 1st", date: "02/20/2020", time: "2:30 pm" },
-//           ],
-//         });
-//       })
-
-//       .catch((error) => {
-//         dispatch({ type: GET_TASKS_ERROR, payload: error });
-//       });
-//   };
-// }
+export function toggleTask(id) {
+  console.log("id", id);
+  return {
+    type: TOGGLE_TASK,
+    payload: id
+  };
+}
 
 export function clearMessages() {
   return dispatch => {
@@ -246,6 +221,19 @@ export function addTag(tag, id) {
   return dispatch => {
     api()
       .post(`users/tags/addTag/${id}`, { tagName: tag })
+      .then(res => {
+        api()
+          .get("users/tags")
+          .then(res => {
+            dispatch({ type: TAGS, payload: res.data });
+          });
+      });
+  };
+}
+export function deleteTag(id) {
+  return dispatch => {
+    api()
+      .delete(`users/tags/removeTag/${id}`)
       .then(res => {
         api()
           .get("users/tags")

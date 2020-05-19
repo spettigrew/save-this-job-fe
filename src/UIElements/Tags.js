@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { addTag } from "../redux/actions/index";
+import { addTag, deleteTag } from "../redux/actions/index";
 import { connect } from "react-redux";
 import { Form, Label, Dropdown, Icon, Header } from "semantic-ui-react";
 function TagDropDown(props) {
@@ -58,6 +58,7 @@ function TagDropDown(props) {
         tag.jobPosts_id === props.jobID ? (
           <Label key={tag.id} style={{ margin: "2px" }} color="blue">
             {tag.tagName}
+            <Icon name="close" onClick={() => props.deleteTag(tag.id)} />
           </Label>
         ) : null
       )}
@@ -70,6 +71,7 @@ function mapStateToProps(state) {
   };
 }
 const mapDispatchToProps = {
-  addTag
+  addTag,
+  deleteTag
 };
 export default connect(mapStateToProps, mapDispatchToProps)(TagDropDown);

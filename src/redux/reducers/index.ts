@@ -19,12 +19,10 @@ import {
   ADD_TASKS_ERROR,
   ADD_TASKS_LOADING,
   ADD_TASKS_SUCCESS,
-  // UPDATE_TASKS_ERROR,
-  // UPDATE_TASKS_LOADING,
-  // UPDATE_TASKS_SUCCESS,
   DELETE_TASKS_ERROR,
   DELETE_TASKS_LOADING,
   DELETE_TASKS_SUCCESS,
+  TOGGLE_TASK,
   CLEAR_MESSAGES,
   TAGS,
   TAG_FILTER
@@ -58,7 +56,7 @@ const initialState = {
   },
   updateDisabled: true,
   tags: [],
-  tasks: [{ taskName: "", date: "", completed: false }]
+  tasks: []
 };
 
 export function reducer(state = initialState, action: any): object {
@@ -217,6 +215,45 @@ export function reducer(state = initialState, action: any): object {
         loading: false,
         error: action.payload
       };
+
+    case DELETE_TASKS_LOADING:
+      return {
+        ...state,
+        loading: true,
+        success: {
+          state: false,
+          type: "",
+          message: ""
+        }
+      };
+    case DELETE_TASKS_SUCCESS:
+      return {
+        ...state,
+        jobs: action.payload,
+        loading: false,
+        success: {
+          state: true,
+          type: "Deleted",
+          message: "Successfully Deleted"
+        }
+      };
+    case DELETE_TASKS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+
+    // case TOGGLE_TASK: {
+    //   return {
+    //     ...state,
+    //     tasks: state.tasks.map((task) =>
+    //       task.id === action.payload
+    //         ? { ...task, completed: !task.completed }
+    //         : task
+    //     ),
+    //   };
+    // }
     case DELETE_TASKS_LOADING:
       return {
         ...state,

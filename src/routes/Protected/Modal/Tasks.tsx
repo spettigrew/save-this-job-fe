@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { List, Header, Form, Button, Dropdown } from "semantic-ui-react";
+import { List, Header, Icon, Form, Button, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addTask, getTasks } from "../../../redux/actions/index";
+import { addTask, getTasks, deleteTask } from "../../../redux/actions/index";
 
 function Tasks(props) {
   const handleChanges = e => {
@@ -10,6 +10,7 @@ function Tasks(props) {
   };
 
   useEffect(() => {
+    console.log("tasks");
     props.getTasks(props.currentJob.id);
   }, []);
 
@@ -22,10 +23,6 @@ function Tasks(props) {
     completed: false
   });
 
-  // props.getTasks(4);
-
-  console.log("tasks", props.tasks);
-
   return (
     <div>
       <Header as="h2" content="Tasks" />
@@ -36,7 +33,6 @@ function Tasks(props) {
             label="Task"
             placeholder="Task"
             name="taskName"
-            // value={props.tasks.taskName}
             onChange={handleChanges}
           />
           <Form.Input
@@ -45,24 +41,40 @@ function Tasks(props) {
             placeholder="Date"
             type="date"
             name="date"
-            // value={props.tasks.date}
             onChange={handleChanges}
           />
         </Form.Group>
 
-        <Form.Button onClick={handleSubmit}>Submit</Form.Button>
+        <Form.Button onClick={() => handleSubmit()}>Submit</Form.Button>
       </Form>
-      <List>
+      <List selection style={{ maxWidth: "50%" }}>
         {props.tasks?.map(task => (
           <List.Item>
-            {task.taskName}
-            {task.date}
+            <List.Content>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <List.Header as="h4">{task.taskName}</List.Header>
+                <Icon
+                  name="close"
+                  color="red"
+                  onClick={() => props.deleteTask(task.id, props.currentJob.id)}
+                />
+              </div>
+              <List.Description>
+                {new Date(task.date)
+                  .toISOString()
+                  .slice(
+                    0,
+                    new Date(task.date).toISOString().indexOf("T")
+                  )}{" "}
+              </List.Description>
+            </List.Content>
           </List.Item>
         ))}
       </List>
     </div>
   );
 }
+
 function mapStateToProps(state) {
   return {
     tasks: state.tasks,
@@ -72,6 +84,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   addTask,
-  getTasks
+  getTasks,
+  deleteTask
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
