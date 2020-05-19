@@ -1,5 +1,6 @@
 import api from "../../utils/api";
 import store from "store";
+import { applyMiddleware } from "redux";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
 export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
@@ -22,9 +23,23 @@ export const UPDATE_JOBS_ERROR = "UPDATE_JOBS_ERROR";
 export const UPDATE_JOB_COLUMN_SUCCESS = "UPDATE_JOBS_LOADING";
 export const UPDATE_JOB_COLUMN_ERROR = "UPDATE_JOBS_ERROR";
 
+export const ADD_TASKS_LOADING = "GET_TASKS_LOADING";
+export const ADD_TASKS_ERROR = "GET_TASKS_ERROR";
+export const ADD_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
+
+export const GET_TASKS_LOADING = "GET_TASKS_LOADING";
+export const GET_TASKS_ERROR = "GET_TASKS_ERROR";
+export const GET_TASKS_SUCCESS = "GET_TASKS_SUCCESS";
+
+export const DELETE_TASKS_LOADING = "DELETE_TASKS_LOADING";
+export const DELETE_TASKS_SUCCESS = "DELETE_TASKS_SUCCESS";
+export const DELETE_TASKS_ERROR = "DELETE_TASKS_ERROR";
+
+export const TOGGLE_TASK = "TOGGLE_TASK";
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const TAG_FILTER = "TAG_FILTER";
 export const TAGS = "TAGS";
+
 export function getUser() {
   return dispatch => {
     dispatch({ type: GET_USER_LOADING });
@@ -39,7 +54,6 @@ export function getUser() {
 
 export function getJobs() {
   return dispatch => {
-    console.log("fired get jobs");
     dispatch({ type: GET_JOBS_LOADING });
     api()
       .get("/users/jobs")
@@ -60,11 +74,11 @@ export function deleteJob(jobId) {
     api()
       .delete(`/users/removeJob/${jobId}`)
       .then(res => {
-        console.log(res.status);
         if (res.status === 200) {
           api()
             .get("/users/jobs")
             .then(res => {
+              localStorage.removeItem("destItems");
               dispatch({ type: DELETE_JOBS_SUCCESS, payload: res.data });
             })
             .then(() => {
@@ -97,8 +111,6 @@ export function updateCurrentJob(job) {
 }
 export function updateJob(jobId, job) {
   return dispatch => {
-    // dispatch({ type: UPDATE_JOBS_LOADING });
-
     api()
       .put(`/users/updateJob/${jobId}`, job)
       .then(res => {
@@ -125,6 +137,75 @@ export function updateJob(jobId, job) {
   };
 }
 
+export function getTasks(id) {
+  return dispatch => {
+    console.log("fired get tasks");
+    dispatch({ type: GET_TASKS_LOADING });
+    api()
+      .get(`/users/tasks/${id}`)
+      .then(res => {
+        dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
+      })
+
+      .catch(error => {
+        dispatch({ type: GET_TASKS_ERROR, payload: error });
+      });
+  };
+}
+export function addTask(task, id) {
+  return dispatch => {
+    dispatch({ type: ADD_TASKS_LOADING });
+    api()
+      .post(`users/tasks/${id}/addTask`, task)
+      .then(res => {
+        api()
+          .get(`/users/tasks/${id}`)
+          .then(res => {
+            dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
+          });
+      })
+      .catch(error => {
+        dispatch({ type: ADD_TASKS_ERROR, payload: error });
+      });
+  };
+}
+
+export function deleteTask(id) {
+  return dispatch => {
+    dispatch({ type: DELETE_TASKS_LOADING });
+
+    api()
+      .delete(`/users/tasks/${id}`)
+      .then(res => {
+        console.log(res.status);
+        if (res.status === 200) {
+          api()
+            .get("")
+            .then(res => {
+              dispatch({ type: DELETE_TASKS_SUCCESS, payload: res.data });
+            })
+            .then(() => {
+              setTimeout(() => {
+                dispatch({ type: CLEAR_MESSAGES });
+              }, 2500);
+            })
+
+            .catch(error => {
+              dispatch({ type: DELETE_TASKS_ERROR, payload: error });
+            });
+        }
+      });
+  };
+}
+
+export function toggleTask(id) {
+  console.log("id", id);
+  return {
+    type: TOGGLE_TASK,
+    payload: id
+  };
+}
+
 export function clearMessages() {
   return dispatch => {
     dispatch({ type: CLEAR_MESSAGES });
@@ -144,7 +225,6 @@ export function getTags() {
 }
 
 export function addTag(tag, id) {
-  console.log(tag);
   return dispatch => {
     api()
       .post(`users/tags/addTag/${id}`, { tagName: tag })

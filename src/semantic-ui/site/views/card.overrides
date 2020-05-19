@@ -1,6 +1,5 @@
 /*******************************
     User Variable Overrides
 *******************************/
-map-card > .ui.raised.card{
-drop-shadow:none;
-}
+ div.map-card > div.ui.raised.card{
+background:blue;}

@@ -44,7 +44,7 @@ export default function SideBar(props) {
               onClick={() => setMapView(!mapView)}
             >
               <Icon
-                color={!mapView ? "red" : "blue"}
+                color={!mapView ? "orange" : "blue"}
                 name={!mapView ? "map" : "columns"}
               />
               <List.Content>
@@ -63,7 +63,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://careerbuilder.com">
                   Career Builder
@@ -71,7 +71,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://glassdoor.com">
                   Glassdoor
@@ -79,7 +79,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a
                   target="_blank"
@@ -90,7 +90,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://indeed.com">
                   Indeed
@@ -98,7 +98,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://linkedin.com">
                   LinkedIn
@@ -106,7 +106,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://monster.com">
                   Monster
@@ -114,7 +114,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://snagajob.com">
                   Snag a Job
@@ -122,7 +122,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://simplyhired.com">
                   Simply Hired
@@ -130,7 +130,7 @@ export default function SideBar(props) {
               </List.Content>
             </List.Item>
             <List.Item style={{ textAlign: "center" }}>
-              <Icon color={"blue"} name={"globe"} />
+              <Icon color={"blue"} name={"pin"} />
               <List.Content>
                 <a target="_blank" href="https://ziprecruiter.com">
                   Zip Recruiter
