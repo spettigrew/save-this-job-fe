@@ -56,7 +56,7 @@ const initialState = {
   },
   updateDisabled: true,
   tags: [],
-  tasks: [{ taskName: "", date: "", completed: false }]
+  tasks: []
 };
 
 export function reducer(state = initialState, action: any): object {
