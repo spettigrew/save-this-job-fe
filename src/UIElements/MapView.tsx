@@ -82,7 +82,6 @@ function MapDisplay(props) {
               )}
             {clickedJob && (
               <Popup
-                style={{ background: "blue" }}
                 latitude={clickedJob.lat}
                 longitude={clickedJob.long}
                 onClose={() => {
