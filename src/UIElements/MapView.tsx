@@ -3,12 +3,13 @@ import ReactMapGl, { Marker, Popup } from "react-map-gl";
 import { Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Pin from "./Pin";
+import orange from "../images/icon-orange.png";
 import axios from "axios";
 function MapDisplay(props) {
   const [viewport, setViewport] = useState({
-    latitude: 29.8946952,
-    longitude: -81.3145395,
-    zoom: 5,
+    latitude: 39.8333333,
+    longitude: -98.585522,
+    zoom: 4,
     bearing: 0,
     pitch: 0,
     width: window.innerWidth,
