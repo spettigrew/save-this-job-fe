@@ -7,6 +7,9 @@ export default function SideNavTab(props) {
       onMouseOver={() => {
         props.setVisible(true);
       }}
+      onMouseDown={() => {
+        props.setVisible(true);
+      }}
     >
       <p> Menu</p>
     </div>

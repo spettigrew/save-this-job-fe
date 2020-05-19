@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { List, Header, Form, Button, Dropdown } from "semantic-ui-react";
+import { List, Header, Icon, Form, Button, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { addTask, getTasks, deleteTask } from "../../../redux/actions/index";
 
@@ -47,11 +47,27 @@ function Tasks(props) {
 
         <Form.Button onClick={() => handleSubmit()}>Submit</Form.Button>
       </Form>
-      <List>
+      <List selection style={{ maxWidth: "50%" }}>
         {props.tasks?.map(task => (
           <List.Item>
-            {task.taskName}
-            {task.date}
+            <List.Content>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <List.Header as="h4">{task.taskName}</List.Header>
+                <Icon
+                  name="close"
+                  color="red"
+                  onClick={() => props.deleteTask(task.id, props.currentJob.id)}
+                />
+              </div>
+              <List.Description>
+                {new Date(task.date)
+                  .toISOString()
+                  .slice(
+                    0,
+                    new Date(task.date).toISOString().indexOf("T")
+                  )}{" "}
+              </List.Description>
+            </List.Content>
           </List.Item>
         ))}
       </List>

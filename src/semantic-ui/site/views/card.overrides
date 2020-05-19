@@ -2,4 +2,6 @@
     User Variable Overrides
 *******************************/
  div.map-card > div.ui.raised.card{
-background:blue;}
+box-shadow:none;
+
+ }
