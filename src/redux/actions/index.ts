@@ -139,11 +139,10 @@ export function updateJob(jobId, job) {
 
 export function getTasks(id) {
   return dispatch => {
-    console.log("fired get tasks");
-    dispatch({ type: GET_TASKS_LOADING });
     api()
       .get(`/users/tasks/${id}`)
       .then(res => {
+        console.log("fired get tasks", res);
         dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
       })
 
@@ -154,7 +153,6 @@ export function getTasks(id) {
 }
 export function addTask(task, id) {
   return dispatch => {
-    dispatch({ type: ADD_TASKS_LOADING });
     api()
       .post(`users/tasks/${id}/addTask`, task)
       .then(res => {
