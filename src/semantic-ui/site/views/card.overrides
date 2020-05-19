@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+ div.map-card > div.ui.raised.card{
+box-shadow:none;
+
+ }

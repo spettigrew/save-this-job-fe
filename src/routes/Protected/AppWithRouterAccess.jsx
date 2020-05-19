@@ -25,7 +25,7 @@ const AppWithRouterAccess = () => {
       {...config.oidc}
       onAuthRequired={onAuthRequired}
     >
-      <div id="content">
+      <div id="content" style={{overflowX:"scroll"}}>
         <Navigation />
         <Route exact path='/' component={Home} />
         <Route exact path="/implicit/callback" component={LoginCallback} />

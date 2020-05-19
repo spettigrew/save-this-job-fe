@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import Pin from "./Pin";
 import orange from "../images/icon-orange.png";
 import axios from "axios";
+import { getCurrentJob } from "../redux/actions/index";
+import DashCard from "../routes/Protected/card";
+
 function MapDisplay(props) {
   const [viewport, setViewport] = useState({
     latitude: 39.8333333,
@@ -41,7 +44,7 @@ function MapDisplay(props) {
     window.addEventListener("resize", getWindowWidth);
   }, []);
 
-  const [clickedExp, setClickedExp] = useState(null);
+  const [clickedJob, setClickedJob] = useState(null);
 
   return (
     <>
@@ -67,8 +70,9 @@ function MapDisplay(props) {
                       <button
                         style={transparent}
                         onClick={e => {
+                          e.stopPropagation();
                           e.preventDefault();
-                          setClickedExp(place);
+                          setClickedJob(place);
                         }}
                       >
                         <Pin />
@@ -76,18 +80,23 @@ function MapDisplay(props) {
                     </Marker>
                   )
               )}
-            {clickedExp && (
+            {clickedJob && (
               <Popup
-                latitude={clickedExp.lat}
-                longitude={clickedExp.long}
+                style={{ background: "blue" }}
+                latitude={clickedJob.lat}
+                longitude={clickedJob.long}
                 onClose={() => {
-                  setClickedExp(null);
+                  setClickedJob(null);
                 }}
               >
-                <div style={pop}>
-                  <img style={imgStyle} src={clickedExp.logo} alt="" />
-                  <h3>{clickedExp.jobTitle}</h3>
-                  <p>{clickedExp.companyTitle}</p>
+                <div className="map-card">
+                  <DashCard
+                    map={true}
+                    key={clickedJob.id}
+                    job={clickedJob}
+                    getCurrentJob={props.getCurrentJob}
+                    updateDisabled={props.updateDisabled}
+                  />
                 </div>
               </Popup>
             )}
@@ -99,10 +108,13 @@ function MapDisplay(props) {
 }
 function mapStateToProps(state) {
   return {
-    jobs: state.jobs
+    jobs: state.jobs,
+    updateDisabled: state.updateDisabled
   };
 }
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getCurrentJob
+};
 export default connect(mapStateToProps, mapDispatchToProps)(MapDisplay);
 const color = { color: "white" };
 

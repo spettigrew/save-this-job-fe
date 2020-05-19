@@ -39,6 +39,7 @@ export const TOGGLE_TASK = "TOGGLE_TASK";
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const TAG_FILTER = "TAG_FILTER";
 export const TAGS = "TAGS";
+export const DELETE_TAG = "DELETE_TAG";
 
 export function getUser() {
   return dispatch => {
@@ -168,24 +169,18 @@ export function addTask(task, id) {
   };
 }
 
-export function deleteTask(id) {
+export function deleteTask(id, jobid) {
   return dispatch => {
-    dispatch({ type: DELETE_TASKS_LOADING });
-
+    console.log(id, jobid);
     api()
       .delete(`/users/tasks/${id}`)
       .then(res => {
         console.log(res.status);
         if (res.status === 200) {
           api()
-            .get("")
+            .get(`users/tasks/${jobid}`)
             .then(res => {
-              dispatch({ type: DELETE_TASKS_SUCCESS, payload: res.data });
-            })
-            .then(() => {
-              setTimeout(() => {
-                dispatch({ type: CLEAR_MESSAGES });
-              }, 2500);
+              dispatch({ type: GET_TASKS_SUCCESS, payload: res.data });
             })
 
             .catch(error => {
@@ -226,6 +221,19 @@ export function addTag(tag, id) {
   return dispatch => {
     api()
       .post(`users/tags/addTag/${id}`, { tagName: tag })
+      .then(res => {
+        api()
+          .get("users/tags")
+          .then(res => {
+            dispatch({ type: TAGS, payload: res.data });
+          });
+      });
+  };
+}
+export function deleteTag(id) {
+  return dispatch => {
+    api()
+      .delete(`users/tags/removeTag/${id}`)
       .then(res => {
         api()
           .get("users/tags")
