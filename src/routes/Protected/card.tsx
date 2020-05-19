@@ -38,7 +38,7 @@ export default function DashCard(props) {
         }}
       />
       <Card
-        onClick={() => {
+        onMouseDown={e => {
           setOpen(true);
           props.getCurrentJob(job.id);
         }}

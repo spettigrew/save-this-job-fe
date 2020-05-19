@@ -17,7 +17,9 @@ export default function SideBar(props) {
   const [mapView, setMapView] = useState(false);
   const [visible, setVisible] = useState(false);
   return (
-    <Sidebar.Pushable style={{ height: "100%", overflowY: "hidden" }}>
+    <Sidebar.Pushable
+      style={{ height: "100%", overflowY: "hidden", minWidth: "1500px" }}
+    >
       <div onMouseLeave={() => setVisible(false)}>
         <Sidebar
           as={Segment}

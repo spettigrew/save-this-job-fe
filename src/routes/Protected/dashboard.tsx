@@ -42,7 +42,7 @@ const Dashboard = props => {
       const filterColumns =
         jobs && jobs.filter(job => job.column_id === columnId);
       console.log(jobs);
-      return filterColumns;
+      return jobs;
     };
 
     const storageCheck = column_id => {
