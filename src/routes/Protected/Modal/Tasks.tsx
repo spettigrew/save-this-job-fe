@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { List, Header, Form, Button, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addTask, getTasks } from "../../../redux/actions/index";
+import { addTask, getTasks, deleteTask } from "../../../redux/actions/index";
 
 function Tasks(props) {
   const handleChanges = e => {
@@ -22,10 +22,9 @@ function Tasks(props) {
     completed: false
   });
 
-  // props.getTasks(4);
-
-  console.log("tasks", props.tasks);
-
+  const deleteTask = props => {
+    deleteTask(props.id);
+  };
   return (
     <div>
       <Header as="h2" content="Tasks" />
@@ -36,7 +35,6 @@ function Tasks(props) {
             label="Task"
             placeholder="Task"
             name="taskName"
-            // value={props.tasks.taskName}
             onChange={handleChanges}
           />
           <Form.Input
@@ -45,7 +43,6 @@ function Tasks(props) {
             placeholder="Date"
             type="date"
             name="date"
-            // value={props.tasks.date}
             onChange={handleChanges}
           />
         </Form.Group>
@@ -72,6 +69,7 @@ function mapStateToProps(state) {
 }
 const mapDispatchToProps = {
   addTask,
-  getTasks
+  getTasks,
+  deleteTask
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

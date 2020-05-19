@@ -35,10 +35,7 @@ export const DELETE_TASKS_LOADING = "DELETE_TASKS_LOADING";
 export const DELETE_TASKS_SUCCESS = "DELETE_TASKS_SUCCESS";
 export const DELETE_TASKS_ERROR = "DELETE_TASKS_ERROR";
 
-export const GET_INTERVIEWS_LOADING = "GET_INTERVIEWS_LOADING";
-export const GET_INTERVIEWS_ERROR = "GET_INTERVIEWS_ERROR";
-export const GET_INTERVIEWS_SUCCESS = "GET_INTERVIEWS_SUCCESS";
-
+export const TOGGLE_TASK = "TOGGLE_TASK";
 export const CLEAR_MESSAGES = "CLEAR_MESSAGES";
 export const TAG_FILTER = "TAG_FILTER";
 export const TAGS = "TAGS";
@@ -173,12 +170,12 @@ export function addTask(task, id) {
   };
 }
 
-export function deleteTask(taskId) {
+export function deleteTask(id) {
   return dispatch => {
     dispatch({ type: DELETE_TASKS_LOADING });
 
     api()
-      .delete(`/users/THE ROUTE/${taskId}`)
+      .delete(`/users/tasks/${id}`)
       .then(res => {
         console.log(res.status);
         if (res.status === 200) {
@@ -197,32 +194,17 @@ export function deleteTask(taskId) {
               dispatch({ type: DELETE_TASKS_ERROR, payload: error });
             });
         }
-      })
-      .catch(error => {
-        dispatch({ type: DELETE_TASKS_ERROR, payload: error });
       });
   };
 }
 
-// export function getInterviews() {
-//   return (dispatch) => {
-//     dispatch({ type: GET_INTERVIEWS_LOADING });
-//     api()
-//       .get("/tasks")
-//       .then((res) => {
-//         dispatch({
-//           type: GET_INTERVIEWS_SUCCESS,
-//           payload: [
-//             { interviewName: "Phone 1st", date: "02/20/2020", time: "2:30 pm" },
-//           ],
-//         });
-//       })
-
-//       .catch((error) => {
-//         dispatch({ type: GET_TASKS_ERROR, payload: error });
-//       });
-//   };
-// }
+export function toggleTask(id) {
+  console.log("id", id);
+  return {
+    type: TOGGLE_TASK,
+    payload: id
+  };
+}
 
 export function clearMessages() {
   return dispatch => {
