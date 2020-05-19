@@ -22,9 +22,6 @@ function Tasks(props) {
     completed: false
   });
 
-  const deleteTask = props => {
-    deleteTask(props.id);
-  };
   return (
     <div>
       <Header as="h2" content="Tasks" />
@@ -47,7 +44,7 @@ function Tasks(props) {
           />
         </Form.Group>
 
-        <Form.Button onClick={handleSubmit}>Submit</Form.Button>
+        <Form.Button onClick={() => handleSubmit()}>Submit</Form.Button>
       </Form>
       <List>
         {props.tasks?.map(task => (
@@ -60,6 +57,7 @@ function Tasks(props) {
     </div>
   );
 }
+
 function mapStateToProps(state) {
   return {
     tasks: state.tasks,
