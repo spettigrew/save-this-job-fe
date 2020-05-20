@@ -6,8 +6,7 @@ import Home from '../Home';
 import LoginForm from "../Authentication/LoginForm";
 import Dashboard from "./dashboard";
 import Navigation from "../navigation";
-import Footer from '../footer';
-import ReactGA from 'react-ga';
+import AboutUs from "../about-us"
 
 
 const AppWithRouterAccess = () => {
@@ -15,9 +14,6 @@ const AppWithRouterAccess = () => {
   const onAuthRequired = () => {
     history.push("/login");
   };
-
-
-
 
 
   return (
@@ -30,6 +26,7 @@ const AppWithRouterAccess = () => {
         <Route exact path='/' component={Home} />
         <Route exact path="/implicit/callback" component={LoginCallback} />
         <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/about" component={AboutUs} />
         <SecureRoute exact path="/dashboard" component={Dashboard} />
       </div>
     </Security>
