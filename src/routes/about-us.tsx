@@ -11,6 +11,7 @@ import {
   Grid,
   Header,
   Image,
+  List,
   Segment
 } from "semantic-ui-react";
 
@@ -56,8 +57,194 @@ function AboutUs(props) {
             <StyledLogo src={cta} alt="logo" />
             <Header as="h2" content="About the Creators of 'Save this Job'" />
             <LineImg alt="icon" src={line} />
+
+            <Segment top="ui four column grid">
+              <Grid.Column column="column">
+                <Grid.Row row="ui segment">
+                  <Image src="https://media-exp1.licdn.com/dms/image/C5603AQGbl87bpyEqGA/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=9hLqH5sY-P0SmVlacjm0QGcHnlnw2uuZBQSqP71J-ok"></Image>
+                  <List.Item
+                    as="a"
+                    href="https://www.linkedin.com/in/ken-boelter-4282b5127"
+                    target="blank"
+                  >
+                    <Image
+                      src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                      width="15"
+                    ></Image>
+                  </List.Item>
+                  <List.Item
+                    as="a"
+                    href="https://github.com/krboelter"
+                    target="blank"
+                  >
+                    <Image
+                      src="https://github.com/favicon.ico"
+                      width="15"
+                    ></Image>
+                  </List.Item>
+                </Grid.Row>
+              </Grid.Column>
+              <Grid.Row>
+                <Grid.Column
+                  floated="right"
+                  width={2}
+                  padding={"25px"}
+                ></Grid.Column>
+                <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQEyJTppbcZXww/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=Ic5G3C0B6tQLvGweaZ4Y9WtfCwoFWkvnnu8FpTuzhzA"></Image>
+                <List.Item
+                  as="a"
+                  href="https://www.linkedin.com/in/kevin-carr-"
+                  target="blank"
+                >
+                  <Image
+                    src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                    width="15"
+                  ></Image>
+                </List.Item>
+                <List.Item
+                  as="a"
+                  href="https://github.com/kevcarr11"
+                  target="blank"
+                >
+                  <Image
+                    src="https://github.com/favicon.ico"
+                    width="15"
+                  ></Image>
+                </List.Item>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column floated="right" width={2}></Grid.Column>
+                <Image src="https://media-exp1.licdn.com/dms/image/C5603AQFYMViRgozPOQ/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=gsHF5sqfaqqRoMbGXf5z4GH_01FReHhl2ZhGpk6kBUI"></Image>
+                <List.Item
+                  as="a"
+                  href="https://www.linkedin.com/in/rose-landroche"
+                  target="blank"
+                >
+                  <Image
+                    src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                    width="15"
+                  ></Image>
+                </List.Item>
+                <List.Item
+                  as="a"
+                  href="https://github.com/roselandroche"
+                  target="blank"
+                >
+                  <Image
+                    src="https://github.com/favicon.ico"
+                    width="15"
+                  ></Image>
+                </List.Item>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column floated="left" width={2}></Grid.Column>
+                <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQGn_fRqfmdUaw/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=zAtpoj5Y5IPsLL0CeM1tDhsdrRjW_bfPBNRQgLEMzE4"></Image>
+                <List.Item
+                  as="a"
+                  href="https://www.linkedin.com/in/roger-m-lee"
+                  target="blank"
+                >
+                  <Image
+                    src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                    width="15"
+                  ></Image>
+                </List.Item>
+                <List.Item
+                  as="a"
+                  href="https://github.com/rm-lee"
+                  target="blank"
+                >
+                  <Image
+                    src="https://github.com/favicon.ico"
+                    width="15"
+                  ></Image>
+                </List.Item>
+              </Grid.Row>
+            </Segment>
+
             <Grid.Row>
               <Grid.Column floated="right" width={2}></Grid.Column>
+              <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQEQAPazPahyCw/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=jmr3b88NdmaSdcXP1-qfDiWP-Z9WMrWw_neFrdkOAD8"></Image>
+              <List.Item
+                as="a"
+                href="https://www.linkedin.com/in/michelle-scott"
+                target="blank"
+              >
+                <Image
+                  src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                  width="15"
+                ></Image>
+              </List.Item>
+              <List.Item
+                as="a"
+                href="https://github.com/scottmm374"
+                target="blank"
+              >
+                <Image src="https://github.com/favicon.ico" width="15"></Image>
+              </List.Item>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column floated="left" width={2}></Grid.Column>
+              <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQHvNyeNdywpiw/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=BlbrRnbHBOBGJKYGfxXCMAxMg1A9XA12g4KqiPcHwRU"></Image>
+              <List.Item
+                as="a"
+                href="https://www.linkedin.com/in/sara-pettigrew"
+                target="blank"
+              >
+                <Image
+                  src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                  width="15"
+                ></Image>
+              </List.Item>
+              <List.Item
+                as="a"
+                href="https://github.com/spettigrew"
+                target="blank"
+              >
+                <Image src="https://github.com/favicon.ico" width="15"></Image>
+              </List.Item>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column floated="right" width={2}></Grid.Column>
+              <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQFEgxT9zakdWA/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=SWaQMqEtO4RBsUpKUmfSfjXBcjtn4u2vY0Lez_XHDw8"></Image>
+              <List.Item
+                as="a"
+                href="https://www.linkedin.com/in/aaron-spurgeon-9919a7183"
+                target="blank"
+              >
+                <Image
+                  src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                  width="15"
+                ></Image>
+              </List.Item>
+              <List.Item
+                as="a"
+                href="https://github.com/aaronspurgeon"
+                target="blank"
+              >
+                <Image src="https://github.com/favicon.ico" width="15"></Image>
+              </List.Item>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column floated="left" width={2}></Grid.Column>
+              <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQE0zykQpv0kCw/profile-displayphoto-shrink_200_200/0?e=1595462400&v=beta&t=xC37n0dgFd0yvuSfiVQWfjSzaq6RHk_rcrsOjfyHSx8"></Image>
+              <List.Item
+                as="a"
+                href="https://www.linkedin.com/in/jonathan-craig-taylor"
+                target="blank"
+              >
+                <Image
+                  src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                  width="15"
+                ></Image>
+              </List.Item>
+              <List.Item
+                as="a"
+                href="https://github.com/jonyonson"
+                target="blank"
+              >
+                <Image src="https://github.com/favicon.ico" width="15"></Image>
+              </List.Item>
             </Grid.Row>
           </StyledContainer>
           <Footer />
