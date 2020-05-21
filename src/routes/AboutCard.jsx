@@ -4,7 +4,7 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 
 export default function AboutCard({ image, linkdin, github, name, title }) {
     return (
-        <Card>
+        <Card color='blue'>
             <Image src={image} wrapped ui={false} />
             <Card.Content>
                 <Card.Header>{name}</Card.Header>
