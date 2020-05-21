@@ -164,6 +164,7 @@ export function addTask(task, id) {
           });
       })
       .catch(error => {
+        console.log(error.message);
         dispatch({ type: ADD_TASKS_ERROR, payload: error });
       });
   };
@@ -175,8 +176,8 @@ export function deleteTask(id, jobid) {
     api()
       .delete(`/users/tasks/${id}`)
       .then(res => {
-        console.log(res.status);
-        if (res.status === 200) {
+        console.log("from delete", res.status);
+        if (res.status === 204) {
           api()
             .get(`users/tasks/${jobid}`)
             .then(res => {

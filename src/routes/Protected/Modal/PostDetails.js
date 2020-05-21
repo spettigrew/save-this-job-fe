@@ -111,14 +111,14 @@ function PostDetails(props) {
                         />
                         <Header as="h3" content={editedJob.jobTitle} />
                       </div>
-                      <Rating
+                      {/* <Rating
                         style={{ margin: ".5em 0 2em" }}
                         icon="star"
                         onRate={handleChanges}
                         rating={props.currentJob.rating || 3}
                         maxRating={5}
                         clearable
-                      />
+                      /> */}
                       <Header
                         as="h4"
                         content={`Location: ${props.currentJob.location}`}
@@ -135,7 +135,10 @@ function PostDetails(props) {
                     >
                       <Remove removeJob={props.deleteJob} id={props.jobId} />
                       <Button
-                        color={props.updateDisabled ? null : "blue"}
+                        style={{
+                          background: props.updateDisabled ? null : "#08A6C9",
+                          color: "white"
+                        }}
                         onClick={handleSubmit}
                         type="submit"
                         content="Update"
