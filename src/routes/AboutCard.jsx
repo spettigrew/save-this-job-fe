@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 
 
-export default function AboutCard({ image, linkdin, github, name }) {
+export default function AboutCard({ image, linkdin, github, name, title }) {
     return (
         <Card>
             <Image src={image} wrapped ui={false} />
@@ -10,8 +10,8 @@ export default function AboutCard({ image, linkdin, github, name }) {
                 <Card.Header>{name}</Card.Header>
 
                 <Card.Description>
-                    Full Stack Developer
-      </Card.Description>
+                    {title}
+                </Card.Description>
             </Card.Content>
             <Card.Content extra>
                 <a href={linkdin}>
@@ -31,18 +31,3 @@ export default function AboutCard({ image, linkdin, github, name }) {
     )
 }
 
-{/* <StyledImg src={bud.image}></StyledImg>
-                  <Grid.Row>
-                    <List.Item as="a" href={bud.linkdin} target="blank">
-                      <Image
-                        src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
-                        width="15"
-                      ></Image>
-                    </List.Item>
-                    <List.Item as="a" href={bud.github} target="blank">
-                      <Image
-                        src="https://github.com/favicon.ico"
-                        width="15"
-                      ></Image>
-                    </List.Item>
-                  </Grid.Row> */}
