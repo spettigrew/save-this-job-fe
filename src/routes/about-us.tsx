@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styled from "styled-components";
 import { connect } from "react-redux";
 import cta from "../images/Group 1.png";
@@ -14,12 +14,16 @@ import {
   List,
   Segment
 } from "semantic-ui-react";
+import { data } from "../utils/about-data";
 
 const StyledBackground = Styled.div`
-  background: #F3F8F9
+  background: #F3F8F9;
+  width: 50%;
+  margin: "0 auto";
+  padding-top: 100px;
 `;
 const StyledContainer = Styled(Container)({
-  height: "72vh"
+  height: "100vh"
 });
 const StyledBodySegment = Styled(Segment)({
   padding: "8em 0em"
@@ -38,7 +42,7 @@ const StyledLogo = Styled.img`
   padding-top: 2em;
 `;
 const LineImg = Styled.img`
-  margin-bottom: 4em
+  margin-bottom: 4em;
 `;
 const StyledImg = Styled(Image)({
   marginBottom: "1.5em"
@@ -49,11 +53,36 @@ const StyledButton = Styled(Button)({
 });
 
 function AboutUs(props) {
+  const [team, setTeam] = useState(data);
   return (
     <div>
       {!props.loading && (
         <StyledBackground>
-          <StyledContainer text textAlign="center">
+          <Grid relaxed columns={3} style={{ margin: "0 auto" }}>
+            {team.map(bud => {
+              return (
+                <Grid.Column row="ui segment">
+                  <StyledImg src={bud.image}></StyledImg>
+                  <Grid.Row>
+                    <List.Item as="a" href={bud.linkdin} target="blank">
+                      <Image
+                        src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+                        width="15"
+                      ></Image>
+                    </List.Item>
+                    <List.Item as="a" href={bud.github} target="blank">
+                      <Image
+                        src="https://github.com/favicon.ico"
+                        width="15"
+                      ></Image>
+                    </List.Item>
+                  </Grid.Row>
+                </Grid.Column>
+              );
+            })}
+          </Grid>
+
+          {/* <StyledContainer text textAlign="center">
             <StyledLogo src={cta} alt="logo" />
             <Header as="h2" content="About the Creators of 'Save this Job'" />
             <LineImg alt="icon" src={line} />
@@ -263,8 +292,7 @@ function AboutUs(props) {
                 </Grid>
               </Grid.Column>
             </Segment>
-          </StyledContainer>
-          <Footer />
+          </StyledContainer> */}
         </StyledBackground>
       )}
     </div>
