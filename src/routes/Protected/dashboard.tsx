@@ -142,7 +142,7 @@ const Dashboard = props => {
                             position: "fixed",
                             background: "#f4f8f9",
                             zIndex: 10000000000,
-                            width: "250px"
+                            width: "269px"
                           }}
                         >
                           <h2

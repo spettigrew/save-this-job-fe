@@ -1,7 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [],
+  "short_name": "Job Pin",
+  "name": "Save this Job",
+  "icons":[],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

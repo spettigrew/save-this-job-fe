@@ -45,11 +45,16 @@ function Tasks(props) {
           />
         </Form.Group>
 
-        <Form.Button onClick={() => handleSubmit()}>Submit</Form.Button>
+        <Form.Button
+          style={{ background: "#08A6C9", color: "white" }}
+          onClick={() => handleSubmit()}
+        >
+          Submit
+        </Form.Button>
       </Form>
       <List selection style={{ maxWidth: "50%" }}>
-        {props.tasks?.map(task => (
-          <List.Item>
+        {props.tasks?.map((task, index) => (
+          <List.Item key={index}>
             <List.Content>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <List.Header as="h4">{task.taskName}</List.Header>
