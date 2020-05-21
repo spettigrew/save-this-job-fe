@@ -14,7 +14,7 @@ export default function AboutCard({ image, linkdin, github, name, title }) {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <a href={linkdin}>
+                <a href={linkdin} style={{ paddingRight: '20px' }}>
                     <Image
                         src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
                         width="35"
