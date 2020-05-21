@@ -15,6 +15,7 @@ import {
   Segment
 } from "semantic-ui-react";
 import { data } from "../utils/about-data";
+import AboutCard from "./AboutCard";
 
 const StyledBackground = Styled.div`
   background: #F3F8F9;
@@ -62,21 +63,12 @@ function AboutUs(props) {
             {team.map(bud => {
               return (
                 <Grid.Column row="ui segment">
-                  <StyledImg src={bud.image}></StyledImg>
-                  <Grid.Row>
-                    <List.Item as="a" href={bud.linkdin} target="blank">
-                      <Image
-                        src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
-                        width="15"
-                      ></Image>
-                    </List.Item>
-                    <List.Item as="a" href={bud.github} target="blank">
-                      <Image
-                        src="https://github.com/favicon.ico"
-                        width="15"
-                      ></Image>
-                    </List.Item>
-                  </Grid.Row>
+                  <AboutCard
+                    image={bud.image}
+                    linkdin={bud.linkdin}
+                    github={bud.github}
+                    name={bud.name}
+                  />
                 </Grid.Column>
               );
             })}
