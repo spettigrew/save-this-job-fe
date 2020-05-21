@@ -11,7 +11,7 @@ const StyledBackground = Styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   padding-top: 70px;
   text-align: center;

@@ -9,7 +9,6 @@ function App() {
 
     // pageviews
     ReactGA.pageview(window.location.pathname);
-    console.log("fire react-ga");
   }, []);
   return (
     <div>
