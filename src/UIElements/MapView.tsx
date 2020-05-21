@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGl, { Marker, Popup } from "react-map-gl";
-import { Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import Pin from "./Pin";
-import orange from "../images/icon-orange.png";
 import axios from "axios";
 import { getCurrentJob } from "../redux/actions/index";
 import DashCard from "../routes/Protected/card";
