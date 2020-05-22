@@ -73,7 +73,6 @@ const Dashboard = props => {
       });
 
     const extensionId = "ideneijiccfapaeembbhleajekkkhdja";
-
     props.jobs &&
       chrome.runtime.sendMessage(extensionId, {
         currentJobs: columns["column-1"].items,

@@ -1,6 +1,8 @@
 import React from 'react'
 import Styled from 'styled-components'
 import icon from "../images/save-this-job-icon.png";
+import gif from "../images/kaban.gif"
+import cardView from "../images/cardView.png"
 import {
   Header,
   Segment,
@@ -44,6 +46,7 @@ function BottomBodySection() {
         <StyledHeaderAsH3 as="h3">
           <StyledIcon alt="icon" src={icon} /> Save and organize job listings
             </StyledHeaderAsH3>
+            <img src={cardView} alt="job card" style={{ width: "100%"}}/>
         <StyledParagraph>
           A lack of central organization for job postings can be overwhelming to keep track of relevant jobs. 'Save This Job'
           lets you copy and save job posting information and categorize them in how
@@ -65,6 +68,7 @@ function BottomBodySection() {
         <StyledHeaderAsH3 as="h3">
           <StyledIcon alt="icon" src={icon} /> Kanban Board 
             </StyledHeaderAsH3>
+        <img src={gif} alt="kaban board" style={{ width: "100%"}}/>
         <StyledParagraph>
           Visualize and categorize your job search in a kanban board. See your saved
           jobs that are organized in categories such as interested in, applied, interviewing and offers all in one view. It also allows you to add notes and tasks, tag or make deadlines for certain jobs, ultimately saving you time to finalize your job hunt.
