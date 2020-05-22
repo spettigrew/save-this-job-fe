@@ -7,9 +7,6 @@ import { Button, Container, Header } from "semantic-ui-react";
 const StyledBackground = Styled.div`
   background: #F3F8F9
 `;
-const StyledContainer = Styled(Container)({
-  height: "72vh"
-});
 
 const StyledLogo = Styled.img`
   font-size: 4em;
@@ -21,14 +18,15 @@ const LineImg = Styled.img`
 `;
 const StyledButton = Styled(Button)({
   background: "#08A6C9 !important",
-  color: "#ffff !important"
+  color: "#ffff !important",
+  width: "40%"
 });
 
 function HomePageHeader() {
   return (
     <div>
       <StyledBackground>
-        <StyledContainer text textAlign="center">
+        <Container text textAlign="center">
           <StyledLogo src={cta} alt="logo" />
           <Header
             as="h2"
@@ -45,7 +43,7 @@ function HomePageHeader() {
             <Button.Content visible>Get Started</Button.Content>
             <Button.Content hidden>Install Extension</Button.Content>
           </StyledButton>
-        </StyledContainer>
+        </Container>
       </StyledBackground>
     </div>
   );
