@@ -3,6 +3,7 @@ import Styled from 'styled-components'
 import icon from "../images/save-this-job-icon.png";
 import gif from "../images/kaban.gif"
 import cardView from "../images/cardView.png"
+import mapview from "../images/mapview.png"
 import {
   Header,
   Segment,
@@ -89,7 +90,7 @@ function BottomBodySection() {
         <StyledHeaderAsH3 as="h3">
           <StyledIcon alt="icon" src={icon} /> Map View
             </StyledHeaderAsH3>
-        <img src={gif} alt="kaban board" style={{ width: "100%"}}/>
+        <img src={mapview} alt="map view" style={{ width: "100%"}}/>
         <StyledParagraph>
           Check out our map view for your saved jobs! A pin will mark the city and state of all of the jobs that you have saved to your kanban board.
             </StyledParagraph>
