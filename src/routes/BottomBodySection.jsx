@@ -48,8 +48,7 @@ function BottomBodySection() {
             </StyledHeaderAsH3>
             <img src={cardView} alt="job card" style={{ width: "100%"}}/>
         <StyledParagraph>
-          A lack of central organization for job postings can be overwhelming to keep track of relevant jobs. 'Save This Job'
-          lets you copy and save job posting information and categorize them in how
+          A lack of central organization for job postings can be overwhelming to keep track of relevant jobs. <strong>Save This Job</strong> lets you copy and save job posting information and categorize them in how
           interested or where you are in your job search.
             </StyledParagraph>
         <StyledButton
@@ -82,6 +81,18 @@ function BottomBodySection() {
           <Button.Content visible>Get Started</Button.Content>
           <Button.Content hidden>Sign-Up Now</Button.Content>
         </StyledButton>
+
+        <StyledDivider horizontal>
+          <StyledIcon alt="icon" src={icon} />
+        </StyledDivider>
+
+        <StyledHeaderAsH3 as="h3">
+          <StyledIcon alt="icon" src={icon} /> Map View
+            </StyledHeaderAsH3>
+        <img src={gif} alt="kaban board" style={{ width: "100%"}}/>
+        <StyledParagraph>
+          Check out our map view for your saved jobs! A pin will mark the city and state of all of the jobs that you have saved to your kanban board.
+            </StyledParagraph>
       </Container>
     </StyledBodySegment>
   )
