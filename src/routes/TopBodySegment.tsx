@@ -5,13 +5,8 @@ import time from "../images/time.png";
 import icon from "../images/save-this-job-icon.png";
 import { Button, Grid, Header, Image, Segment } from "semantic-ui-react";
 
-const StyledButton = Styled(Button)({
-  background: "#08A6C9 !important",
-  color: "#ffff !important"
-});
-
 const StyledBodySegment = Styled(Segment)({
-  padding: "8em 0em"
+  marginTop: "200px, !important"
 });
 
 const StyledHeaderAsH3 = Styled(Header)({
@@ -37,20 +32,21 @@ function TopBodySegment() {
         <Grid.Row>
           <Grid.Column width={8}>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> Problem
+              <StyledIcon alt="icon" src={icon} /> Save This Job
             </StyledHeaderAsH3>
             <StyledParagraph>
-              Job searchers, already stressed, can't keep track of various
-              postings on various sites. Bookmarking and spreadsheets are just
-              making the situation overwhelming.
+              'Save This Job' is a Chrome extension that allows users to save
+              job listings with a kanban board. A kanban board allows you to
+              organize and categorize jobs to easily view, update, create notes
+              or tasks for which jobs you saved.
             </StyledParagraph>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> Solution
+              <StyledIcon alt="icon" src={icon} /> Job Hunting = Stress
             </StyledHeaderAsH3>
             <StyledParagraph>
-              A Chrome extension that lets you grab and save job postings with a
-              rating of how interested you are in the job saving you time to
-              continue your job search.
+              Job searching is already stressful and it can be difficult to keep
+              track of postings on various sites. Bookmarking, spreadsheets and
+              constant reminders can become overwhelming.
             </StyledParagraph>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
