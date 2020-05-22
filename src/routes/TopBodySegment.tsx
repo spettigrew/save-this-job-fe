@@ -41,8 +41,7 @@ function TopBodySegment() {
               and create notes or tasks for which jobs you saved.
             </StyledParagraph>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} />{" "}
-              <strong>Save this Job</strong> makes your job search easy
+              <StyledIcon alt="icon" src={icon} /> Make your job search easier
             </StyledHeaderAsH3>
             <StyledParagraph>
               Job searching is already stressful and it can be difficult to keep
