@@ -35,13 +35,14 @@ function TopBodySegment() {
               <StyledIcon alt="icon" src={icon} /> Save This Job
             </StyledHeaderAsH3>
             <StyledParagraph>
-              'Save This Job' is a Chrome extension that allows users to save
-              job listings with a kanban board. A kanban board allows you to
-              organize and categorize jobs to easily view, update, create notes
-              or tasks for which jobs you saved.
+              'Save This Job' is a Chrome extension that allows you to save job
+              listings within a kanban board. A kanban board allows you to
+              organize and categorize jobs to easily view, update and create
+              notes or tasks for which jobs you saved.
             </StyledParagraph>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> Job Hunting = Stress
+              <StyledIcon alt="icon" src={icon} /> 'Save this Job' makes your
+              job search easy
             </StyledHeaderAsH3>
             <StyledParagraph>
               Job searching is already stressful and it can be difficult to keep

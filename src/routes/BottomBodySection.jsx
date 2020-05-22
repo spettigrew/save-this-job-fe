@@ -45,10 +45,9 @@ function BottomBodySection() {
           <StyledIcon alt="icon" src={icon} /> Save and organize job listings
             </StyledHeaderAsH3>
         <StyledParagraph>
-          A lack of central organization for job postings can be
-          overwhelming to keep track of relevant jobs. 'Save This Job'
+          A lack of central organization for job postings can be overwhelming to keep track of relevant jobs. 'Save This Job'
           lets you copy and save job posting information and categorize them in how
-          interested you are in the job.
+          interested or where you are in your job search.
             </StyledParagraph>
         <StyledButton
           animated="fade"
@@ -68,7 +67,7 @@ function BottomBodySection() {
             </StyledHeaderAsH3>
         <StyledParagraph>
           Visualize and categorize your job search in a kanban board. See your saved
-          jobs that are organized in categories such as interested in, applied, interviewing and offers all in one view. It also allows you to make add notes and tasks, tag and make deadlines for certain jobs, saving you time to continue and finalize your job hunt.
+          jobs that are organized in categories such as interested in, applied, interviewing and offers all in one view. It also allows you to add notes and tasks, tag or make deadlines for certain jobs, ultimately saving you time to finalize your job hunt.
             </StyledParagraph>
         <StyledButton
           data-testid="login-button"

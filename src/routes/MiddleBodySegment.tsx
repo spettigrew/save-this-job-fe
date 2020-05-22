@@ -35,13 +35,13 @@ function MiddleBodySegment() {
               <StyledIcon alt="icon" src={icon} /> Chrome Extension
             </StyledHeaderAsH3>
             <StyledParagraph>
-              A Chrome extension lets you copy and save job postings that you
-              are interested in.
+              A Chrome extension is used for your laptop or desktop which allows
+              you to save job postings of interest.
             </StyledParagraph>
           </StyledGridColumn>
           <StyledGridColumn>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> "How do I get the extension?"
+              <StyledIcon alt="icon" src={icon} /> "Get the extension"
             </StyledHeaderAsH3>
             <StyledParagraph>
               This extension is available for download in the chrome web store.
