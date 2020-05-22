@@ -42,13 +42,12 @@ function BottomBodySection() {
     <StyledBodySegment vertical>
       <Container text>
         <StyledHeaderAsH3 as="h3">
-          <StyledIcon alt="icon" src={icon} /> Save and Rate Job Listings
+          <StyledIcon alt="icon" src={icon} /> Save and organize job listings
             </StyledHeaderAsH3>
         <StyledParagraph>
-          Lack of central organization for job postings causes it to be
-          overwhelming to keep track of relevant job postings, adds
-          unnecessary stress to an already stressful process. Save This Job
-          lets you grab and save job postings with a rating of how
+          A lack of central organization for job postings can be
+          overwhelming to keep track of relevant jobs. 'Save This Job'
+          lets you copy and save job posting information and categorize them in how
           interested you are in the job.
             </StyledParagraph>
         <StyledButton
@@ -65,12 +64,11 @@ function BottomBodySection() {
         </StyledDivider>
 
         <StyledHeaderAsH3 as="h3">
-          <StyledIcon alt="icon" src={icon} /> Kanban
+          <StyledIcon alt="icon" src={icon} /> Kanban Board 
             </StyledHeaderAsH3>
         <StyledParagraph>
-          Visualize the state of your job search in a kanban board. See how
-          many applications, interviews and offers you've received in one
-          view.
+          Visualize and categorize your job search in a kanban board. See your saved
+          jobs that are organized in categories such as interested in, applied, interviewing and offers all in one view. It also allows you to make add notes and tasks, tag and make deadlines for certain jobs, saving you time to continue and finalize your job hunt.
             </StyledParagraph>
         <StyledButton
           data-testid="login-button"
