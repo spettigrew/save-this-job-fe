@@ -41,7 +41,7 @@ function MiddleBodySegment() {
           </StyledGridColumn>
           <StyledGridColumn>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> "Get the extension"
+              <StyledIcon alt="icon" src={icon} /> Get the extension
             </StyledHeaderAsH3>
             <StyledParagraph>
               This extension is available for download in the chrome web store.
