@@ -13,38 +13,6 @@ const StyledFooter = Styled(Segment)`
 `;
 
 function Footer(props) {
-  function calculateMainContentHeight() {
-    if (document.querySelector("#footer") && props.jobs) {
-      const mainContent = document.querySelector<HTMLElement>("#content");
-      const footerContent = document.querySelector<HTMLElement>("#footer");
-      if (
-        mainContent.offsetHeight <
-        window.innerHeight - footerContent.offsetHeight
-      ) {
-        console.log("less");
-        footerContent.style.position = "absolute";
-        footerContent.style.bottom = "0";
-        footerContent.style.marginTop = "6em";
-      } else {
-        console.log("mored");
-        footerContent.style.position = "relative";
-        footerContent.style.bottom = "0";
-        footerContent.style.marginTop = "6em";
-        console.log(
-          window.innerHeight,
-          footerContent.offsetHeight,
-          mainContent.offsetHeight
-        );
-      }
-    }
-  }
-  useEffect(() => {
-    calculateMainContentHeight();
-  }, [props.loading]);
-  window.addEventListener("resize", function(event) {
-    calculateMainContentHeight();
-  });
-
   return (
     <>
       {!props.loading && (

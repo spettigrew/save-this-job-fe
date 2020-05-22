@@ -71,6 +71,13 @@ const Dashboard = props => {
           items: filterJobs("column-5")
         }
       });
+
+    const extensionId = "ideneijiccfapaeembbhleajekkkhdja";
+    props.jobs &&
+      chrome.runtime.sendMessage(extensionId, {
+        currentJobs: columns["column-1"].items,
+        loading: props.loading
+      });
   };
 
   return (

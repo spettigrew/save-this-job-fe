@@ -32,21 +32,20 @@ function MiddleBodySegment() {
         <Grid.Row textAlign="center">
           <StyledGridColumn>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> "What is Save This Job?"
+              <StyledIcon alt="icon" src={icon} /> Chrome Extension
             </StyledHeaderAsH3>
             <StyledParagraph>
-              Save This Job is a Chrome extension that allows users to save and
-              rate job listings with a front-end dashboard to easily view/update
-              jobs that you saved!
+              A Chrome extension is used for your laptop or desktop which allows
+              you to save job postings of interest.
             </StyledParagraph>
           </StyledGridColumn>
           <StyledGridColumn>
             <StyledHeaderAsH3 as="h3">
-              <StyledIcon alt="icon" src={icon} /> "How do I get the extension?"
+              <StyledIcon alt="icon" src={icon} /> "Get the extension"
             </StyledHeaderAsH3>
             <StyledParagraph>
-              The extension is available for download in the chrome web store.
-              Click{" "}
+              This extension is available for download in the chrome web store.
+              See below or click{" "}
               <a
                 data-testid="chromeLink"
                 href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
