@@ -74,13 +74,12 @@ Why did you choose this framework?
 
 Why did you choose this?
 
-- To be determined by Roger
-- check the DNA FAQ
-- Just because bananas needed pre-ordering
+- Node & Postgres was the backend platform database available to use for the project in the labs engineering standards. 
+- AWS gave us a new challenge to learn in order to host our app.
 
 # APIs
 
-https://developer.okta.com/
+`https://developer.okta.com/`
 
 - Secure register and login
 - 2 point authentication at registering
@@ -105,20 +104,17 @@ Description of the API
 
 # Testing
 
-🚫Document what you used for testing and why
+ Testing
 
-# 4️⃣ Installation Instructions
+* TS - Jest
+This was used because it easily tested our typescript components. 
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+# npm install then npm start
+Installs all of the dependencies after cloning project. npm ONLY!
 
-## Other Scripts
+## Craco start, build and eject
 
-🚫replace these examples with your own
-
-    * type-check - runs the TypeScript compiler
-    * build - creates a build of the application
-    * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+* craco - Create React App Configuration Override. All the benefits of cra and customization without having to use eject by adding a single craco.config.js file to the root of your application. 
 
 # Contributing
 
