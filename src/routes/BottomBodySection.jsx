@@ -45,27 +45,6 @@ function BottomBodySection() {
     <StyledBodySegment vertical>
       <Container text>
         <StyledHeaderAsH3 as="h3">
-          <StyledIcon alt="icon" src={icon} /> Save and organize job listings
-            </StyledHeaderAsH3>
-            <img src={cardView} alt="job card" style={{ width: "100%"}}/>
-        <StyledParagraph>
-          A lack of central organization for job postings can be overwhelming to keep track of relevant jobs. <strong>Save This Job</strong> lets you copy and save job posting information and categorize them in how
-          interested or where you are in your job search.
-            </StyledParagraph>
-        <StyledButton
-          animated="fade"
-          size="huge"
-          href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
-        >
-          <Button.Content visible>Chrome Extension</Button.Content>
-          <Button.Content hidden>Install</Button.Content>
-        </StyledButton>
-
-        <StyledDivider horizontal>
-          <StyledIcon alt="icon" src={icon} />
-        </StyledDivider>
-
-        <StyledHeaderAsH3 as="h3">
           <StyledIcon alt="icon" src={icon} /> Kanban Board 
             </StyledHeaderAsH3>
         <img src={gif} alt="kaban board" style={{ width: "100%"}}/>
@@ -81,6 +60,26 @@ function BottomBodySection() {
         >
           <Button.Content visible>Get Started</Button.Content>
           <Button.Content hidden>Sign-Up Now</Button.Content>
+        </StyledButton>
+
+        <StyledDivider horizontal>
+          <StyledIcon alt="icon" src={icon} />
+        </StyledDivider>
+        <StyledHeaderAsH3 as="h3">
+          <StyledIcon alt="icon" src={icon} /> Save and organize job listings
+            </StyledHeaderAsH3>
+            <img src={cardView} alt="job card" style={{ width: "100%"}}/>
+        <StyledParagraph>
+          A lack of central organization for job postings can be overwhelming to keep track of relevant jobs. <strong>Save This Job</strong> lets you copy and save job posting information and categorize them in how
+          interested or where you are in your job search.
+            </StyledParagraph>
+        <StyledButton
+          animated="fade"
+          size="huge"
+          href="https://chrome.google.com/webstore/detail/hejmehomfdabmjbhlpajmhcjaoichkgl"
+        >
+          <Button.Content visible>Chrome Extension</Button.Content>
+          <Button.Content hidden>Install</Button.Content>
         </StyledButton>
 
         <StyledDivider horizontal>
