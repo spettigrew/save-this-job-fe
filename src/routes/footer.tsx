@@ -8,7 +8,8 @@ const StyledFooter = Styled(Segment)`
   background: #08A6C9 !important;
   width:100%;
   position:relative;
-  margin-top:4em !important;
+  bottom:-100px;
+  margin-top:4em;
 `;
 
 function Footer(props) {
